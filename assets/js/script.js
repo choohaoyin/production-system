@@ -23,31 +23,31 @@ let rules = new Object();
 
 // to be move into function, now for debug purporse
 let wm = {
-    'budget' : 100,
-    'recommendation': []
 }
 
 function press() {
-    
+    getForm();
     for (rule of rules) {
-        console.log(rule['when'],rule['is'],rule['what']);
-        const condition = wm[rule['when']] + rule['is'];
-        console.log(eval(condition));
-        if (eval(condition)) {
-            console.log(typeof wm[rule['put']]);
-            if(typeof wm[rule['put']] !== 'undefined') {
-                if(typeof wm[rule['put']] !== 'boolean') {
-                    if(typeof wm[rule['put']] !== 'object') {
-                        wm[rule['put']] = [wm[rule['put']]];
-                    }
-                    wm[rule['put']].push(rule['as']);
-                } else {
-                    wm[rule['put']] = rule['as'];
-                }
-            } else {
-                wm[rule['put']] = rule['as'];
+        var pass = true;
+        if ((rule['when'].length > 1 ) &&  typeof rule['when'] == 'object') {
+            for (i = 0; i < rule['when'].length; i++) {
+                const condition = wm[rule['when'][i]] + rule['is'][i];
+                if (!eval(condition)) pass = false;
             }
+            // if(pass) {
+            //     addToWM(rule['put'],rule['as'])
+            // }
         }
+        else {
+            const condition = wm[rule['when']] + rule['is'];
+            // console.log(eval(condition));
+            if (!eval(condition)) pass = false;
+            // if (eval(condition)) {
+            //     console.log(rule['put'],rule['as']);
+            //     addToWM(rule['put'],rule['as'])
+            // }
+        }
+        if (pass) addToWM(rule['put'],rule['as']);
     }
     console.log(wm);
 }
@@ -75,6 +75,7 @@ function loadRules() {
 }
         
 function getForm() {
+    wm = {}; // debugging purpose
     var form = document.getElementById("form");
     for (i=0; i<form.elements.length; i++) {
       var field = form.elements[i];
@@ -88,17 +89,34 @@ function getForm() {
               //     name: field.name,
               //     value: field.options[n].value
               // });
-              console.log(field.name, field.options[n].value)
+              addToWM(field.name,field.value);
           }
       }
       else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
-          console.log(field.name, field.value)
           // serialized.push({
           //     name: field.name,
           //     value: field.value
           // });
+
+          addToWM(field.name,field.value);
       }
-      
-      // console.log(field.value);
+    }
+}
+
+function addToWM(name, value) {
+    if(!isNaN(value) && typeof value !== 'boolean') {
+        value = parseInt(value);
+    }
+    if(typeof wm[name] !== 'undefined') {
+        if(typeof wm[name] !== 'boolean') {
+            if(typeof wm[name] !== 'object') {
+                wm[name] = [wm[name]];
+            }
+            wm[name].push(value);
+        } else {
+            wm[name] = value;
+        }
+    } else {
+        wm[name] = value;
     }
 }
