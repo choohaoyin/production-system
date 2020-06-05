@@ -30,23 +30,22 @@
         <select name="occasion" id="occasion">
           <option value="birthday">Birthday</option>
           <option value="anniversary">Anniversary</option>
-          <option value="grauduate">Graduation</option>
+          <option value="graduate">Graduation</option>
         </select>
         <br><br>
-        <input type="button" onclick="getForm()" value="Show form value">
+        <input type="button" onclick="press()" value="Test">
     </form>
     <br><br>
-    <form action="">
-        <input type="button" value="Test" onclick="press()">
-    </form>
-    <input type="number" name="count" id="count" value=1 style="width:35px">
-    <button onclick="test()">Test increment</button>
-    <button onclick="testclear()">Clear</button>
+
+    <!-- For recommendation result -->
     <div style="border: black solid 1px; margin: 10px; padding: 5px;">
         <h1>Gift title sample</h1>
         <h2>Gift description sample</h2>
         <h3>Gift price sample</h3>
     </div>
+    <input type="number" name="count" id="count" value=1 style="width:35px">
+    <button onclick="test()">Test increment</button>
+    <button onclick="testclear()">Clear</button>
     <div id="test"></div>
     <script>
         var counter = 0;
@@ -69,5 +68,6 @@
             counter =0;
         }
     </script>
+    <!-- End of For recommendation result -->
 </body>
 </html>
