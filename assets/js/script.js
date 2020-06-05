@@ -68,7 +68,7 @@ function loadJSON(file, callback) {
 
 
 function loadRules() {
-    loadJSON("rules.json",function(response) {
+    loadJSON("assets/json/rules.json",function(response) {
     // Parse JSON string into object
         rules = JSON.parse(response);
     });
