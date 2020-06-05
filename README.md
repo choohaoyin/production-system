@@ -7,4 +7,4 @@
 3. Right click on `index.html` and choose `Open with Live Server`
 
 ### Any other editor
-1. Clone this repo to the `localhost` directory of your machine server
+1. Clone this repo to the `localhost` directory of your local server
