@@ -1,14 +1,20 @@
 [
     { 
-        "when":"budget",
+        "when": "budget",
         "is": ">=500",
-        "put":"luxury", 
+        "put": "luxury", 
         "as": true
     },
     { 
-        "when":"budget",
+        "when": "budget",
         "is": "<500",
-        "put":"medium", 
+        "put": "medium", 
+        "as": true
+    },
+    { 
+        "when": ["budget","gender"],
+        "is": ["<100","==male"],
+        "put": "brokeguy", 
         "as": true
     }
 ]
