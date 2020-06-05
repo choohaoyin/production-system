@@ -1,0 +1,14 @@
+[
+    { 
+        "when":"budget",
+        "is": ">=500",
+        "put":"luxury", 
+        "as": true
+    },
+    { 
+        "when":"budget",
+        "is": "<500",
+        "put":"medium", 
+        "as": true
+    }
+]
