@@ -120,28 +120,55 @@ $(document).ready(function(){
         $.fn.getForm();
         for (rule of rules) {
             var pass = true;
-            if ((rule['when'].length > 1 ) &&  typeof rule['when'] == 'object') {
-                for (i = 0; i < rule['when'].length; i++) {
-                    const condition = wm[rule['when'][i]] + rule['is'][i];
+            if ((rule.when.length > 1 ) &&  typeof rule.when == 'object') {
+                for (i = 0; i < rule.when.length; i++) {
+                    const condition = wm[rule.when[i]] + rule.is[i];
                     if (!eval(condition)) pass = false;
                 }
             }
             else {
-                const condition = wm[rule['when']] + rule['is'];
+                const condition = wm[rule.when] + rule.is;
                 if (!eval(condition)) pass = false;
             }
-            if (pass) $.fn.addToWM(rule['put'],rule['as']);
+            if (pass) $.fn.addToWM(rule.put,rule.as);
         }
         console.log(wm);
     }
     
 });
 
+function test() {
+    // var add = '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
+    //     des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
+    let count = parseInt(document.getElementById("count").value);
+    console.log(count);
+    for(i=counter+1,counter +=count ;i<=counter;i++) {
+        title = "title" + i;
+        des = "des" + i;
+        price = "price" + i;
+        var add = '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
+        des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
+        document.getElementById("test").innerHTML += add;
+    }
+}
+
 // dev function
 $("#test_jquery").click(function(){
     wm = {} //testing
     $.fn.forwardChaining();
+    recommendation = wm.recommendation
+    console.log(recommendation)
+    var htmlString = "";
+    $.each(recommendation, function(index, value) {
+        console.log(value);
+        title = value
+        des = title
+        price = 0
+        htmlString += '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
+            des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
+    })
 
+    $("#result").html(htmlString);
 });
 
 
