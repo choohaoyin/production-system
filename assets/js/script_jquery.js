@@ -81,4 +81,6 @@ $(".previous").click(function(){
 // 	return false;
 // })
 
-$(".submit").click(getForm());
+$(".submit").click(function(){
+    getForm()
+});

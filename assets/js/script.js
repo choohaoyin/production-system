@@ -34,22 +34,14 @@ function press() {
                 const condition = wm[rule['when'][i]] + rule['is'][i];
                 if (!eval(condition)) pass = false;
             }
-            // if(pass) {
-            //     addToWM(rule['put'],rule['as'])
-            // }
         }
         else {
             const condition = wm[rule['when']] + rule['is'];
-            // console.log(eval(condition));
             if (!eval(condition)) pass = false;
-            // if (eval(condition)) {
-            //     console.log(rule['put'],rule['as']);
-            //     addToWM(rule['put'],rule['as'])
-            // }
         }
         if (pass) addToWM(rule['put'],rule['as']);
     }
-    console.log(wm);
+    // console.log(wm);
 }
 
 function loadJSON(file, callback) {   
