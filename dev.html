@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+    <script defer src="assets/js/script.js"></script>
+    <!-- <script defer src="assets/js/script_jquery.js"></script> -->
     <title>System</title>
 </head>
-<body onload="loadRules()">
-    <form id="form">
+<body>
+    <form id="msform">
         <label for="budget">Budget:</label>
         <input type="number" name="budget" value=0>
         <br><br>
@@ -33,7 +37,7 @@
           <option value="graduate">Graduation</option>
         </select>
         <br><br>
-        <input type="button" onclick="press()" value="Test">
+        <input type="button" id="test_jquery" value="Test">
     </form>
     <br><br>
 
