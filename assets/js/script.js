@@ -75,8 +75,9 @@ function loadRules() {
 }
         
 function getForm() {
+    console.log('run');
     wm = {}; // debugging purpose
-    var form = document.getElementById("form");
+    var form = document.getElementById("msform");
     for (i=0; i<form.elements.length; i++) {
       var field = form.elements[i];
         // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
@@ -89,6 +90,7 @@ function getForm() {
               //     name: field.name,
               //     value: field.options[n].value
               // });
+              console.log(field.name,field.value);
               addToWM(field.name,field.value);
           }
       }
@@ -97,7 +99,7 @@ function getForm() {
           //     name: field.name,
           //     value: field.value
           // });
-
+          console.log(field.name,field.value);
           addToWM(field.name,field.value);
       }
     }
