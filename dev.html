@@ -12,9 +12,10 @@
     <title>System</title>
 </head>
 <body>
+    <h1>Forward chaining</h1>
     <form id="msform">
         <label for="budget">Budget:</label>
-        <input type="number" name="budget" value=0>
+        <input type="number" name="budget" value=1000>
         <br><br>
         <label for="gender">Gender:</label>
         <input type="radio" id="male" name="gender" value="male" checked>
@@ -40,9 +41,21 @@
         <input type="button" id="test_jquery" value="Test">
     </form>
     <div id="result"></div>
+    <h3>why?</h3>
+    <div id="why"></div>
     <br><br>
-
-    <!-- For recommendation result -->
+    <hr>
+    <h1>Backward chaining</h1>
+    <form id="bkform">
+        <select name="item" id="item">
+            <option value="leaf">leaf</option>
+            <option value="air">air</option>
+        </select>
+        <input type="button" id="bktest" value="Test">
+    </form>
+    <div class="bkresult"></div>
+    <hr>
+    <!-- For sample recommendation result -->
     <div style="border: black solid 1px; margin: 10px; padding: 5px;">
         <h1>Gift title sample</h1>
         <h2>Gift description sample</h2>
@@ -73,6 +86,6 @@
             counter =0;
         }
     </script>
-    <!-- End of For recommendation result -->
+    <!-- /.For recommendation result -->
 </body>
 </html>
