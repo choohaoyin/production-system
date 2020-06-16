@@ -87,11 +87,12 @@ $.getJSON("assets/json/rules.json", function(data) {
 });
 
 let wm = {};
+let firedRules = [];
 
 // Define jQuery Function
 $(document).ready(function(){
-    $.fn.getForm = function(){ 
-        var data = $("#msform").serializeArray();
+    $.fn.getForm = function(form){ 
+        var data = $(form).serializeArray();
         $.each(data, function(index, value) {
             $.fn.addToWM(value.name,value.value);
         })
@@ -117,35 +118,104 @@ $(document).ready(function(){
     }
 
     $.fn.forwardChaining = function() {
-        $.fn.getForm();
-        for (rule of rules) {
-            var pass = true;
-            if ((rule['when'].length > 1 ) &&  typeof rule['when'] == 'object') {
-                for (i = 0; i < rule['when'].length; i++) {
-                    const condition = wm[rule['when'][i]] + rule['is'][i];
-                    if (!eval(condition)) pass = false;
+        $.fn.getForm("#msform");
+        let currentRule = Object.assign([], rules);
+        // test = currentRule.splice(1,1);
+        console.log(test);
+        console.log('[here]',currentRule,currentRule.length);
+        console.log('[rule]',rules);
+        // for (rule of rules) {
+        //     var pass = true;
+        //     if ((rule.when.length > 1 ) &&  typeof rule.when == 'object') {
+        //         for (i = 0; i < rule.when.length; i++) {
+        //             const condition = wm[rule.when[i]] + rule.is[i];
+        //             if (!eval(condition)) pass = false;
+        //         }
+        //     }
+        //     else {
+        //         const condition = wm[rule.when] + rule.is;
+        //         if (!eval(condition)) pass = false;
+        //     }
+        //     if (pass) $.fn.addToWM(rule.put,rule.as);
+        // }
+        for (i=0; i<currentRule.length;i++) {
+            var pass = false;
+            if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
+                var multiPass = true;
+                for (j = 0; j < currentRule[i].when.length; j++) {
+                    const condition = wm[currentRule[i].when[j]] + currentRule[i].is[j];           
+                    console.log("[condition]",condition);
+                    console.log("[result]",eval(condition));
+                    if (!eval(condition)) {
+                        console.log("here");
+                        multiPass = false;
+                        break;
+                    }
                 }
+                console.log(multiPass);
+                pass = multiPass;
             }
             else {
-                const condition = wm[rule['when']] + rule['is'];
-                if (!eval(condition)) pass = false;
+                const condition = wm[currentRule[i].when] + currentRule[i].is;
+                pass = eval(condition);
             }
-            if (pass) $.fn.addToWM(rule['put'],rule['as']);
+            if (pass) {
+                $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+                var removed = currentRule.splice(i,1);
+                firedRules.push(...removed);
+                i = 0;
+            };
         }
+        console.log(firedRules);
         console.log(wm);
     }
     
 });
 
+
 // dev function
 $("#test_jquery").click(function(){
     wm = {} //testing
+    firedRules = []
     $.fn.forwardChaining();
-
+    var recommendation = [];
+    console.log(recommendation)
+    console.log("[wm re]",wm.recommendation)
+    if (wm.recommendation !== undefined) {
+        console.log("here");
+        recommendation = wm.recommendation;
+        console.log(recommendation);
+    }
+    var htmlCode = "";
+    console.log("[re]",recommendation)
+    if (recommendation.length > 0) {
+        $.each(recommendation, function(index, value) {
+            console.log(value);
+            title = value
+            des = title
+            price = 0
+            htmlCode += '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
+                des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
+        })
+    }
+    $("#result").html(htmlCode);
+    whyString = ""
+    for(firedRule of firedRules) {
+        whyString += firedRule.description + "<br>";
+    }
+    $("#why").html(whyString);
 });
 
 
 $(".submit").click(function(){
     wm = {} // testing
-    $.fn.getForm();
+    $.fn.getForm("#msform");
+});
+
+$("#bktest").click(function() {
+    console.log("run");
+    var data = $.fn.getForm("#bkform");
+    for (rule of rules) {
+        
+    }
 });
