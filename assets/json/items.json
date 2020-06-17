@@ -6,7 +6,7 @@
     },
     { 
         "when": "Flower box by xxx",
-        "is": "888",
+        "price": "888",
         "link": "flower.com"
     }
 ]

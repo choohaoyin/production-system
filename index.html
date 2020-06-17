@@ -17,42 +17,26 @@
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
-<form id="msform">
-    <!-- fieldsets -->
+
+<div id="msform">
     <fieldset>
         <h2 class="fs-title">Gifting Made Easy</h2>
         <h3 class="fs-subtitle">For it is in giving that we receive.</h3>
-
-        <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
-            <label id="look-for-gift-button" class="col-12 btn btn-secondary active">
-            <input type="radio" name="options" id="option1" checked> Look For The Suitable Gift
-            </label>
-            <label id="browse-gifts-button" class="col-12 btn btn-secondary">
-            <input type="radio" name="options" id="option2"> Browse All Gifts
-            </label>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">    
+                <div class="row mt-4">
+                    <div class="col">
+                        <button id="homepagebutton" onclick="location.href = 'forward.html';">Look For The Suitable Gift</button>
+                    </div>
+                </div> 
+                <div class="row mt-3">
+                    <div class="col">
+                        <button id="homepagebutton" onclick="alert('i lub you')">Browse All Gifts</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <br>
-        <input type="button" name="next" class="next action-button" value="Next"/>
     </fieldset>
-    <fieldset>
-        <h2 class="fs-title">Social Profiles</h2>
-        <h3 class="fs-subtitle">Your presence on the social network</h3>
-        <input type="text" name="twitter" placeholder="Twitter"/>
-        <input type="text" name="facebook" placeholder="Facebook"/>
-        <input type="text" name="gplus" placeholder="Google Plus"/>
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset>
-    <fieldset>
-        <h2 class="fs-title">Create your account</h2>
-        <h3 class="fs-subtitle">Fill in your credentials</h3>
-        <input type="text" name="email" placeholder="Email"/>
-        <input type="password" name="pass" placeholder="Password"/>
-        <input type="password" name="cpass" placeholder="Confirm Password"/>
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="submit" class="submit action-button" value="Submit"/>
-    </fieldset>
-</form>
+</div>
 </body>
 </html>
