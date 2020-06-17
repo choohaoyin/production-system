@@ -24,6 +24,20 @@ body {
     margin-top: 100px;
 }
 
+#look-for-gift-button, #browse-gifts-button{
+    margin-bottom: 20px;
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    
+}
+
+#look-for-gift-button:hover, #browse-gifts-button:hover{
+    background-color: #eee6e6;
+}
+
+
+
 #msform fieldset {
     height: 400px;
     background: white;
@@ -105,6 +119,7 @@ body {
     font-size: 18px;
     text-transform: uppercase;
     color: #2C3E50;
+    margin-top: 50px;
     margin-bottom: 10px;
     letter-spacing: 2px;
     font-weight: bold;
