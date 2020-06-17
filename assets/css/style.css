@@ -30,7 +30,7 @@ body {
     border-radius: 0px;
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 100%;
+    /* width: 100%; */
 
     /*stacking fieldsets above each other*/
     position: relative;
