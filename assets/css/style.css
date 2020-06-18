@@ -34,7 +34,7 @@ body {
 }
 
 #selection-button:hover{
-    background-color: #eee6e6;
+    background-color: #eee6e6 !important;
 }
 
 #msform fieldset {
@@ -197,4 +197,12 @@ footer img:hover{
 
 #homepagebutton:hover{
     background-color: #eee6e6;
+}
+
+#gallery img {
+    width: 300px ;
+}
+
+#gallery label:hover{
+    background-color: #eee6e6 !important;
 }
