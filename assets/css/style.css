@@ -55,7 +55,7 @@ body {
 }
 
 /*inputs*/
-#msform input, #msform textarea {
+#msform input[type="text"], #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -67,7 +67,7 @@ body {
     font-size: 13px;
 }
 
-#msform input:focus, #msform textarea:focus {
+#msform input[type="text"]:focus, #msform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -148,8 +148,23 @@ body {
     background-color: #eee6e6 !important;
 }
 
+
 footer {
     text-align: center;
     margin-top: 50px;
     font-size: 10px;
+}
+
+#homepagebutton{
+    padding: 10px;
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    transition: 0.5s ease;
+    width: 500px;
+}
+
+#homepagebutton:hover{
+    background-color: #eee6e6;
 }
