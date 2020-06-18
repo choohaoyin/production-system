@@ -155,6 +155,19 @@ footer {
     font-size: 10px;
 }
 
+footer img{
+    height: 1.5em;
+    width: auto; 
+    vertical-align:-0.1875em;
+    transition: 0.1s ease-out;
+}
+
+footer img:hover{
+    height: 10em;
+    width: auto; 
+    vertical-align:-0.1875em;
+}
+
 #homepagebutton{
     padding: 10px;
     border-radius: 9px;
