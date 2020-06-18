@@ -26,19 +26,6 @@ body {
     position: relative;
 }
 
-<<<<<<< HEAD
-#homepagebutton{
-    padding: 10px;
-    border-radius: 9px;
-    color: black;
-    background-color: white;
-    text-align: center;
-    transition: 0.5s ease;
-    width: 500px;
-}
-
-#homepagebutton:hover{
-=======
 #selection-button{
     border-radius: 9px;
     color: black;
@@ -47,7 +34,6 @@ body {
 }
 
 #selection-button:hover{
->>>>>>> 63dc4a413ef7649d00b13a696160317169808943
     background-color: #eee6e6;
 }
 
