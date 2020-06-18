@@ -10,6 +10,8 @@ $(function(){
     $("footer").load("assets/html/footer.html"); 
 });
 
+
+
 $('.carousel').carousel({
     interval: false,
   });
@@ -50,7 +52,7 @@ $(".next").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
     });
-    
+    $(".form-container").height(next_fs.height());
 });
 
 $(".previous").click(function(){
@@ -59,7 +61,9 @@ $(".previous").click(function(){
 	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
-	
+    
+    
+
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 	
@@ -85,7 +89,8 @@ $(".previous").click(function(){
 		}, 
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
-	});
+    });
+    $(".form-container").height(previous_fs.height());
 });
 
 
