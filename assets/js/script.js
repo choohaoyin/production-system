@@ -83,7 +83,7 @@ let rules = new Object();
 
 $.getJSON("assets/json/rules.json", function(data) {
     rules = data;
-    console.log(rules);
+    // console.log(rules);
 });
 
 let wm = {};
