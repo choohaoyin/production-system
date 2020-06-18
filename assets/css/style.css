@@ -79,6 +79,11 @@ body {
     -o-transition: All 0.5s ease-in;
 }
 
+
+#msform input[type=button]:focus {
+    outline:0;
+}
+
 /*buttons*/
 #msform .action-button {
     width: 100px;
@@ -148,10 +153,6 @@ body {
     width: 0;
 }
 
-/* .btn-secondary.focus, .btn-secondary:focus{
-    background-color: #eee6e6 !important;
-} */
-
 .btn-secondary{
     background-color: white !important;
 }
@@ -162,8 +163,12 @@ body {
 
 
 footer {
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%);
     text-align: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     font-size: 10px;
 }
 
