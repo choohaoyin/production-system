@@ -26,6 +26,19 @@ body {
     position: relative;
 }
 
+<<<<<<< HEAD
+#homepagebutton{
+    padding: 10px;
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    transition: 0.5s ease;
+    width: 500px;
+}
+
+#homepagebutton:hover{
+=======
 #selection-button{
     border-radius: 9px;
     color: black;
@@ -34,6 +47,7 @@ body {
 }
 
 #selection-button:hover{
+>>>>>>> 63dc4a413ef7649d00b13a696160317169808943
     background-color: #eee6e6;
 }
 
@@ -55,7 +69,7 @@ body {
 }
 
 /*inputs*/
-#msform input, #msform textarea {
+#msform input[type="text"], #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -67,7 +81,7 @@ body {
     font-size: 13px;
 }
 
-#msform input:focus, #msform textarea:focus {
+#msform input[type="text"]:focus, #msform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
