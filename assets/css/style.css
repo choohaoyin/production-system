@@ -158,14 +158,13 @@ footer {
 footer img{
     height: 1.5em;
     width: auto; 
-    vertical-align:-0.1875em;
+    vertical-align:-0.27em;
     transition: 0.1s ease-out;
 }
 
 footer img:hover{
-    height: 10em;
+    height: 7em;
     width: auto; 
-    vertical-align:-0.1875em;
 }
 
 #homepagebutton{
