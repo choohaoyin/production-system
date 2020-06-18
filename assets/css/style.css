@@ -209,3 +209,14 @@ footer img:hover{
     height: auto;
     transition: 0.5s ease;
 }
+
+.arrow {
+    height: 25px !important;
+    width: 25px !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 25px !important;
+    height: 25px !important;
+    top: 25%;
+}
