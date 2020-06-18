@@ -17,104 +17,186 @@
 </head>
 <body>
 <header></header>
-<form id="msform">
-    <!-- fieldsets -->
-    <fieldset>
-        <h2 class="fs-title">Who is the recipient?</h2>
-        <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
-            <div class="col-md btn-group-toggle">
-                <label id="selection-button" class="col-6 btn btn-secondary">
-                <input class="col" type="radio" id="gender" name="gender" value="male"> <img src="assets/images/male.png" style="width:180px; height:180px;">
-                </label>
-                <p>For Him</p>
+<div class="form-container">
+    <form id="msform">
+        <!-- fieldsets -->
+        <fieldset>
+            <h2 class="fs-title">Who is the recipient?</h2>
+            <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
+                <div class="col-md btn-group-toggle">
+                    <label id="selection-button" class="col-6 btn btn-secondary">
+                    <input class="col" type="radio" id="gender" name="gender" value="male"> <img src="assets/images/male.png" style="width:180px; height:180px;">
+                    </label>
+                    <p>For Him</p>
+                </div>
+                <div class="col-md btn-group-toggle">
+                    <label id="selection-button" class="col-6 btn btn-secondary ">
+                    <input class="col" type="radio" name="gender" value="female"> <img src="assets/images/female.png" style="width:180px; height:180px;">
+                    </label>
+                    <p>For Her</p>
+                </div>
             </div>
-            <div class="col-md btn-group-toggle">
-                <label id="selection-button" class="col-6 btn btn-secondary ">
-                <input class="col" type="radio" name="gender" value="female"> <img src="assets/images/female.png" style="width:180px; height:180px;">
-                </label>
-                <p>For Her</p>
+            <br>
+            <input type="button" name="next" class="next action-button" value="Next"/>
+        </fieldset> 
+        
+        <fieldset>
+            <h2 class="fs-title">What is the recipient age?</h2>
+            <div class="row justify-content-center">
+                <input type="number" name="age" value=0>
             </div>
-        </div>
-        <br>
-        <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset> 
-    
-    <fieldset>
-        <h2 class="fs-title">What is the recipient age?</h2>
-        <div class="row justify-content-center">
-            <input type="number" name="age" value=0>
-        </div>
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset> 
+            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            <input type="button" name="next" class="next action-button" value="Next"/>
+        </fieldset> 
 
-    <fieldset>
-        <h2 class="fs-title">What is the occassion?</h2>
-        <h3 class="fs-subtitle">select one occasion</h3>
-        <div id="gallery" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col btn-group-toggle">
-                                <span id="anniversary"> 
-                                    <label for="anniversary" class="col btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="anniversary" value="anniversary" title="anniversary"> 
-                                        <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png"/>
-                                    </label>
-                                <p>Anniversary</p>
-                                </span>
+        <fieldset>
+            <h2 class="fs-title">What is the occassion?</h2>
+            <h3 class="fs-subtitle">select one occasion</h3>
+            <div id="gallery" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col btn-group-toggle">
+                                    <span id="anniversary"> 
+                                        <label for="anniversary" class="col btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="anniversary" value="anniversary" title="anniversary"> 
+                                            <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png"/>
+                                        </label>
+                                    <p>Anniversary</p>
+                                    </span>
+                                </div>
+                                <div class="col btn-group-toggle">
+                                    <span id="birthday"> 
+                                        <label for="birthday" class="col btn btn-secondary">
+                                            <input type="checkbox" name="occassion" id="birthday" value="birthday" title="birthday"> 
+                                            <img for="birthday" class="img-fluid" src="assets/images/birthday.png"/>
+                                        </label>
+                                    <p>Birthday</p>
+                                    </span>
+                                </div>
+                                <div class="col btn-group-toggle">
+                                    <span id="graduation"> 
+                                        <label for="graduation" class="col btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="graduation" value="graduation" title="graduation"> 
+                                            <img for="graduation" class="img-fluid" src="assets/images/graduation.png"/>
+                                        </label>
+                                    <p>Graduation</p>
+                                    </span>
+                                </div>
+                                <div class="col"></div>
                             </div>
-                            <div class="col btn-group-toggle">
-                                <span id="birthday"> 
-                                    <label for="birthday" class="col btn btn-secondary">
-                                        <input type="checkbox" name="occassion" id="birthday" value="birthday" title="birthday"> 
-                                        <img for="birthday" class="img-fluid" src="assets/images/birthday.png"/>
-                                    </label>
-                                <p>Birthday</p>
-                                </span>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col btn-group-toggle">
+                                    <span id="mothersday"> 
+                                        <label for="mothersday" class="btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="mothersday" value="mothersday" title="mothersday"> 
+                                            <img for="mothersday" class="img-fluid" src="assets/images/mothersday.png"/>
+                                        </label>
+                                    <p>Mother's Day</p>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span id="fathersday"> 
+                                        <label for="fathersday" class="btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="fathersday" value="fathersday" title="fathersday"> 
+                                            <img for="fathersday" class="img-fluid" src="assets/images/fathersday.png"/>
+                                        </label>
+                                    <p>Father's Day</p>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span id="wedding"> 
+                                        <label for="wedding" class="btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="wedding" value="wedding" title="wedding"> 
+                                            <img for="wedding" class="img-fluid" src="assets/images/wedding.png"/>
+                                        </label>
+                                    <p>Wedding</p>
+                                    </span>
+                                </div>
+                                <div class="col"></div>
                             </div>
-                            <div class="col btn-group-toggle">
-                                <span id="graduation"> 
-                                    <label for="graduation" class="col btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="graduation" value="graduation" title="graduation"> 
-                                        <img for="graduation" class="img-fluid" src="assets/images/graduation.png"/>
-                                    </label>
-                                <p>Graduation</p>
-                                </span>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row btn-group btn-group-toggle" data-toggle="buttons">
+                                <div class="col"></div>
+                                <div class="col-6">
+                                    <span id="getwellsoon"> 
+                                        <label for="getwellsoon" class="btn btn-secondary">
+                                            <input type="checkbox" name="occasion" id="getwellsoon" value="getwellsoon" title="getwellsoon"> 
+                                            <img for="getwellsoon" class="img-fluid" src="assets/images/getwellsoon.png" style="margin-bottom:2px;" />
+                                        </label>
+                                    <p>Get Well Soon</p>
+                                    </span>
+                                </div>
+                                <div class="col"></div>
                             </div>
-                            <div class="col"></div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="row">
+                </div>
+            
+                <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            
+                <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            
+            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            <input type="button" name="next" class="next action-button" value="Next"/>
+        </fieldset>
+
+        <fieldset>
+            <h2 class="fs-title">How much are you willing to spend?</h2>
+            <div class="row justify-content-center">
+                <input type="number" name="budget" value=0>
+            </div>
+            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            <input type="button" name="next" class="next action-button" value="Next"/>
+        </fieldset>
+
+
+        <fieldset>
+            <h2 class="fs-title">Select the recipient interests</h2>
+            <h3 class="fs-subtitle">you can select more than one option.</h3>
+            <div id="gallery" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row btn-group btn-group-toggle" data-toggle="buttons">
                             <div class="col"></div>
-                            <div class="col btn-group-toggle">
-                                <span id="mothersday"> 
-                                    <label for="mothersday" class="btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="mothersday" value="mothersday" title="mothersday"> 
-                                        <img for="mothersday" class="img-fluid" src="assets/images/mothersday.png"/>
+                            <div class="col">
+                                <span id="flowers"> 
+                                    <label for="flowers" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="flowers" value="flowers" title="flowers"> 
+                                        <img for="flowers" class="img-fluid" src="assets/images/flowers.png"/>
                                     </label>
-                                <p>Mother's Day</p>
+                                <p>Flowers</p>
                                 </span>
                             </div>
                             <div class="col">
-                                <span id="fathersday"> 
-                                    <label for="fathersday" class="btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="fathersday" value="fathersday" title="fathersday"> 
-                                        <img for="fathersday" class="img-fluid" src="assets/images/fathersday.png"/>
+                                <span id="cards"> 
+                                    <label for="cards" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="cards" value="cards" title="cards"> 
+                                        <img for="cards" class="img-fluid" src="assets/images/cards.png"/>
                                     </label>
-                                <p>Father's Day</p>
+                                <p>Cards</p>
                                 </span>
                             </div>
                             <div class="col">
-                                <span id="wedding"> 
-                                    <label for="wedding" class="btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="wedding" value="wedding" title="wedding"> 
-                                        <img for="wedding" class="img-fluid" src="assets/images/wedding.png"/>
+                                <span id="toysAndGames"> 
+                                    <label for="toysAndGames" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="toysAndGames" value="cards" title="toysAndGames"> 
+                                        <img for="toysAndGames" class="img-fluid" src="assets/images/toy.png"/>
                                     </label>
-                                <p>Wedding</p>
+                                <p>Toys & Games</p>
                                 </span>
                             </div>
                             <div class="col"></div>
@@ -123,181 +205,101 @@
                     <div class="carousel-item">
                         <div class="row btn-group btn-group-toggle" data-toggle="buttons">
                             <div class="col"></div>
-                            <div class="col-6">
-                                <span id="getwellsoon"> 
-                                    <label for="getwellsoon" class="btn btn-secondary">
-                                        <input type="checkbox" name="occasion" id="getwellsoon" value="getwellsoon" title="getwellsoon"> 
-                                        <img for="getwellsoon" class="img-fluid" src="assets/images/getwellsoon.png" style="margin-bottom:2px;" />
+                            <div class="col">
+                                <span id="babygoods"> 
+                                    <label for="babygoods" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="babygoods" value="babygoods" title="babygoods"> 
+                                        <img for="babygoods" class="img-fluid" src="assets/images/babygoods.png"/>
                                     </label>
-                                <p>Get Well Soon</p>
+                                <p>Baby Goods</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="beauty"> 
+                                    <label for="beauty" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="beauty" value="beauty" title="beauty"> 
+                                        <img for="beauty" class="img-fluid" src="assets/images/beauty.png"/>
+                                    </label>
+                                <p>Beauty</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="chocolates"> 
+                                    <label for="chocolates" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="chocolates" value="chocolates" title="chocolates"> 
+                                        <img for="chocolates" class="img-fluid" src="assets/images/chocolate.png"/>
+                                    </label>
+                                <p>Chocolates</p>
                                 </span>
                             </div>
                             <div class="col"></div>
                         </div>
                     </div>
+                    <div class="carousel-item">
+                        <div class="row btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="col"></div>
+                            <div class="col">
+                                <span id="technology"> 
+                                    <label for="technology" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="technology" value="technology" title="technology"> 
+                                        <img for="technology" class="img-fluid" src="assets/images/technology.png"/>
+                                    </label>
+                                <p>Technology</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="Jewelry"> 
+                                    <label for="Jewelry" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="Jewelry" value="Jewelry" title="Jewelry"> 
+                                        <img for="Jewelry" class="img-fluid" src="assets/images/jewelry.png"/>
+                                    </label>
+                                <p>Jewelry</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="homeAndLiving"> 
+                                    <label for="homeAndLiving" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="homeAndLiving" value="homeAndLiving" title="homeAndLiving"> 
+                                        <img for="homeAndLiving" class="img-fluid" src="assets/images/home&Living.png"/>
+                                    </label>
+                                <p>Home & Living</p>
+                                </span>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                <span id="wineAndChampagne"> 
+                                    <label for="wineAndChampagne" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="wineAndChampagne" value="wineAndChampagne" title="wineAndChampagne"> 
+                                        <img for="wineAndChampagne" class="img-fluid" src="assets/images/wine.png"/>
+                                    </label>
+                                <p>Wine & Champagne</p>
+                                </span>
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                    </div>
                 </div>
+            
+                <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            
+                <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        
-            <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-        
-            <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset>
-
-    <fieldset>
-        <h2 class="fs-title">How much are you willing to spend?</h2>
-        <div class="row justify-content-center">
-            <input type="number" name="budget" value=0>
-        </div>
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset>
-
-
-    <fieldset>
-        <h2 class="fs-title">Select the recipient interests</h2>
-        <h3 class="fs-subtitle">you can select more than one option.</h3>
-        <div id="gallery" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col">
-                            <span id="flowers"> 
-                                <label for="flowers" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="flowers" value="flowers" title="flowers"> 
-                                    <img for="flowers" class="img-fluid" src="assets/images/flowers.png"/>
-                                </label>
-                            <p>Flowers</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="cards"> 
-                                <label for="cards" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="cards" value="cards" title="cards"> 
-                                    <img for="cards" class="img-fluid" src="assets/images/cards.png"/>
-                                </label>
-                            <p>Cards</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="toysAndGames"> 
-                                <label for="toysAndGames" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="toysAndGames" value="cards" title="toysAndGames"> 
-                                    <img for="toysAndGames" class="img-fluid" src="assets/images/toy.png"/>
-                                </label>
-                            <p>Toys & Games</p>
-                            </span>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col">
-                            <span id="babygoods"> 
-                                <label for="babygoods" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="babygoods" value="babygoods" title="babygoods"> 
-                                    <img for="babygoods" class="img-fluid" src="assets/images/babygoods.png"/>
-                                </label>
-                            <p>Baby Goods</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="beauty"> 
-                                <label for="beauty" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="beauty" value="beauty" title="beauty"> 
-                                    <img for="beauty" class="img-fluid" src="assets/images/beauty.png"/>
-                                </label>
-                            <p>Beauty</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="chocolates"> 
-                                <label for="chocolates" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="chocolates" value="chocolates" title="chocolates"> 
-                                    <img for="chocolates" class="img-fluid" src="assets/images/chocolate.png"/>
-                                </label>
-                            <p>Chocolates</p>
-                            </span>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col">
-                            <span id="technology"> 
-                                <label for="technology" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="technology" value="technology" title="technology"> 
-                                    <img for="technology" class="img-fluid" src="assets/images/technology.png"/>
-                                </label>
-                            <p>Technology</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="Jewelry"> 
-                                <label for="Jewelry" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="Jewelry" value="Jewelry" title="Jewelry"> 
-                                    <img for="Jewelry" class="img-fluid" src="assets/images/jewelry.png"/>
-                                </label>
-                            <p>Jewelry</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="homeAndLiving"> 
-                                <label for="homeAndLiving" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="homeAndLiving" value="homeAndLiving" title="homeAndLiving"> 
-                                    <img for="homeAndLiving" class="img-fluid" src="assets/images/home&Living.png"/>
-                                </label>
-                            <p>Home & Living</p>
-                            </span>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col-3"></div>
-                        <div class="col-6">
-                            <span id="wineAndChampagne"> 
-                                <label for="wineAndChampagne" class="btn btn-secondary">
-                                    <input type="checkbox" name="interest" id="wineAndChampagne" value="wineAndChampagne" title="wineAndChampagne"> 
-                                    <img for="wineAndChampagne" class="img-fluid" src="assets/images/wine.png"/>
-                                </label>
-                            <p>Wine & Champagne</p>
-                            </span>
-                        </div>
-                        <div class="col-3"></div>
-                    </div>
-                </div>
-            </div>
-        
-            <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-        
-            <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        
-        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <input type="button" name="submit" class="submit action-button" value="Submit"/>
-    </fieldset>
+            
+            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            <input type="button" name="submit" class="submit action-button" value="Submit"/>
+        </fieldset>
+    </div>
 </div>
 <footer></footer>
 </body>
