@@ -33,7 +33,7 @@ body {
     min-width: 280px;
 }
 
-.active, #selection-button:hover{
+#selection-button:hover{
     background-color: #eee6e6;
 }
 
@@ -140,6 +140,10 @@ body {
     font-size: 72px !important;
 }
 
-#selection-button .active {
-    background-color: pink;
+.btn-secondary.focus, .btn-secondary:focus{
+    background-color: #eee6e6 !important;
+}
+
+.btn-secondary.active, .btn-secondary:active{
+    background-color: #eee6e6 !important;
 }
