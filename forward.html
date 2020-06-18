@@ -16,24 +16,20 @@
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <a href="index.html"><img src="assets/images/giftingMadeEasyLogo.svg" alt="Gifting Made Easy Logo" style="width:220px; margin-top:-75px; margin-bottom:-70px;"></a>
-    </div>
-</div> 
+<header></header>
 <form id="msform">
     <!-- fieldsets -->
     <fieldset>
         <h2 class="fs-title">Who is the recipient?</h2>
         <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
             <div class="col-md btn-group-toggle">
-                <label id="selection-button" class="col-6 btn btn-secondary active">
+                <label id="selection-button" class="col-6 btn btn-secondary">
                 <input class="col" type="radio" id="gender" name="gender" value="male"> <img src="assets/images/male.png" style="width:180px; height:180px;">
                 </label>
                 <p>For Him</p>
             </div>
             <div class="col-md btn-group-toggle">
-                <label id="selection-button" class="col-6 btn btn-secondary active">
+                <label id="selection-button" class="col-6 btn btn-secondary ">
                 <input class="col" type="radio" name="gender" value="female"> <img src="assets/images/female.png" style="width:180px; height:180px;">
                 </label>
                 <p>For Her</p>
@@ -41,7 +37,8 @@
         </div>
         <br>
         <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset>
+    </fieldset> 
+    
     <fieldset>
         <h2 class="fs-title">What is the recipient age?</h2>
         <div class="row justify-content-center">
@@ -62,13 +59,13 @@
             </div>
             <div class="col-md btn-group-toggle">
                 <label id="selection-button" class="col-6 btn btn-secondary active">
-                <input class="col" type="radio" name="gender" value="bii bii"> <img src="assets/images/male.png" style="width:180px; height:180px;">
+                <input class="col" type="radio" name="gender" value="male"> <img src="assets/images/male.png" style="width:180px; height:180px;">
                 </label>
                 <p>Birthday</p>
             </div>
             <div class="col-md btn-group-toggle">
                 <label id="selection-button" class="col-6 btn btn-secondary active">
-                <input class="col" type="radio" name="gender" value="bao bei bei"> <img src="assets/images/female.png" style="width:180px; height:180px;">
+                <input class="col" type="radio" name="gender" value="female"> <img src="assets/images/female.png" style="width:180px; height:180px;">
                 </label>
                 <p>Graduation</p>
             </div>
@@ -97,14 +94,20 @@
                     <div class="row btn-group btn-group-toggle" data-toggle="buttons">
                         <div class="col"></div>
                         <div class="col">
-                            <label class="btn btn-primary">
-                                <input type="checkbox" autocomplete="off"><img class="img-fluid" src="assets/images/anniversary.png" alt="Image 1"/>
+                            <span id="anniversary"> 
+                            <label for="anniversary" class="btn btn-secondary">
+                                <input type="checkbox" name="interest" id="anniversary" value="anniversary" title="test"> 
+                                <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png" alt="Image 1"/>
                             </label>
+                            </span>
                         </div>
                         <div class="col">
-                            <label class="btn btn-primary">
-                                <input type="checkbox" autocomplete="off"><img class="img-fluid" src="assets/images/bouquet.png" alt="Image 1"/>
-                              </label>
+                            <span id="bonquet"> 
+                                <label for="bonquet" class="btn btn-secondary">
+                                    <input type="checkbox" name="interest" id="bonquet" value="bonquet" title="test"> 
+                                    <img for="bonquet" class="img-fluid" src="assets/images/bouquet.png" alt="Image 1"/>
+                                </label>
+                                </span>
                         </div>
                         <div class="col">
                             <label class="btn btn-primary">
@@ -145,6 +148,6 @@
         <input type="button" name="submit" class="submit action-button" value="Submit"/>
     </fieldset>
 </div>
-<footer>&copy; Copyright 2020 Made with &#10084; by Team Downasaur <img src="assets/images/downasaur.svg" /></footer>
+<footer></footer>
 </body>
 </html>
