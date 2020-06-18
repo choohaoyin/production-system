@@ -20,7 +20,7 @@
 <div class="form-container">
 <form id="msform">
     <!-- fieldsets -->
-    <!-- <fieldset>
+    <fieldset>
         <h2 class="fs-title">Who is the recipient?</h2>
         <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
             <div class="col-md btn-group-toggle">
@@ -47,92 +47,94 @@
         </div>
         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
         <input type="button" name="next" class="next action-button" value="Next"/>
-    </fieldset> -->
+    </fieldset> 
     <fieldset>
         <h2 class="fs-title">What is the occassion?</h2>
         <div id="gallery" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col">
-                            <span id="anniversary"> 
-                                <label for="anniversary" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="anniversary" value="anniversary" title="anniversary"> 
-                                    <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png"/>
-                                </label>
-                            <p>Anniversary</p>
-                            </span>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col btn-group-toggle">
+                                <span id="anniversary"> 
+                                    <label for="anniversary" class="col btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="anniversary" value="anniversary" title="anniversary"> 
+                                        <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png"/>
+                                    </label>
+                                <p>Anniversary</p>
+                                </span>
+                            </div>
+                            <div class="col btn-group-toggle">
+                                <span id="birthday"> 
+                                    <label for="birthday" class="col btn btn-secondary">
+                                        <input type="checkbox" name="occassion" id="birthday" value="birthday" title="birthday"> 
+                                        <img for="birthday" class="img-fluid" src="assets/images/birthday.png"/>
+                                    </label>
+                                <p>Birthday</p>
+                                </span>
+                            </div>
+                            <div class="col btn-group-toggle">
+                                <span id="graduation"> 
+                                    <label for="graduation" class="col btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="graduation" value="graduation" title="graduation"> 
+                                        <img for="graduation" class="img-fluid" src="assets/images/graduation.png"/>
+                                    </label>
+                                <p>Graduation</p>
+                                </span>
+                            </div>
+                            <div class="col"></div>
                         </div>
-                        <div class="col">
-                            <span id="birthday"> 
-                                <label for="birthday" class="btn btn-secondary">
-                                    <input type="checkbox" name="occassion" id="birthday" value="birthday" title="birthday"> 
-                                    <img for="birthday" class="img-fluid" src="assets/images/birthday.png"/>
-                                </label>
-                            <p>Birthday</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="graduation"> 
-                                <label for="graduation" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="graduation" value="graduation" title="graduation"> 
-                                    <img for="graduation" class="img-fluid" src="assets/images/graduation.png"/>
-                                </label>
-                            <p>Graduation</p>
-                            </span>
-                        </div>
-                        <div class="col"></div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col">
-                            <span id="mothersday"> 
-                                <label for="mothersday" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="mothersday" value="mothersday" title="mothersday"> 
-                                    <img for="mothersday" class="img-fluid" src="assets/images/mothersday.png"/>
-                                </label>
-                            <p>Mother's Day</p>
-                            </span>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col btn-group-toggle">
+                                <span id="mothersday"> 
+                                    <label for="mothersday" class="btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="mothersday" value="mothersday" title="mothersday"> 
+                                        <img for="mothersday" class="img-fluid" src="assets/images/mothersday.png"/>
+                                    </label>
+                                <p>Mother's Day</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="fathersday"> 
+                                    <label for="fathersday" class="btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="fathersday" value="fathersday" title="fathersday"> 
+                                        <img for="fathersday" class="img-fluid" src="assets/images/fathersday.png"/>
+                                    </label>
+                                <p>Father's Day</p>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <span id="wedding"> 
+                                    <label for="wedding" class="btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="wedding" value="wedding" title="wedding"> 
+                                        <img for="wedding" class="img-fluid" src="assets/images/wedding.png"/>
+                                    </label>
+                                <p>Wedding</p>
+                                </span>
+                            </div>
+                            <div class="col"></div>
                         </div>
-                        <div class="col">
-                            <span id="fathersday"> 
-                                <label for="fathersday" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="fathersday" value="fathersday" title="fathersday"> 
-                                    <img for="fathersday" class="img-fluid" src="assets/images/fathersday.png"/>
-                                </label>
-                            <p>Father's Day</p>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <span id="wedding"> 
-                                <label for="wedding" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="wedding" value="wedding" title="wedding"> 
-                                    <img for="wedding" class="img-fluid" src="assets/images/wedding.png"/>
-                                </label>
-                            <p>Wedding</p>
-                            </span>
-                        </div>
-                        <div class="col"></div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row btn-group btn-group-toggle" data-toggle="buttons">
-                        <div class="col"></div>
-                        <div class="col-6">
-                            <span id="getwellsoon"> 
-                                <label for="getwellsoon" class="btn btn-secondary">
-                                    <input type="checkbox" name="occasion" id="getwellsoon" value="getwellsoon" title="getwellsoon"> 
-                                    <img for="getwellsoon" class="img-fluid" src="assets/images/getwellsoon.png" style="margin-bottom:2px;" />
-                                </label>
-                            <p>Get Well Soon</p>
-                            </span>
+                    <div class="carousel-item">
+                        <div class="row btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="col"></div>
+                            <div class="col-6">
+                                <span id="getwellsoon"> 
+                                    <label for="getwellsoon" class="btn btn-secondary">
+                                        <input type="checkbox" name="occasion" id="getwellsoon" value="getwellsoon" title="getwellsoon"> 
+                                        <img for="getwellsoon" class="img-fluid" src="assets/images/getwellsoon.png" style="margin-bottom:2px;" />
+                                    </label>
+                                <p>Get Well Soon</p>
+                                </span>
+                            </div>
+                            <div class="col"></div>
                         </div>
-                        <div class="col"></div>
                     </div>
-                </div>
+                    </div>
                 </div>
             </div>
         
