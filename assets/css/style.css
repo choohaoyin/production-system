@@ -195,7 +195,7 @@ footer img:hover{
     background-color: #eee6e6;
 }
 
-#gallery img {
+#gallery img, #interest img {
     width: 300px ;
 }
 
