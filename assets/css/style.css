@@ -148,6 +148,13 @@ body {
     background-color: #eee6e6 !important;
 }
 
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 10px;
+}
+
 #homepagebutton{
     padding: 10px;
     border-radius: 9px;
