@@ -163,12 +163,8 @@ body {
 
 
 footer {
-    position: fixed;
-    bottom: 2%;
-    left: 50%;
-    transform: translate(-50%);
     text-align: center;
-    /* margin-top: 50px; */
+    margin-top: 30px;
     font-size: 10px;
 }
 
@@ -205,4 +201,11 @@ footer img:hover{
 
 #gallery label:hover{
     background-color: #eee6e6 !important;
+}
+
+
+.form-container {
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
 }
