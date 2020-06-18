@@ -7,9 +7,12 @@
     padding: 0;
 }
 
+html, body {margin: 0; height: 100%; overflow-x: hidden}
+
 html {
     height: 100%;
     background: #eee6e6; /* fallback for old browsers */
+
 }
 
 body {
@@ -21,29 +24,24 @@ body {
 #msform {
     text-align: center;
     position: relative;
-    margin-top: 100px;
 }
 
-#look-for-gift-button, #browse-gifts-button{
-    margin-bottom: 20px;
+#selection-button{
     border-radius: 9px;
     color: black;
     background-color: white;
-    
+    min-width: 280px;
 }
 
-#look-for-gift-button:hover, #browse-gifts-button:hover{
+#selection-button:hover{
     background-color: #eee6e6;
 }
 
-
-
 #msform fieldset {
-    height: 400px;
+    min-height: 420px;
     background: white;
     border: 0 none;
     border-radius: 0px;
-    padding: 20px 30px;
     box-sizing: border-box;
     width: 100%;
 
@@ -62,7 +60,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 0px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 70%;
     box-sizing: border-box;
     font-family: montserrat;
     color: #2C3E50;
@@ -91,7 +89,7 @@ body {
     border-radius: 25px;
     cursor: pointer;
     padding: 10px 5px;
-    margin: 10px 5px;
+    margin: -20px 5px;
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
@@ -133,5 +131,19 @@ body {
 }
 
 
+#msform input[type="number"] {
+    margin: 40px 40px;
+    text-align: center;
+    min-width: 100px !important;
+    width: 40%;
+    max-width: 200px;
+    font-size: 72px !important;
+}
 
+.btn-secondary.focus, .btn-secondary:focus{
+    background-color: #eee6e6 !important;
+}
 
+.btn-secondary.active, .btn-secondary:active{
+    background-color: #eee6e6 !important;
+}
