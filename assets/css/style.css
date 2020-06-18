@@ -140,8 +140,20 @@ body {
     font-size: 72px !important;
 }
 
-.btn-secondary.focus, .btn-secondary:focus{
+#msform input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* .btn-secondary.focus, .btn-secondary:focus{
     background-color: #eee6e6 !important;
+} */
+
+.btn-secondary{
+    background-color: white !important;
 }
 
 .btn-secondary.active, .btn-secondary:active{
