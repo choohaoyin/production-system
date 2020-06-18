@@ -147,3 +147,17 @@ body {
 .btn-secondary.active, .btn-secondary:active{
     background-color: #eee6e6 !important;
 }
+
+#homepagebutton{
+    padding: 10px;
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    transition: 0.5s ease;
+    width: 500px;
+}
+
+#homepagebutton:hover{
+    background-color: #eee6e6;
+}
