@@ -2,7 +2,7 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-
+var current_fs_index = 1;
 
 
 $(function(){
@@ -10,7 +10,9 @@ $(function(){
     $("footer").load("assets/html/footer.html"); 
 });
 
-
+$(window).resize(function() {
+    $(".form-container").height($('#msform > fieldset').eq(current_fs_index-1).height());
+  });
 
 $('.carousel').carousel({
     interval: false,
@@ -22,7 +24,8 @@ $(".next").click(function(){
 	
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
-	
+    current_fs_index = $(this).index();
+    
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
@@ -61,7 +64,7 @@ $(".previous").click(function(){
 	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
-    
+    current_fs_index = $(this).parent().index();
     
 
 	//de-activate current step on progressbar
