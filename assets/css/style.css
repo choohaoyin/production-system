@@ -80,7 +80,7 @@ body {
 }
 
 
-#msform input[type=button]:focus {
+#msform input[type=button]:focus, #homepagebutton:focus {
     outline:0;
 }
 
