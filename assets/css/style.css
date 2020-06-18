@@ -147,3 +147,9 @@ body {
 .btn-secondary.active, .btn-secondary:active{
     background-color: #eee6e6 !important;
 }
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 10px;
+}
