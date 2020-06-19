@@ -11,7 +11,7 @@
 
 ## Label for images
 Please label the image for each recommendation item according to prefix and ID. The ID just follow the number of item currently have for each category.  
-For example, image for Technology and it is the first image.
+For example, item image for recommendation of Technology and it is the first image.
 > T0001.png
 
 | Categories | Prefix |
