@@ -10,7 +10,7 @@
 1. Clone this repo to the `localhost` directory of your local server
 
 ## Label for images
-Please label the image for each recommendation item according to prefix and ID. The ID just follow the number of item currently have for each category.
+Please label the image for each recommendation item according to prefix and ID in `items.json`. The ID just follow the number of item currently have for each category.
 
 ### Categories & Prefixes
 | Category | Prefix |
