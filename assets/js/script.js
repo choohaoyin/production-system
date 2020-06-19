@@ -1,122 +1,240 @@
-// rule = {
-//     "when": "a == 1",
-//     "then": "b = 'true'"
-// }
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+var current_fs_index = 1;
 
 
-// var rules = [
-//     {
-//         "when": "a == 1",
-//         "then": "var b = 'wtf'" 
-//     },
-//     {
-//         "when": "a == 2",
-//         "then": "var b = 'wtf'" 
-//     },
-//     {
-//         "when": "a == 3",
-//         "then": "var b = 'wtf'" 
-//     },
-// ]
+$(function(){
+    $("header").load("assets/html/header.html"); 
+    $("footer").load("assets/html/footer.html"); 
+});
 
+$(window).resize(function() {
+    $(".form-container").height($('#msform > fieldset').eq(current_fs_index-1).height());
+  });
+
+$('.carousel').carousel({
+    interval: false,
+  });
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+    current_fs_index = $(this).index();
+    
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+    });
+    $(".form-container").height(next_fs.height());
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+    current_fs_index = $(this).parent().index();
+    
+
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+    });
+    $(".form-container").height(previous_fs.height());
+});
+
+
+// Inference Engine
 let rules = new Object();
 
-// to be move into function, now for debug purporse
-let wm = {
-}
+$.getJSON("assets/json/rules.json", function(data) {
+    rules = data;
+    // console.log(rules);
+});
 
-function press() {
-    getForm();
-    for (rule of rules) {
-        var pass = true;
-        if ((rule['when'].length > 1 ) &&  typeof rule['when'] == 'object') {
-            for (i = 0; i < rule['when'].length; i++) {
-                const condition = wm[rule['when'][i]] + rule['is'][i];
-                if (!eval(condition)) pass = false;
+let wm = {};
+let firedRules = [];
+
+// Define jQuery Function
+$(document).ready(function(){
+    $.fn.getForm = function(form){ 
+        var data = $(form).serializeArray();
+        $.each(data, function(index, value) {
+            $.fn.addToWM(value.name,value.value);
+        })
+        console.log(wm)
+    }
+
+    $.fn.addToWM = function(name,value) {
+        if(!isNaN(value) && typeof value !== 'boolean') {
+            value = parseInt(value);
+        }
+        if(typeof wm[name] !== 'undefined') {
+            if(typeof wm[name] !== 'boolean') {
+                if(typeof wm[name] !== 'object') {
+                    wm[name] = [wm[name]];
+                }
+                wm[name].push(value);
+            } else {
+                wm[name] = value;
             }
-            // if(pass) {
-            //     addToWM(rule['put'],rule['as'])
-            // }
-        }
-        else {
-            const condition = wm[rule['when']] + rule['is'];
-            // console.log(eval(condition));
-            if (!eval(condition)) pass = false;
-            // if (eval(condition)) {
-            //     console.log(rule['put'],rule['as']);
-            //     addToWM(rule['put'],rule['as'])
-            // }
-        }
-        if (pass) addToWM(rule['put'],rule['as']);
-    }
-    console.log(wm);
-}
-
-function loadJSON(file, callback) {   
-
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', file, true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-        }
-    };
-    xobj.send(null);  
-    }
-
-
-function loadRules() {
-    loadJSON("assets/json/rules.json",function(response) {
-    // Parse JSON string into object
-        rules = JSON.parse(response);
-    });
-}
-        
-function getForm() {
-    wm = {}; // debugging purpose
-    var form = document.getElementById("form");
-    for (i=0; i<form.elements.length; i++) {
-      var field = form.elements[i];
-        // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
-      if (!field.name || field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') continue;
-     
-      if (field.type === 'select-multiple') {
-          for (var n = 0; n < field.options.length; n++) {
-              if (!field.options[n].selected) continue;
-              // serialized.push({
-              //     name: field.name,
-              //     value: field.options[n].value
-              // });
-              addToWM(field.name,field.value);
-          }
-      }
-      else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
-          // serialized.push({
-          //     name: field.name,
-          //     value: field.value
-          // });
-
-          addToWM(field.name,field.value);
-      }
-    }
-}
-
-function addToWM(name, value) {
-    if(!isNaN(value) && typeof value !== 'boolean') {
-        value = parseInt(value);
-    }
-    if(typeof wm[name] !== 'undefined') {
-        if(typeof wm[name] !== 'boolean') {
-            if(typeof wm[name] !== 'object') {
-                wm[name] = [wm[name]];
-            }
-            wm[name].push(value);
         } else {
             wm[name] = value;
         }
-    } else {
-        wm[name] = value;
     }
-}
+
+    $.fn.forwardChaining = function() {
+        $.fn.getForm("#msform");
+        let currentRule = Object.assign([], rules);
+        // test = currentRule.splice(1,1);
+        console.log(test);
+        console.log('[here]',currentRule,currentRule.length);
+        console.log('[rule]',rules);
+        // for (rule of rules) {
+        //     var pass = true;
+        //     if ((rule.when.length > 1 ) &&  typeof rule.when == 'object') {
+        //         for (i = 0; i < rule.when.length; i++) {
+        //             const condition = wm[rule.when[i]] + rule.is[i];
+        //             if (!eval(condition)) pass = false;
+        //         }
+        //     }
+        //     else {
+        //         const condition = wm[rule.when] + rule.is;
+        //         if (!eval(condition)) pass = false;
+        //     }
+        //     if (pass) $.fn.addToWM(rule.put,rule.as);
+        // }
+        for (i=0; i<currentRule.length;i++) {
+            var pass = false;
+            if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
+                var multiPass = true;
+                for (j = 0; j < currentRule[i].when.length; j++) {
+                    const condition = wm[currentRule[i].when[j]] + currentRule[i].is[j];           
+                    console.log("[condition]",condition);
+                    console.log("[result]",eval(condition));
+                    if (!eval(condition)) {
+                        console.log("here");
+                        multiPass = false;
+                        break;
+                    }
+                }
+                console.log(multiPass);
+                pass = multiPass;
+            }
+            else {
+                const condition = wm[currentRule[i].when] + currentRule[i].is;
+                pass = eval(condition);
+            }
+            if (pass) {
+                $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+                var removed = currentRule.splice(i,1);
+                firedRules.push(...removed);
+                i = 0;
+            };
+        }
+        console.log(firedRules);
+        console.log(wm);
+    }
+    
+});
+
+
+// dev function
+$("#test_jquery").click(function(){
+    wm = {} //testing
+    firedRules = []
+    $.fn.forwardChaining();
+    var recommendation = [];
+    console.log(recommendation)
+    console.log("[wm re]",wm.recommendation)
+    if (wm.recommendation !== undefined) {
+        console.log("here");
+        recommendation = wm.recommendation;
+        console.log(recommendation);
+    }
+    var htmlCode = "";
+    console.log("[re]",recommendation)
+    if (recommendation.length > 0) {
+        $.each(recommendation, function(index, value) {
+            console.log(value);
+            title = value
+            des = title
+            price = 0
+            htmlCode += '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
+                des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
+        })
+    }
+    $("#result").html(htmlCode);
+    whyString = ""
+    for(firedRule of firedRules) {
+        whyString += firedRule.description + "<br>";
+    }
+    $("#why").html(whyString);
+});
+
+
+$(".submit").click(function(){
+    wm = {} // testing
+    $.fn.getForm("#msform");
+});
+
+$("#bktest").click(function() {
+    console.log("run");
+    var data = $.fn.getForm("#bkform");
+    for (rule of rules) {
+        
+    }
+});

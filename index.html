@@ -1,73 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
+    <title>Gifting Made Easy</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/gift.png">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js"></script>
-    <title>System</title>
-</head>
-<body onload="loadRules()">
-    <form id="form">
-        <label for="budget">Budget:</label>
-        <input type="number" name="budget" value=0>
-        <br><br>
-        <label for="gender">Gender:</label>
-        <input type="radio" id="male" name="gender" value="male" checked>
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label>
-        <br><br>
-        <label for="tag">Tag:</label>
-        <input type="checkbox" name="tag" value="tech" checked>
-        <label for="tag1">Tech</label>
-        <input type="checkbox" name="tag" value="draw">
-        <label for="tag2">Draw</label>
-        <input type="checkbox" name="tag" value="fashion">
-        <label for="tag3">Fashion</label>
-        <br><br>
-        <label for="occasion">Occasion:</label>
-        <select name="occasion" id="occasion">
-          <option value="birthday">Birthday</option>
-          <option value="anniversary">Anniversary</option>
-          <option value="graduate">Graduation</option>
-        </select>
-        <br><br>
-        <input type="button" onclick="press()" value="Test">
-    </form>
-    <br><br>
+    <!-- CDN -->
 
-    <!-- For recommendation result -->
-    <div style="border: black solid 1px; margin: 10px; padding: 5px;">
-        <h1>Gift title sample</h1>
-        <h2>Gift description sample</h2>
-        <h3>Gift price sample</h3>
-    </div>
-    <input type="number" name="count" id="count" value=1 style="width:35px">
-    <button onclick="test()">Test increment</button>
-    <button onclick="testclear()">Clear</button>
-    <div id="test"></div>
-    <script>
-        var counter = 0;
-        function test() {
-            // var add = '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
-            //     des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
-            let count = parseInt(document.getElementById("count").value);
-            console.log(count);
-            for(i=counter+1,counter +=count ;i<=counter;i++) {
-                title = "title" + i;
-                des = "des" + i;
-                price = "price" + i;
-                var add = '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
-                des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
-                document.getElementById("test").innerHTML += add;
-            }
-        }
-        function testclear() {
-            document.getElementById("test").innerHTML = "";
-            counter =0;
-        }
-    </script>
-    <!-- End of For recommendation result -->
+    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- /.CDN -->
+    <script defer src="assets/js/script.js"></script>
+</head>
+<body>
+<header></header>
+<div id="msform">
+    <fieldset>
+        <h2 class="fs-title">Gifting Made Easy</h2>
+        <h3 class="fs-subtitle">For it is in giving that we receive.</h3>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">    
+                <div class="row mt-4">
+                    <div class="col">
+                        <button id="homepagebutton" onclick="location.href = 'forward.html';">Look For The Suitable Gift</button>
+                    </div>
+                </div> 
+                <div class="row mt-3">
+                    <div class="col">
+                        <button id="homepagebutton" onclick="alert('Nothing yet')">Browse All Gifts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<footer></footer>
+</div>
 </body>
 </html>

@@ -3,18 +3,29 @@
         "when": "budget",
         "is": ">=500",
         "put": "luxury", 
-        "as": true
+        "as": true,
+        "description": "because youre rich"
     },
     { 
         "when": "budget",
         "is": "<500",
         "put": "medium", 
-        "as": true
+        "as": true,
+        "description": "ok la"
     },
     { 
         "when": ["budget","gender"],
         "is": ["<100","==male"],
         "put": "brokeguy", 
-        "as": true
+        "as": true,
+        "description": "because youre a guy and less than 100 bucks, then youre a brokeguy"
+    },
+    {
+        "when": "brokeguy",
+        "is": true,
+        "put": "recommendation", 
+        "as": ["leaf","air"],
+        "description": "because youre brokeguy, so you can only afford leaf and air"
+
     }
 ]

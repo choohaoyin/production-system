@@ -1,3 +1,222 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {margin: 0; height: 100%; overflow-x: hidden}
+
+html {
+    height: 100%;
+    background: #eee6e6; /* fallback for old browsers */
+
+}
+
 body {
-    background-color: lightblue;
+    font-family: montserrat, arial, verdana;
+    background: transparent;
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+}
+
+#selection-button{
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    min-width: 280px;
+}
+
+#selection-button:hover{
+    background-color: #eee6e6 !important;
+}
+
+#msform fieldset {
+    min-height: 420px;
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-sizing: border-box;
+    width: 100%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input[type="text"], #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 70%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+#msform input[type="text"]:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ee0979;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+
+#msform input[type=button]:focus, #homepagebutton:focus {
+    outline:0;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: -20px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+#msform input[type="number"] {
+    margin: 40px 40px;
+    text-align: center;
+    min-width: 100px !important;
+    width: 40%;
+    max-width: 200px;
+    font-size: 72px !important;
+}
+
+#msform input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.btn-secondary{
+    background-color: white !important;
+}
+
+.btn-secondary.active, .btn-secondary:active{
+    background-color: #eee6e6 !important;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 10px;
+}
+
+footer img{
+    height: 1.5em;
+    width: auto; 
+    vertical-align:-0.27em;
+    transition: 0.1s ease-out;
+}
+
+footer img:hover{
+    height: 7em;
+    width: auto; 
+}
+
+#homepagebutton{
+    padding: 10px;
+    border: solid 1px #9a9a9a;
+    border-radius: 9px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    transition: 0.5s ease;
+    width: 500px;
+}
+
+#homepagebutton:hover{
+    background-color: #eee6e6;
+}
+
+#gallery img, #interest img {
+    width: 300px ;
+}
+
+#gallery label:hover{
+    background-color: #eee6e6 !important;
+}
+
+
+.form-container {
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+}
+
+.arrow {
+    height: 25px !important;
+    width: 25px !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 25px !important;
+    height: 25px !important;
+    top: 25%;
 }
