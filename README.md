@@ -15,6 +15,7 @@ For example, image for Technology and it is the first image.
 > T0001.png
 
 | Categories | Prefix |
+| --- | --- |
 | Flowers | F |
 | Gift Cards | G |
 | Toys & Games | TG |
