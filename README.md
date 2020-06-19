@@ -28,12 +28,12 @@ Please label the image for each recommendation item according to prefix and ID. 
 
 ### Example
 For example, item image for recommendation of Technology and it is the first image.
-` 
-  {
-    "id": "T0001",
-    "name": "iPhone",
-    "price": "RM12.00",
-    "img": "images/recommendations/iphone.png",
-    "link": "www.apple.com"
-  }
-`
+```json
+{
+  "id": "T0001",
+  "name": "iPhone",
+  "price": "RM12.00",
+  "img": "images/recommendations/iphone.png",
+  "link": "www.apple.com"
+}
+```
