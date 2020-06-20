@@ -99,11 +99,41 @@ $(".previous").click(function(){
 
 // Inference Engine
 let rules = new Object();
+let items = new Object();
 
 $.getJSON("assets/json/rules.json", function(data) {
     rules = data;
-    // console.log(rules);
 });
+
+$.getJSON("assets/json/items.json", function(data) {
+    items = data;
+});
+
+$("#magic").click(function() {
+    console.log("magic");
+    $(".catalog").html("");
+    for(categories of items) {
+        for(item of categories) {
+            if (Math.random() > 0.5) {
+                break; // testing purpose, avoid too many item to be preview
+            }
+            console.log(item);
+            id = item["id"];
+            name = item["name"];
+            price = item["price"];
+            img = "assets/" + item["img"];
+            link = item["link"];
+            var add = '<a href=\"'+link+'\"'+'<div style="border: black solid 1px; margin: 10px; padding: 5px; width: 250px; float: right;">'+'<img src=\"'+img+'\" style="height: 100px; width:auto;">'+'<h3>'+name+'</h3>'+'<h4>'+
+            price+'</h4>'+'<h5>'+id+'</h5>'+'</div>'+'</a>';
+
+            current = $(".catalog").html();
+            current += add
+            $(".catalog").html(current);
+            
+        }
+    }
+});
+
 
 let wm = {};
 let firedRules = [];
