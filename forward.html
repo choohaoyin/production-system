@@ -21,7 +21,7 @@
 <div class="form-container">
     <form id="msform">
         <!-- fieldsets -->
-        <fieldset>
+        <!-- <fieldset>
             <h2 class="fs-title">Who is the recipient?</h2>
             <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
                 <div class="col-md btn-group-toggle">
@@ -163,7 +163,7 @@
             </div>
             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
             <input type="button" name="next" class="next action-button" value="Next"/>
-        </fieldset> 
+        </fieldset>  -->
 
 
         <fieldset>
@@ -300,10 +300,78 @@
             </div>
             
             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-            <input type="button" name="submit" class="submit action-button" value="Submit"/>
+            <input type="button" name="next" class="next submit action-button" value="Submit"/>
+            <!-- <input type="button" name="submit" class="submit action-button" value="Submit"/> -->
+
         </fieldset>
-    </div>
+
+        <fieldset>
+            <h2 class="fs-title">Select the recipient interests</h2>
+            <h3 class="fs-subtitle">you can select more than one option.</h3>
+            <div id="recommendation" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    
+<!--                     
+                    <div class="carousel-item active">
+                        <div  class="row btn-group btn-group-toggle" data-toggle="buttons"> -->
+                            <!-- <div class="empty"></div>
+                            <div class="item-container">
+                                <span id="homeAndLiving"> 
+                                    <label for="homeAndLiving" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="homeAndLiving" value="homeAndLiving" title="homeAndLiving"> 
+                                        <img for="homeAndLiving" class="img-fluid" src="assets/images/home&Living.png"/>
+                                    </label>
+                                <p>Home & Living</p>
+                                </span>
+                            </div>
+                            <div class="item-container">
+                                <span id="homeAndLiving"> 
+                                    <label for="homeAndLiving" class="btn btn-secondary">
+                                        <input type="checkbox" name="interest" id="homeAndLiving" value="homeAndLiving" title="homeAndLiving"> 
+                                        <img for="homeAndLiving" class="img-fluid" src="assets/images/home&Living.png"/>
+                                    </label>
+                                <p>Home & Living</p>
+                                </span>
+                            </div>
+                            <div class="empty"></div> -->
+                        <!-- </div>
+                    </div> -->
+                </div>
+            
+                <a class="carousel-control-prev" href="#recommendation" role="button" data-slide="prev" style="left: 100px;">
+                    <span class="sr-only">Previous</span>
+                    <img class="arrow" src="assets/images/left-arrow.png" >
+                </a>
+            
+                <a class="carousel-control-next" href="#recommendation" role="button" data-slide="next" style="right: 100px;">
+                    <span class="sr-only">Next</span>
+                    <img class="arrow" src="assets/images/right-arrow.png" >
+
+                </a>
+            </div>
+            <input type="button" name="why" id="why" class="action-button-why" value="Why these items?"/>
+        </fieldset>
+    </form>
 </div>
+
+<!--Creates the popup body-->
+<div class="popup-overlay">
+    <!--Creates the popup content-->
+    <div class="popup-content">
+        <h1 class="why-title">Why these items?</h1>
+        <p class="why">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis saepe dicta nostrum dolore laborum tempora laudantium consequuntur unde cupiditate deleniti officiis architecto, nulla aperiam ab culpa recusandae eum temporibus quisquam?</p>
+    <img src="" class="item-img" style="width: 500px;">
+    <h2 class="item-name"></h2>
+    <p class="item-price"></p>
+    <button class="action-button buy-button">MAIIIIII</button>
+      <!--popup's close button-->
+      <button class="close">Close</button> </div>
+  </div>
+  <!--Content shown when popup is not displayed-->
+  <!-- <h2>jQuery Pop-Up Example</h2>
+  <button class="open">Open</button> -->
+
+
 <footer></footer>
 </body>
 </html>

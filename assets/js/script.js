@@ -4,6 +4,7 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var current_fs_index = 1;
 
+$("img").attr("draggable",false);
 
 $(function(){
     $("header").load("assets/html/header.html"); 
@@ -18,6 +19,17 @@ $('.carousel').carousel({
     interval: false,
   });
 
+
+
+// testing
+let wm = {
+    "budget": 1000,
+    "interest": "technology"
+}
+
+
+
+
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
@@ -27,7 +39,7 @@ $(".next").click(function(){
     current_fs_index = $(this).index();
     
 	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	// $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
 	//show the next fieldset
 	next_fs.show(); 
@@ -56,7 +68,140 @@ $(".next").click(function(){
 		easing: 'easeInOutBack'
     });
     $(".form-container").height(next_fs.height());
+
+
+    if ($(this).hasClass("submit")) {
+        $.fn.forwardChaining();
+        console.log(wm)
+
+        test_item = {
+            "technology": [
+            { 
+                "id": "T0001",
+                "name": "Apple Watch Series 3",
+                "price": "From RM849.00",
+                "img": "images/recommendations/T0017.jpg", 
+                "link": "https://www.apple.com/my/shop/buy-watch/apple-watch-series-3/38mm-gps-space-gray-aluminum-black-sport-band"
+            },{ 
+                "id": "T0002",
+                "name": "Apple Watch Series 4",
+                "price": "From RM849.00",
+                "img": "images/recommendations/T0017.jpg", 
+                "link": "https://www.apple.com/my/shop/buy-watch/apple-watch-series-3/38mm-gps-space-gray-aluminum-black-sport-band"
+            }
+        ]
+        }
+
+        // console.log(test_item.technology)
+
+        // for(recommendation of wm["recommendation"]) {
+        //     var test = test_item.filter(function (item) {
+        //         return item.id == "T0001";
+        //     })
+        //     console.log(test);
+        // }
+
+        // "id": "TG0016",
+        // "name": "Toy Story Whack an Alient",
+        // "price": "RM129.99",
+        // "img": "images/recommendations/TG0016.png", 
+        // "link":
+
+
+
+
+
+        var matched = []
+        for(recommendation of wm["recommendation"]) {
+            var test = items.filter(function (category) {
+                var x = category.filter(function (item) {
+                    return item.id == recommendation
+                })
+                if ((x.length != 0) && (typeof x !== "undefined")) {
+                    matched.push(...x)
+                }
+            })
+        }
+
+        var itemList = "";
+        console.log(matched);
+        for(i = 0; i<matched.length;i++) {
+            matched_item = matched[i];
+            console.log(matched_item);
+            if((i+1)%3 == 1) {
+                if (i == 0) {
+                    itemList += '<div class="carousel-item active"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
+
+                } else {
+                    itemList += '<div class="carousel-item"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
+                }
+            }
+
+            itemList += '<div class="item-container">'+'<span id=\"'+matched_item.id+'\">'+
+            '<label for=\"'+matched_item.id+'\" class=\"btn btn-secondary\">'+
+            '<input type=\"checkbox\" name=\"recommendation\" id=\"'+matched_item.id+'\" value=\"'+matched_item.id+'\" title=\"'+matched_item.name+'\">' +
+            '<img for=\"assets/'+matched_item.id+'\" class="img-fluid" src=\"assets/'+matched_item.img+'\"/>'+'</label>'+'<p>'+matched_item.name+'</p>'+' </span>  </div>';
+            
+
+            
+
+
+            if(((i+1)%3 == 0) || (i == matched.length)) {
+                itemList += '<div class="empty"></div></div></div>'
+            }
+
+
+            console.log(itemList);
+        }
+        console.log(itemList);
+        $("#recommendation").children(".carousel-inner").html(itemList);
+    }
 });
+
+
+$("#recommendation .carousel-inner").on("click",".carousel-item .item-container label", function () {
+    var id = $(this).attr("for");
+    // var popup = $(".popup-overlay, .popup-content");
+    
+    var matched = null;
+    var test = items.filter(function (category) {
+        var x = category.filter(function (item) {
+            return item.id == id
+        })
+        if ((x.length != 0) && (typeof x !== "undefined")) {
+            matched = x[0];
+        }
+    })
+    
+    console.log(matched);
+
+    $(".popup-overlay, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");
+    $(".popup-content").children(".item-img").attr("src","assets/"+matched.img);
+    $(".popup-content").children(".item-name").html(matched.name);
+    $(".popup-content").children(".item-price").html(matched.price);
+    $(".popup-content").children(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
+
+});
+
+$("#why").click(function () {
+    $(".popup-overlay, .popup-content, .why-title, .why").addClass("active");
+})
+
+
+//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+// $(".open").on("click", function() {
+//     $(".popup-overlay, .popup-content").addClass("active");
+//   });
+  
+  //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+  $(".close, .popup-overlay").on("click", function() {
+    $(".popup-overlay, .popup-content").removeClass("active");
+
+    $(".popup-content").find("*").each(function () {
+        $(this).removeClass("active");
+    })
+    
+  });
 
 $(".previous").click(function(){
 	if(animating) return false;
@@ -66,9 +211,8 @@ $(".previous").click(function(){
 	previous_fs = $(this).parent().prev();
     current_fs_index = $(this).parent().index();
     
-
 	//de-activate current step on progressbar
-	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	// $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 	
 	//show the previous fieldset
 	previous_fs.show(); 
@@ -97,15 +241,18 @@ $(".previous").click(function(){
 });
 
 
+
 // Inference Engine
 let rules = new Object();
 let items = new Object();
 
 $.getJSON("assets/json/rules.json", function(data) {
+    console.log("rules loaded");
     rules = data;
 });
 
 $.getJSON("assets/json/items.json", function(data) {
+    console.log("items loaded")
     items = data;
 });
 
@@ -135,7 +282,7 @@ $("#magic").click(function() {
 });
 
 
-let wm = {};
+// let wm = {};
 let firedRules = [];
 
 // Define jQuery Function
@@ -167,10 +314,10 @@ $(document).ready(function(){
     }
 
     $.fn.forwardChaining = function() {
-        $.fn.getForm("#msform");
+        // $.fn.getForm("#msform"); // TEMPORARY DISABLE
         let currentRule = Object.assign([], rules);
         // test = currentRule.splice(1,1);
-        console.log(test);
+        // console.log(test);
         console.log('[here]',currentRule,currentRule.length);
         console.log('[rule]',rules);
         // for (rule of rules) {
@@ -256,10 +403,7 @@ $("#test_jquery").click(function(){
 });
 
 
-$(".submit").click(function(){
-    wm = {} // testing
-    $.fn.getForm("#msform");
-});
+
 
 $("#bktest").click(function() {
     console.log("run");
