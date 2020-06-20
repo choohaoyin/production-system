@@ -1012,4 +1012,314 @@
         "img": "images/recommendations/T0024.jpg", 
         "link": "https://www.fruugo.my/google-home-smart-speaker-home-assistant/p-38278688-78580648?language=en&ac=google&gclid=CjwKCAjwxLH3BRApEiwAqX9arRl-gsKUUadp3XppF1MNbq5rsuGzUe_ug8Hgh3f-PV-31_saxytxOxoCuZQQAvD_BwE"
     }
+],
+[
+    {
+    	"id": "H0001",
+        "name": "FÄRGRIK",
+        "price": "RM2.90",
+        "img": "images/recommendations/H0001.jpg", 
+        "link": "https://www.ikea.com/my/en/p/faergrik-mug-dark-turquoise-60330564/"
+    },
+    {
+    	"id": "H0002",
+        "name": "STELNA",
+        "price": "RM2.50",
+        "img": "images/recommendations/H0002.jpg", 
+        "link": "https://www.ikea.com/my/en/p/stelna-mug-clear-glass-50258912/"
+    },
+    {
+    	"id": "H0003",
+        "name": "VARDAGEN",
+        "price": "RM9.90",
+        "img": "images/recommendations/H0003.jpg", 
+        "link": "https://www.ikea.com/my/en/p/vardagen-coffee-cup-and-saucer-off-white-10288317/"
+    },
+    {
+    	"id": "H0004",
+        "name": "FRAMKALLA",
+        "price": "RM29.90",
+        "img": "images/recommendations/H0004.jpg", 
+        "link": "https://www.ikea.com/my/en/p/framkalla-mug-mixed-patterns-00420082/"
+    },
+    {
+    	"id": "H0005",
+        "name": "OSTRON",
+        "price": "RM22.90",
+        "img": "images/recommendations/H0005.jpg", 
+        "link": "https://www.ikea.com/my/en/p/ostron-12-piece-cutlery-set-grey-10287365/"
+    },
+    {
+    	"id": "H0006",
+        "name": "MEDHJÄLPARE",
+        "price": "RM4.90",
+        "img": "images/recommendations/H0006.jpg", 
+        "link": "https://www.ikea.com/my/en/p/medhjaelpare-chopsticks-10-pairs-bamboo-50429438/"
+    },
+    {
+    	"id": "H0007",
+        "name": "ROCKÅN",
+        "price": "RM119.90",
+        "img": "images/recommendations/H0007.jpg", 
+        "link": "https://www.ikea.com/my/en/p/rockan-bath-robe-grey-30392030/"
+    },
+    {
+    	"id": "H0008",
+        "name": "TÅSJÖN",
+        "price": "RM8.90",
+        "img": "images/recommendations/H0008.jpg", 
+        "link": "https://www.ikea.com/my/en/p/tasjoen-slippers-grey-20391936/"
+    },
+    {
+    	"id": "H0009",
+        "name": "VÅGSJÖN",
+        "price": "RM19.90",
+        "img": "images/recommendations/H0009.jpg", 
+        "link": "https://www.ikea.com/my/en/p/vagsjoen-bath-towel-purple-00439406/"
+    },
+    {
+    	"id": "H0010",
+        "name": "NÄVLINGE",
+        "price": "RM59.00",
+        "img": "images/recommendations/H0010.jpg", 
+        "link": "https://www.ikea.com/my/en/p/naevlinge-led-clamp-spotlight-white-10449891/"
+    },
+    {
+    	"id": "H0011",
+        "name": "HEKTAR",
+        "price": "RM249.00",
+        "img": "images/recommendations/H0011.jpg", 
+        "link": "https://www.ikea.com/my/en/p/hektar-work-lamp-with-wireless-charging-dark-grey-20323438/"
+    },
+    {
+    	"id": "H00012",
+        "name": "SINNLIG",
+        "price": "RM12.90",
+        "img": "images/recommendations/H0012.jpg", 
+        "link": "https://www.ikea.com/my/en/p/sinnlig-scented-candle-in-glass-apple-and-pear-green-40337415/"
+    },
+    {
+    	"id": "H0013",
+        "name": "VÄLDOFT",
+        "price": "RM6.90",
+        "img": "images/recommendations/H0013.jpg", 
+        "link": "https://www.ikea.com/my/en/p/vaeldoft-scented-candle-in-glass-salty-sweets-grey-60442298/"
+    },
+    {
+    	"id": "H0014",
+        "name": "OSKILJAKTIG",
+        "price": "RM49.90",
+        "img": "images/recommendations/H0014.jpg", 
+        "link": "https://www.ikea.com/my/en/p/oskiljaktig-steel-vacuum-flask-black-20467158/"
+    },
+    {
+    	"id": "H0015",
+        "name": "HÄLSA",
+        "price": "RM19.90",
+        "img": "images/recommendations/H0015.jpg", 
+        "link": "https://www.ikea.com/my/en/p/haelsa-steel-vacuum-flask-blue-60450641/"
+    }
+],
+
+[
+    {
+    	"id": "BG0001",
+        "name": "Baby Romper & Wrap Pyjamas Set-Option B",
+        "price": "RM59.90",
+        "img": "images/recommendations/BG0001.jpg", 
+        "link": "https://www.zalora.com.my/baby-9months-baby-romper-wrap-pyjamas-set-option-b-grey-multi-2107076.html"
+    },
+    {
+    	"id": "BG0002",
+        "name": "Boyfriend Disney Tank Bodysuit",
+        "price": "RM63.00",
+        "img": "images/recommendations/BG0002.jpg", 
+        "link": "https://www.zalora.com.my/gap-boyfriend-disney-tank-bodysuit-blue-navy-2167151.html"
+    },
+    {
+    	"id": "BG0003",
+        "name": "Newborn Baby Boy Gift Set-Option B",
+        "price": "RM99.90",
+        "img": "images/recommendations/BG0003.jpg", 
+        "link": "https://www.zalora.com.my/baby-9months-newborn-baby-boy-gift-set-option-b-grey-white-blue-multi-2128339.html"
+    },
+    {
+    	"id": "BG0004",
+        "name": "Baby Romper & Wrap Pyjamas Set-Option A",
+        "price": "RM59.90",
+        "img": "images/recommendations/BG0004.jpg", 
+        "link": "https://www.zalora.com.my/baby-9months-baby-romper-wrap-pyjamas-set-option-a-grey-yellow-2107078.html"
+    },
+    {
+    	"id": "BG0005",
+        "name": "Akarana Baby Sleep Simplified Organic Bundle - White",
+        "price": "RM106.00",
+        "img": "images/recommendations/BG0005.jpg", 
+        "link": "https://www.zalora.com.my/akarana-baby-akarana-baby-sleep-simplified-organic-bundle-white-white-1733146.html"
+    },
+    {
+    	"id": "BG0006",
+        "name": "100% Natural Cotton Long Sleeve Bodysuit, Hat, Mittens, Bib",
+        "price": "RM271.50",
+        "img": "images/recommendations/BG0006.jpg", 
+        "link": "https://www.zalora.com.my/bebeganic-100-natural-cotton-long-sleeve-bodysuit-hat-mittens-bib-orange-multi-1737221.html"
+    },
+    {
+    	"id": "BG0007",
+        "name": "Space Travels Romper (Navy Blue Collar)",
+        "price": "RM66.00",
+        "img": "images/recommendations/BG0007.jpg", 
+        "link": "https://www.zalora.com.my/baby-lovett-space-travels-romper-navy-blue-collar-navy-2083395.html"
+    },
+    {
+    	"id": "BG0008",
+        "name": "Layered Romper",
+        "price": "RM119.70",
+        "img": "images/recommendations/BG0008.jpg", 
+        "link": "https://www.zalora.com.my/fox-kids-baby-layered-romper-grey-2134600.html"
+    },
+    {
+    	"id": "BG0009",
+        "name": "AIKAYDAN Cute Koala Shoes",
+        "price": "RM52.00",
+        "img": "images/recommendations/BG0009.jpg", 
+        "link": "https://www.zalora.com.my/aikaydan-aikaydan-cute-koala-shoes-grey-white-multi-2094069.html"
+    },
+    {
+    	"id": "BG0010",
+        "name": "AIKAYDAN Dinosaur Shoes",
+        "price": "RM49.00",
+        "img": "images/recommendations/BG0010.jpg", 
+        "link": "https://www.zalora.com.my/aikaydan-aikaydan-dinosaur-shoes-green-blue-multi-2092039.html"
+    },
+    {
+    	"id": "BG0011",
+        "name": "Beep Beep Cotton Sandals",
+        "price": "RM49.90",
+        "img": "images/recommendations/BG0011.jpg", 
+        "link": "https://www.zalora.com.my/treehouse-beep-beep-cotton-sandals-blue-1833518.html"
+    },
+    {
+    	"id": "BG0012",
+        "name": "PUMA Kids' Leadcat Sandals 369450",
+        "price": "RM65.00",
+        "img": "images/recommendations/BG0012.jpg", 
+        "link": "https://www.zalora.com.my/puma-puma-kids-leadcat-sandals-369450-white-1737052.html"
+    },
+    {
+    	"id": "BG0013",
+        "name": "Foxie Boxie",
+        "price": "RM185.00",
+        "img": "images/recommendations/BG0013.jpg", 
+        "link": "https://www.eskacreative.com/product/foxie-boxie/"
+    },
+    {
+    	"id": "BG0014",
+        "name": "Bundle of Joy",
+        "price": "RM240.00",
+        "img": "images/recommendations/BG0014.jpg", 
+        "link": "https://www.eskacreative.com/product/bundle-of-joy/"
+    },
+    {
+    	"id": "BG0015",
+        "name": "A Star is Born",
+        "price": "RM160.00",
+        "img": "images/recommendations/BG0015.jpg", 
+        "link": "https://www.eskacreative.com/product/a-star-is-born/"
+    },
+    {
+    	"id": "BG0016",
+        "name": "My Little Dimple",
+        "price": "RM260.00",
+        "img": "images/recommendations/BG0016.jpg", 
+        "link": "https://www.eskacreative.com/product/my-little-dimple/"
+    }
+],
+
+[
+    {
+    	"id": "W0001",
+        "name": "Summer Surprises",
+        "price": "RM208.00",
+        "img": "images/recommendations/W0001.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/summer-surprises/"
+    },
+    {
+    	"id": "W0002",
+        "name": "Vineyard Gems",
+        "price": "RM328.00",
+        "img": "images/recommendations/W0002.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/vineyard-gems/"
+    },
+    {
+    	"id": "W0003",
+        "name": "Swangau",
+        "price": "RM348.00",
+        "img": "images/recommendations/W0003.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/swangau/"
+    },
+    {
+    	"id": "W0004",
+        "name": "Moet Love",
+        "price": "RM678.00",
+        "img": "images/recommendations/W0004.jpg", 
+        "link": "https://florygift.com.my/https://florygift.com.my/florist-gifts/wine-gifts/moet-love/"
+    },
+    {
+    	"id": "W0005",
+        "name": "Steingaden",
+        "price": "RM769.00",
+        "img": "images/recommendations/W0005.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/steingaden/"
+    },
+    {
+    	"id": "W0006",
+        "name": "Opulent",
+        "price": "RM1128.00",
+        "img": "images/recommendations/W0006.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/opulent/"
+    },
+    {
+    	"id": "W0007",
+        "name": "Moet Supreme",
+        "price": "RM677.00",
+        "img": "images/recommendations/W0007.jpg", 
+        "link": "https://florygift.com.my/florist-gifts/wine-gifts/champagne-experience/"
+    },
+    {
+    	"id": "W0008",
+        "name": "Jack Mondavi",
+        "price": "RM56.00",
+        "img": "images/recommendations/W0008.jpg", 
+        "link": "https://whisky.my/product/jack-mondavi/"
+    },
+    {
+    	"id": "W0009",
+        "name": "ALDRIDGE Rams Head Shiraz Cabernet 2019", 
+        "price": "RM65.00",
+        "img": "images/recommendations/W0009.png", 
+        "link": "https://whisky.my/product/aldridge-rams-head-shiraz-cabernet-2019/"
+    },
+    {
+    	"id": "W0010",
+        "name": "TEMPUS TWO Silver Series Pinot Gris 2019",
+        "price": "RM75.00",
+        "img": "images/recommendations/W0010.jpg", 
+        "link": "https://whisky.my/product/tempus-two-silver-series-pinot-gris-2019/"
+    },
+    {
+    	"id": "W0011",
+        "name": "CHANDON brut Australia Limited Edition",
+        "price": "RM165.00",
+        "img": "images/recommendations/W0011.png", 
+        "link": "https://whisky.my/product/chandon-brut-australia-limited-edition/"
+    },
+    {
+    	"id": "W0012",
+        "name": "VEUVE CLICQUOT Yellow Label NV Champagne",
+        "price": "RM315.00",
+        "img": "images/recommendations/W0012.png", 
+        "link": "https://whisky.my/product/veuve-clicquot-yellow-label-nv-champagne/"
+    }
+
 ]]
