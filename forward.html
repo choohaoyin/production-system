@@ -21,7 +21,7 @@
 <div class="form-container">
     <form id="msform">
         <!-- fieldsets -->
-        <!-- <fieldset>
+        <fieldset>
             <h2 class="fs-title">Who is the recipient?</h2>
             <div class="row btn-group btn-group-toggle m-4" data-toggle="buttons">
                 <div class="col-md btn-group-toggle">
@@ -44,7 +44,7 @@
         <fieldset>
             <h2 class="fs-title">What is the recipient age?</h2>
             <div class="row justify-content-center">
-                <input type="number" name="age" value=0>
+                <input type="number" name="age" value=0 min="0">
             </div>
             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
             <input type="button" name="next" class="next action-button" value="Next"/>
@@ -159,11 +159,11 @@
         <fieldset>
             <h2 class="fs-title">How much are you willing to spend?</h2>
             <div class="row justify-content-center">
-                <input type="number" name="budget" value=0>
+                <input type="number" name="budget" value=0 min="0">
             </div>
             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
             <input type="button" name="next" class="next action-button" value="Next"/>
-        </fieldset>  -->
+        </fieldset> 
 
 
         <fieldset>
@@ -358,18 +358,17 @@
 <div class="popup-overlay">
     <!--Creates the popup content-->
     <div class="popup-content">
-        <h1 class="why-title">Why these items?</h1>
-        <p class="why">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis saepe dicta nostrum dolore laborum tempora laudantium consequuntur unde cupiditate deleniti officiis architecto, nulla aperiam ab culpa recusandae eum temporibus quisquam?</p>
-    <img src="" class="item-img" style="width: 500px;">
-    <h2 class="item-name"></h2>
-    <p class="item-price"></p>
+        <div class="why-title">
+            <h1 class="why-title">Why these items?</h1>
+            <h2 style="text-align: left;">because...</h2>
+        </div>
+        <img src="" class="item-img" style="width: 500px;">
+        <h2 class="item-name"></h2>
+        <p class="item-price"></p>
     <button class="action-button buy-button">MAIIIIII</button>
       <!--popup's close button-->
       <button class="close">Close</button> </div>
   </div>
-  <!--Content shown when popup is not displayed-->
-  <!-- <h2>jQuery Pop-Up Example</h2>
-  <button class="open">Open</button> -->
 
 
 <footer></footer>

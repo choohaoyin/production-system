@@ -1,37 +1,58 @@
 [
     { 
         "when": "budget",
-        "is": ">=1000",
+        "is": ">=",
+        "what": 1000,
         "put": "luxury", 
-        "as": true,
-        "description": "because youre rich"
+        "as": true
     },
     { 
         "when": "budget",
-        "is": "<1000",
+        "is": "<",
+        "what": 1000,
         "put": "medium", 
-        "as": true,
-        "description": "ok la"
+        "as": true
+    },
+    { 
+        "when": "budget",
+        "is": "<",
+        "what": 100,
+        "put": "lowcash", 
+        "as": true
     },
     { 
         "when": ["budget","gender"],
-        "is": ["<100","==male"],
+        "is": ["<","=="],
+        "what": [100, "male"],
         "put": "brokeguy", 
-        "as": true,
-        "description": "because youre a guy and less than 100 bucks, then youre a brokeguy"
-    },
-    {
-        "when": "brokeguy",
-        "is": true,
-        "put": "recommendation", 
-        "as": ["leaf","air"],
-        "description": "because youre brokeguy, so you can only afford leaf and air"
+        "as": true
     },
     {
         "when": ["luxury","interest"],
-        "is": ["==true","==technology"],
+        "is": ["==","=="],
+        "what": [true, "technology"],
+        "put": "recommendation_cat", 
+        "as": "apple product"
+    },
+    {
+        "when": "recommendation_cat",
+        "is": "==",
+        "what": "apple product",
         "put": "recommendation", 
         "as": ["T0011","T0015","T0016","T0017"]
-
+    },
+    {
+        "when": ["lowcash","interest","gender"],
+        "is": ["==","==","=="],
+        "what": [true,"Jewelry","male"],
+        "put": "recommendation_cat", 
+        "as": "casio watches"
+    },
+    {
+        "when": "recommendation_cat",
+        "is": "==",
+        "what": "casio watches",
+        "put": "recommendation", 
+        "as": ["A0020","A0019"]
     }
 ]
