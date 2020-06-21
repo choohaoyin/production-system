@@ -85,8 +85,20 @@ body {
 }
 
 /*buttons*/
-#msform .action-button {
+#msform .action-button, .popup-content .action-button {
     width: 100px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: -20px 5px;
+}
+
+#msform .action-button-why {
+    width: 200px;
     background: #ee0979;
     font-weight: bold;
     color: white;
@@ -192,10 +204,10 @@ footer img:hover{
 }
 
 #homepagebutton:hover{
-    background-color: #eee6e6;
+    background-color: #f1dfdf;
 }
 
-#gallery img, #interest img {
+#gallery img, #interest img, #recommendation img {
     width: 300px ;
 }
 
@@ -219,4 +231,59 @@ footer img:hover{
     width: 25px !important;
     height: 25px !important;
     top: 25%;
+}
+
+.item-container {
+    width: 225px;
+    padding: 0 10px;
+}
+
+
+.popup-overlay {
+    /*Hides pop-up when there is no "active" class*/
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.15);
+    /* opacity: 0.15; */
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .popup-overlay.active {
+    visibility: visible;
+    text-align: center;
+  }
+  
+  .popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    background-color: white;
+    width: 75%;
+    height: auto;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
+  }
+  
+  .popup-content.active {
+    /*Shows pop-up content when "active" class is present */
+    background-color: white;
+    z-index:99;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .popup-content .buy-button, .popup-content .why-title, .popup-content .why, 
+  .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
+    visibility: hidden;
+  }
+
+  .popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why.active, 
+  .popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
+    visibility: visible;
 }

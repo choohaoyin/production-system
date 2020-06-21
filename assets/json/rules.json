@@ -1,14 +1,14 @@
 [
     { 
         "when": "budget",
-        "is": ">=500",
+        "is": ">=1000",
         "put": "luxury", 
         "as": true,
         "description": "because youre rich"
     },
     { 
         "when": "budget",
-        "is": "<500",
+        "is": "<1000",
         "put": "medium", 
         "as": true,
         "description": "ok la"
@@ -26,6 +26,12 @@
         "put": "recommendation", 
         "as": ["leaf","air"],
         "description": "because youre brokeguy, so you can only afford leaf and air"
+    },
+    {
+        "when": ["luxury","interest"],
+        "is": ["==true","==technology"],
+        "put": "recommendation", 
+        "as": ["T0011","T0015","T0016","T0017"]
 
     }
 ]
