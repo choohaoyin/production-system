@@ -1,36 +1,59 @@
-//jQuery time
+// Animation
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var current_fs_index = 1;
 
+// Inference Engine
+let rules = new Object(); // to store rules list
+let items = new Object(); // to store items list
+
+// Explanation Module
+let label = []; // for tag labelling
+
+// Disable all images to be draggable
 $("img").attr("draggable",false);
 
+// Load header and footer
 $(function(){
     $("header").load("assets/html/header.html"); 
     $("footer").load("assets/html/footer.html"); 
 });
 
+// Load rules list
+$.getJSON("assets/json/rules.json", function(data) {
+    console.log("rules loaded");
+    rules = data;
+});
+
+// Load items list
+$.getJSON("assets/json/items.json", function(data) {
+    console.log("items loaded")
+    items = data;
+});
+
+// Adjust footer position dynamically
 $(window).resize(function() {
     $(".form-container").height($('#msform > fieldset').eq(current_fs_index-1).height());
   });
 
+// Disable carousel auto-scroll
 $('.carousel').carousel({
     interval: false,
   });
 
+// Prevent negative value
+$("input[type=number]").keydown(function (e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+})
 
-
-// testing
-let wm = {
-    "budget": 1000,
-    "interest": "technology"
-}
-
-
-
-
+// Next & submit animation
 $(".next").click(function(){
+    // animation
 	if(animating) return false;
 	animating = true;
 	
@@ -67,50 +90,14 @@ $(".next").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
     });
+    // /.amimation
+
+    // Footer re-position
     $(".form-container").height(next_fs.height());
 
-
+    // If the next button is submit button
     if ($(this).hasClass("submit")) {
-        $.fn.forwardChaining();
-        console.log(wm)
-
-        test_item = {
-            "technology": [
-            { 
-                "id": "T0001",
-                "name": "Apple Watch Series 3",
-                "price": "From RM849.00",
-                "img": "images/recommendations/T0017.jpg", 
-                "link": "https://www.apple.com/my/shop/buy-watch/apple-watch-series-3/38mm-gps-space-gray-aluminum-black-sport-band"
-            },{ 
-                "id": "T0002",
-                "name": "Apple Watch Series 4",
-                "price": "From RM849.00",
-                "img": "images/recommendations/T0017.jpg", 
-                "link": "https://www.apple.com/my/shop/buy-watch/apple-watch-series-3/38mm-gps-space-gray-aluminum-black-sport-band"
-            }
-        ]
-        }
-
-        // console.log(test_item.technology)
-
-        // for(recommendation of wm["recommendation"]) {
-        //     var test = test_item.filter(function (item) {
-        //         return item.id == "T0001";
-        //     })
-        //     console.log(test);
-        // }
-
-        // "id": "TG0016",
-        // "name": "Toy Story Whack an Alient",
-        // "price": "RM129.99",
-        // "img": "images/recommendations/TG0016.png", 
-        // "link":
-
-
-
-
-
+        $.fn.forwardChaining("#msform");
         var matched = []
         for(recommendation of wm["recommendation"]) {
             var test = items.filter(function (category) {
@@ -122,47 +109,15 @@ $(".next").click(function(){
                 }
             })
         }
-
-        var itemList = "";
-        console.log(matched);
-        for(i = 0; i<matched.length;i++) {
-            matched_item = matched[i];
-            console.log(matched_item);
-            if((i+1)%3 == 1) {
-                if (i == 0) {
-                    itemList += '<div class="carousel-item active"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
-
-                } else {
-                    itemList += '<div class="carousel-item"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
-                }
-            }
-
-            itemList += '<div class="item-container">'+'<span id=\"'+matched_item.id+'\">'+
-            '<label for=\"'+matched_item.id+'\" class=\"btn btn-secondary\">'+
-            '<input type=\"checkbox\" name=\"recommendation\" id=\"'+matched_item.id+'\" value=\"'+matched_item.id+'\" title=\"'+matched_item.name+'\">' +
-            '<img for=\"assets/'+matched_item.id+'\" class="img-fluid" src=\"assets/'+matched_item.img+'\"/>'+'</label>'+'<p>'+matched_item.name+'</p>'+' </span>  </div>';
-            
-
-            
-
-
-            if(((i+1)%3 == 0) || (i == matched.length)) {
-                itemList += '<div class="empty"></div></div></div>'
-            }
-
-
-            console.log(itemList);
-        }
-        console.log(itemList);
-        $("#recommendation").children(".carousel-inner").html(itemList);
+        $("#recommendation").children(".carousel-inner").displayItem(matched);
     }
 });
 
-
-$("#recommendation .carousel-inner").on("click",".carousel-item .item-container label", function () {
+// Pop up modal window for each item detail
+$("#recommendation .carousel-inner").on("click",".carousel-item .item-container", function () {
+    console.log(this)
     var id = $(this).attr("for");
-    // var popup = $(".popup-overlay, .popup-content");
-    
+    console.log(id);
     var matched = null;
     var test = items.filter(function (category) {
         var x = category.filter(function (item) {
@@ -172,37 +127,28 @@ $("#recommendation .carousel-inner").on("click",".carousel-item .item-container 
             matched = x[0];
         }
     })
-    
-    console.log(matched);
-
     $(".popup-overlay, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");
     $(".popup-content").children(".item-img").attr("src","assets/"+matched.img);
     $(".popup-content").children(".item-name").html(matched.name);
     $(".popup-content").children(".item-price").html(matched.price);
     $(".popup-content").children(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
-
 });
 
+// Pop up modal window for "why these items"
 $("#why").click(function () {
     $(".popup-overlay, .popup-content, .why-title, .why").addClass("active");
 })
 
-
-//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
-// $(".open").on("click", function() {
-//     $(".popup-overlay, .popup-content").addClass("active");
-//   });
-  
-  //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
-  $(".close, .popup-overlay").on("click", function() {
+// removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+$(".close, .popup-overlay").on("click", function() {
     $(".popup-overlay, .popup-content").removeClass("active");
 
     $(".popup-content").find("*").each(function () {
         $(this).removeClass("active");
     })
-    
-  });
+});
 
+// Previous button
 $(".previous").click(function(){
 	if(animating) return false;
 	animating = true;
@@ -241,48 +187,62 @@ $(".previous").click(function(){
 });
 
 
-
-// Inference Engine
-let rules = new Object();
-let items = new Object();
-
-$.getJSON("assets/json/rules.json", function(data) {
-    console.log("rules loaded");
-    rules = data;
-});
-
-$.getJSON("assets/json/items.json", function(data) {
-    console.log("items loaded")
-    items = data;
-});
-
 $("#magic").click(function() {
     console.log("magic");
-    $(".catalog").html("");
+    itemList = []
     for(categories of items) {
         for(item of categories) {
             if (Math.random() > 0.5) {
                 break; // testing purpose, avoid too many item to be preview
             }
             console.log(item);
-            id = item["id"];
-            name = item["name"];
-            price = item["price"];
-            img = "assets/" + item["img"];
-            link = item["link"];
-            var add = '<a href=\"'+link+'\"'+'<div style="border: black solid 1px; margin: 10px; padding: 5px; width: 250px; float: right;">'+'<img src=\"'+img+'\" style="height: 100px; width:auto;">'+'<h3>'+name+'</h3>'+'<h4>'+
-            price+'</h4>'+'<h5>'+id+'</h5>'+'</div>'+'</a>';
+            // id = item["id"];
+            // name = item["name"];
+            // price = item["price"];
+            // img = "assets/" + item["img"];
+            // link = item["link"];
+            // var add = '<a href=\"'+link+'\"'+'<div style="border: black solid 1px; margin: 10px; padding: 5px; width: 250px; float: right;">'+'<img src=\"'+img+'\" style="height: 100px; width:auto;">'+'<h3>'+name+'</h3>'+'<h4>'+
+            // price+'</h4>'+'<h5>'+id+'</h5>'+'</div>'+'</a>';
 
-            current = $(".catalog").html();
-            current += add
-            $(".catalog").html(current);
+            // current = $(".catalog").html();
+            // current += add
+            // $(".catalog").html(current);
             
+            itemList.push(item);
         }
     }
+
+    $('#items').children('.carousel-inner').displayItem(itemList);
 });
 
 
-// let wm = {};
+// Pop up modal window for each item detail
+$("#items .carousel-inner").on("click",".carousel-item .item-container", function () {
+    var id = $(this).attr("for");
+    console.log(id);
+    var matched = null;
+    var test = items.filter(function (category) {
+        var x = category.filter(function (item) {
+            return item.id == id
+        })
+        if ((x.length != 0) && (typeof x !== "undefined")) {
+            matched = x[0];
+        }
+    })
+
+
+
+
+    $(".popup-overlay, .why-title, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");    
+    $(".item-img").attr("src","assets/"+matched.img);
+    $(".item-name").html(matched.name);
+    $(".item-price").html(matched.price);
+    $(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
+
+});
+
+
+let wm = {};
 let firedRules = [];
 
 // Define jQuery Function
@@ -294,6 +254,7 @@ $(document).ready(function(){
         })
         console.log(wm)
     }
+
 
     $.fn.addToWM = function(name,value) {
         if(!isNaN(value) && typeof value !== 'boolean') {
@@ -313,37 +274,24 @@ $(document).ready(function(){
         }
     }
 
-    $.fn.forwardChaining = function() {
-        // $.fn.getForm("#msform"); // TEMPORARY DISABLE
+    $.fn.forwardChaining = function(form) {
+        $.fn.getForm(form);
         let currentRule = Object.assign([], rules);
-        // test = currentRule.splice(1,1);
-        // console.log(test);
-        console.log('[here]',currentRule,currentRule.length);
-        console.log('[rule]',rules);
-        // for (rule of rules) {
-        //     var pass = true;
-        //     if ((rule.when.length > 1 ) &&  typeof rule.when == 'object') {
-        //         for (i = 0; i < rule.when.length; i++) {
-        //             const condition = wm[rule.when[i]] + rule.is[i];
-        //             if (!eval(condition)) pass = false;
-        //         }
-        //     }
-        //     else {
-        //         const condition = wm[rule.when] + rule.is;
-        //         if (!eval(condition)) pass = false;
-        //     }
-        //     if (pass) $.fn.addToWM(rule.put,rule.as);
-        // }
         for (i=0; i<currentRule.length;i++) {
             var pass = false;
             if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
                 var multiPass = true;
                 for (j = 0; j < currentRule[i].when.length; j++) {
-                    const condition = wm[currentRule[i].when[j]] + currentRule[i].is[j];           
+                    var condition = "";
+                    console.log(typeof wm[currentRule[i].when[j]]);
+                    if (typeof wm[currentRule[i].when[j]] == "string") {
+                        condition = '\"' + wm[currentRule[i].when[j]] +'\"'+ currentRule[i].is[j] + '\"'+ currentRule[i].what[j] + '\"';           
+                    } else {
+                        condition = wm[currentRule[i].when[j]] + currentRule[i].is[j] + currentRule[i].what[j];  
+                    }         
                     console.log("[condition]",condition);
                     console.log("[result]",eval(condition));
                     if (!eval(condition)) {
-                        console.log("here");
                         multiPass = false;
                         break;
                     }
@@ -352,8 +300,17 @@ $(document).ready(function(){
                 pass = multiPass;
             }
             else {
-                const condition = wm[currentRule[i].when] + currentRule[i].is;
-                pass = eval(condition);
+                var condition = "";
+                console.log(currentRule[i]);
+                console.log(typeof wm[currentRule[i].when]);
+                    if(typeof wm[currentRule[i].when] != "undefined") {
+                    if (typeof wm[currentRule[i].when] == "string") {
+                        condition = '\"' + wm[currentRule[i].when] +'\"'+ currentRule[i].is + '\"'+ currentRule[i].what + '\"';           
+                    } else {
+                        condition = wm[currentRule[i].when] + currentRule[i].is + currentRule[i].what;
+                    }  
+                    pass = eval(condition);
+                }
             }
             if (pass) {
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
@@ -362,14 +319,118 @@ $(document).ready(function(){
                 i = 0;
             };
         }
-        console.log(firedRules);
+        var why = "";
+        for(fireRule of firedRules) {
+            
+            if (fireRule.when != "recommendation_cat") {
+                why += "<p>";
+
+                if (typeof fireRule.when == "object") {
+                    for(i = 0; i<fireRule.when.length;i++) {
+                        why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when[i]) +"\">" + fireRule.when[i] + "</span>";
+                        why += " is "
+                        why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when[i]) +"\">" + wm[fireRule.when[i]]+ "</span>";;
+
+                        if (i != fireRule.when.length-1) {
+                            why += " and "
+                        }
+                    }
+                } else {
+                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when) +"\">" + fireRule.when + "</span>";
+                    why += " is ";
+                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when) +"\">" + wm[fireRule.when] + "</span>";
+                }
+                why += ", so ";
+                if (fireRule.when == "budget") {
+                    why += "the gift will be in " + "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put) +"\">" + fireRule.put + "</span>"+ " range";
+                } else {
+
+                
+                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put) +"\">" + fireRule.put + "</span>";
+                    why += " is ";
+                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put)+"\">" + fireRule.as + "</span>";
+                }
+                why += "</p>";
+            } 
+        }
+        $(".why").html(why);
+        console.log(why);
+
+
         console.log(wm);
+    }
+
+    $.fn.displayItem = function(items, overwrite=true) {
+        var itemList = "";
+        for(i = 0; i<items.length;i++) {
+            item = items[i];
+            if((i+1)%3 == 1) {
+                if ((i == 0) && overwrite) {
+                    itemList += '<div class="carousel-item active"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
+
+                } else {
+                    itemList += '<div class="carousel-item"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
+                }
+            }
+
+            // itemList += '<div class="item-container">'+'<span id=\"'+item.id+'\">'+
+            // '<label for=\"'+item.id+'\" class=\"btn btn-secondary\">'+
+            // '<input type=\"checkbox\" name=\"recommendation\" id=\"'+item.id+'\" value=\"'+item.id+'\" title=\"'+item.name+'\">' +
+            // '<img for=\"assets/'+item.id+'\" class="img-fluid" src=\"assets/'+item.img+'\"/>'+'</label>'+'<p>'+item.name+'</p>'+' </span>  </div>';
+            
+
+            itemList += '<div class=\"item-container\" for=\"'+item.id+'\">'+
+            '<img for=\"'+item.id+'\" class="carousel-item-img" src=\"assets/'+item.img+'\"/>'+
+            '<p>'+item.name+'</p>'+
+            ' </div>';
+
+            if(((i+1)%3 == 0) || (i == items.length)) {
+                itemList += '<div class="empty"></div></div></div>'
+            }
+        }
+
+        $(this).html(itemList);
     }
     
 });
 
 
-// dev function
+
+
+function getColor(value, text=false) {
+    const tagColor = [
+        ["#ff634d","#ffffff"],
+        ["#ffa500","#ffffff"],
+        ["#f7d859","#ffffff"],
+        ["##bf00ff","#ffffff"],
+        ["#d3dd6c","#ffffff"],
+        ["#9af94e","#ffffff"],
+        ["#68df80","#ffffff"],
+        ["#67ab5b","#ffffff"],
+        ["#4694e9","#ffffff"],
+        ["#53b7ce","#ffffff"]
+    ]
+
+    let colorCode = null;
+    if (label.includes(value)) {
+        colorCode = label.indexOf(value);
+    } else {
+        label.push(value);
+        colorCode = label.indexOf(value);
+    }
+
+    if (!text) {
+        return tagColor[colorCode][0];
+    } else {
+        return tagColor[colorCode][1];
+    }
+}
+
+
+
+
+
+// DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV 
 $("#test_jquery").click(function(){
     wm = {} //testing
     firedRules = []
@@ -406,9 +467,81 @@ $("#test_jquery").click(function(){
 
 
 $("#bktest").click(function() {
-    console.log("run");
-    var data = $.fn.getForm("#bkform");
-    for (rule of rules) {
-        
+    var id = $("#bkid").val();
+    let currentRule = Object.assign([], rules);
+
+    $.fn.addToWM("recommendation",id);
+
+    for (i=0; i<currentRule.length;i++) {
+        console.log(currentRule[i]);
+        var pass = false;
+        if ((currentRule[i].put.length > 1 ) &&  typeof currentRule[i].put == 'object') {
+            var multiPass = true;
+            for (j = 0; j < currentRule[i].put.length; j++) {
+                var condition = "";
+                if (typeof wm[currentRule[i].put[j]] == "string") {
+                    condition = '\"' + wm[currentRule[i].put[j]] +'\"'+ "==" + '\"'+ currentRule[i].as[j] + '\"';           
+                } else {
+                    condition = wm[currentRule[i].put[j]] + "==" + currentRule[i].as[j];  
+                }         
+                console.log("[condition]",condition);
+                console.log("[result]",eval(condition));
+                if (!eval(condition)) {
+                    multiPass = false;
+                    break;
+                }
+            }
+            pass = multiPass;
+        }
+        else {
+            var condition = "";
+            if(typeof wm[currentRule[i].put] != "undefined") {
+                if (typeof currentRule[i].as == "object") {
+                    condition += '[';
+                    for (p = 0; p < currentRule[i].as.length; p++) {
+                        if (typeof currentRule[i].as[p] == "string") {
+                            condition += '\"' + currentRule[i].as[p] + '\"';
+                        } else {
+                            condition += currentRule[i].as[p];
+                        }
+                        if (i != currentRule[i].as.length) {
+                            condition += ",";
+                        }
+                    }
+                    condition += ']'
+                    if (typeof wm[currentRule[i].put] == "string") {
+                        condition += ".includes" + '(\"'+ wm[currentRule[i].put] + '\")';    
+                    } else {
+                        condition += ".includes" + '('+ wm[currentRule[i].put] + ')';    
+                    } 
+                } else if (typeof currentRule[i].as == "boolean") {
+                    condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")'
+                }
+                else {
+                    if (typeof wm[currentRule[i].put] == "string") {
+                        condition = '\"' + wm[currentRule[i].put] +'\"'+ "==" + '\"'+ currentRule[i].as + '\"';           
+                    } else {
+                        condition = wm[currentRule[i].put] + "=="+ currentRule[i].as;
+                    }  
+                }
+                console.log(condition);
+                pass = eval(condition);
+            }
+        } 
+
+
+        if (pass) {
+            if(typeof currentRule[i].when == "object") {
+                for(q=0;q<currentRule[i].when.length;q++) {
+                    $.fn.addToWM(currentRule[i].when[q],currentRule[i].what[q]);
+                }
+            } else {
+                $.fn.addToWM(currentRule[i].when,currentRule[i].what);
+            }
+            var removed = currentRule.splice(i,1);
+            firedRules.push(...removed);
+            i = 0;
+        };
     }
+    console.log(wm);
 });
