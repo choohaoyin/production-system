@@ -16,11 +16,57 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- /.CDN -->
     <script defer src="assets/js/script.js"></script>
+    <script>
+        // $(".items").
+    </script>
 </head>
 <body>
 <header></header>
+
+<div class="catalog">
+    <h2 class="fs-title">Select the recipient interests</h2>
+    <h3 class="fs-subtitle">you can select more than one option.</h3>
+    <div id="items" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+        </div>
+    
+        <a class="carousel-control-prev" href="#items" role="button" data-slide="prev" style="left: 100px;">
+            <span class="sr-only">Previous</span>
+            <img class="arrow" src="assets/images/left-arrow.png" >
+        </a>
+    
+        <a class="carousel-control-next" href="#items" role="button" data-slide="next" style="right: 100px;">
+            <span class="sr-only">Next</span>
+            <img class="arrow" src="assets/images/right-arrow.png" >
+
+        </a>
+    </div>
+</div>
+<div class="popup-overlay">
+    <!--Creates the popup content-->
+    <div class="popup-content container">
+        <div class="row">
+            <h1 class="why-title active" style="text-align: left; margin-left: 20px;">for?</h1>
+        </div>
+        <div class="row px-4">
+            <div class="col-4">
+                <img src="" class="explanation-item-img item-img">
+            </div>
+            <div class="col-8 text-left">
+                <h2 class="item-name"></h2>
+                <p class="item-price"></p>
+                <button class="action-button buy-button" style="left: 50px;">Buy</button>
+            </div>
+        </div>
+        <div class="row text-justify p-4 for-explanation">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero iste in cum optio esse praesentium saepe alias error laborum, sapiente cupiditate accusantium laudantium eius nulla ullam! Dolores, tempore recusandae?
+        </div>
+        <!--popup's close button-->
+        <button class="close">Close</button> 
+    </div>
+    
+</div>
 <button id="magic">Show me magic</button>
-<div class="catalog"></div>
 <footer></footer>
 </div>
 </body>
