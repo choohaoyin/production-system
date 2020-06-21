@@ -21,7 +21,7 @@ body {
 }
 
 /*form styles*/
-#msform {
+#msform, .catalog {
     text-align: center;
     position: relative;
 }
@@ -37,7 +37,7 @@ body {
     background-color: #eee6e6 !important;
 }
 
-#msform fieldset {
+#msform fieldset, .catalog {
     min-height: 420px;
     background: white;
     border: 0 none;
@@ -233,11 +233,29 @@ footer img:hover{
     top: 25%;
 }
 
+/* .carousel-item-img {
+    width: 100%;
+    height: 100%;
+} */
+
 .item-container {
-    width: 225px;
-    padding: 0 10px;
+    margin: 0 10px;
+    transform-origin: top center;
+    transition: 0.2s ease-out;
 }
 
+.carousel-item-img {
+    border: solid 1px darkgray;
+    border-radius: 5px;
+    width: 225px;
+    height: auto;
+    padding: 10px;
+    
+}
+
+.item-container:hover {
+    transform: scale(1.05);
+}
 
 .popup-overlay {
     /*Hides pop-up when there is no "active" class*/
@@ -253,37 +271,72 @@ footer img:hover{
     transform: translate(-50%,-50%);
   }
   
-  .popup-overlay.active {
-    visibility: visible;
-    text-align: center;
-  }
+.popup-overlay.active {
+visibility: visible;
+text-align: center;
+}
   
-  .popup-content {
-    /*Hides pop-up content when there is no "active" class */
-    background-color: white;
-    width: 75%;
-    height: auto;
-    position: fixed;
-    top: 40%;
+.popup-content {
+/*Hides pop-up content when there is no "active" class */
+background-color: white;
+width: 75%;
+height: auto;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+visibility: hidden;
+padding: 10px;
+}
+
+.popup-content img {
+    position: relative;
     left: 50%;
-    transform: translate(-50%,-50%);
-    visibility: hidden;
-  }
+    transform: translate(-50%);
+}
   
-  .popup-content.active {
-    /*Shows pop-up content when "active" class is present */
+.popup-content.active {
+/*Shows pop-up content when "active" class is present */
     background-color: white;
     z-index:99;
     opacity: 1;
     visibility: visible;
-  }
+}
 
-  .popup-content .buy-button, .popup-content .why-title, .popup-content .why, 
-  .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
-    visibility: hidden;
-  }
+.popup-content .buy-button {
+    position: relative; 
+    left: 50%; 
+    transform: translate(-50%);
+    margin: 5px 0 0 0;
+}
 
-  .popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why.active, 
-  .popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
-    visibility: visible;
+.popup-content .buy-button {
+    position: relative; 
+    left: 50%; 
+    transform: translate(-50%);
+    margin: 5px 0 0 0;
+}
+
+.popup-content .buy-button, .popup-content .why-title, .popup-content .why, 
+.popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
+display: none;
+}
+
+.popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why.active, 
+.popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
+display: block;
+}
+
+#tag {
+    padding: 2px;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: white;
+}
+
+.explanation-item-img {
+    width: 200px;
+    border: 1px solid darkgray;
+    position: relative;
+    text-align: left;
 }
