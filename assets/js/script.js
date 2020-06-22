@@ -7,6 +7,8 @@ var current_fs_index = 1;
 // Inference Engine
 let rules = new Object(); // to store rules list
 let items = new Object(); // to store items list
+let wm = {}; // W
+let firedRules = [];
 
 // // Explanation Module
 // let label = []; // for tag labelling
@@ -21,14 +23,12 @@ $(function(){
 });
 
 // Load rules list
-$.getJSON("assets/json/rules.json", function(data) {
-    console.log("rules loaded");
-    rules = data;
-});
+// $.getJSON("assets/json/rules.json", function(data) {
+//     rules = data;
+// });
 
 // Load items list
 $.getJSON("assets/json/items.json", function(data) {
-    console.log("items loaded")
     items = data;
 });
 
@@ -51,6 +51,19 @@ $("input[type=number]").keydown(function (e) {
     }
 })
 
+  $("#age").on('input',function () {
+    var max = parseInt($(this).attr('max'));
+    var min = parseInt($(this).attr('min'));
+    if ($(this).val() > max)
+    {
+        $(this).val(max);
+    }
+    else if (($(this).val() < min) || $(this).val() == "")
+    {
+        $(this).val(min);
+    }
+  });
+
 // Validate input to enable next button
 $("fieldset :input").change(function () {
     $(this).parents("fieldset").children(".next").prop("disabled", false);
@@ -58,7 +71,6 @@ $("fieldset :input").change(function () {
 
 // Make checkbox as radio button
 $("#occassion :input").change(function () {
-    console.log($(this).parents('fieldset').find('label'));
     $(this).parents('fieldset').find('label').removeClass("active");
     $(this).addClass("active");
 })
@@ -106,13 +118,6 @@ $(".next").click(function(){
 
     // $("input:radio").change(function () {$("#postGender").prop("disabled", false);})
 
-    console.log(current_fs.find("input"));
-
-    current_fs.find("input").each(function () {
-        console.log(this);
-    })
-
-
     // Footer re-position
     $(".form-container").height(next_fs.height());
 
@@ -136,9 +141,7 @@ $(".next").click(function(){
 
 // Pop up modal window for each item detail
 $("#recommendation .carousel-inner").on("click",".carousel-item .item-container", function () {
-    console.log(this)
     var id = $(this).attr("for");
-    console.log(id);
     var matched = null;
     var test = items.filter(function (category) {
         var x = category.filter(function (item) {
@@ -254,8 +257,8 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
 });
 
 
-let wm = {};
-let firedRules = [];
+// let wm = {};
+// let firedRules = [];
 
 // Define jQuery Function
 $(document).ready(function(){
@@ -264,7 +267,6 @@ $(document).ready(function(){
         $.each(data, function(index, value) {
             $.fn.addToWM(value.name,value.value);
         })
-        console.log(wm)
     }
 
 
@@ -290,53 +292,65 @@ $(document).ready(function(){
         $.fn.getForm(form);
         let currentRule = Object.assign([], rules);
         for (i=0; i<currentRule.length;i++) {
-            var pass = false;
-            if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
-                var multiPass = true;
-                for (j = 0; j < currentRule[i].when.length; j++) {
-                    var condition = "";
-                    console.log(typeof wm[currentRule[i].when[j]]);
-                    if (typeof wm[currentRule[i].when[j]] == "string") {
-                        condition = '\"' + wm[currentRule[i].when[j]] +'\"'+ currentRule[i].is[j] + '\"'+ currentRule[i].what[j] + '\"';           
-                    } else {
-                        condition = wm[currentRule[i].when[j]] + currentRule[i].is[j] + currentRule[i].what[j];  
-                    }         
-                    console.log("[condition]",condition);
-                    console.log("[result]",eval(condition));
-                    if (!eval(condition)) {
-                        multiPass = false;
-                        break;
+            var condition = "";
+            console.log(currentRule);
+            console.log(typeof currentRule[i].when);
+
+            if (typeof currentRule[i].when == 'object') {
+                console.log("not single rule");
+                for (j=0;j<currentRule[i].when.length;j++) {
+                    console.log(typeof currentRule[i].when[j]);
+                    if (typeof currentRule[i].when[j] == 'object') { // AND
+                        var andPass;
+                        for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
+                            if (typeof currentRule[i].what[j][p] == "string") {
+                                condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
+
+                            } else {
+                                condition += `( ${wm[currentRule[i].when[j][p]]}  ${currentRule[i].is[j][p]}  ${currentRule[i].what[j][p]} )`;
+                            }
+                            if(p != currentRule[i].when[j].length - 1) {
+                                condition += "&&";
+                            }
+                        }
+
+                    } else { // OR
+                        console.log(`[OR RULE] ${currentRule[i].when[j]}`);
+                        if (typeof currentRule[i].what[j] == "string") {
+                            condition += `( "${wm[currentRule[i].when[j]]}"  ${currentRule[i].is[j]}  "${currentRule[i].what[j]}" )`;
+
+                        } else {
+                            condition += `( ${wm[currentRule[i].when[j]]}  ${currentRule[i].is[j]}  ${currentRule[i].what[j]} )`;
+                        }
+                        if(j != currentRule[i].when.length - 1) {
+                            condition += "||";
+                        }   
                     }
                 }
-                console.log(multiPass);
-                pass = multiPass;
-            }
-            else {
-                var condition = "";
-                console.log(currentRule[i]);
-                console.log(typeof wm[currentRule[i].when]);
-                    if(typeof wm[currentRule[i].when] != "undefined") {
-                    if (typeof wm[currentRule[i].when] == "string") {
-                        condition = '\"' + wm[currentRule[i].when] +'\"'+ currentRule[i].is + '\"'+ currentRule[i].what + '\"';           
-                    } else {
-                        condition = wm[currentRule[i].when] + currentRule[i].is + currentRule[i].what;
-                    }  
-                    pass = eval(condition);
+            } else { // SINGLE RULE
+                if (typeof currentRule[i].what == "string") {
+                    condition += `( "${wm[currentRule[i].when]}"  ${currentRule[i].is}  "${currentRule[i].what}" )`;
+
+                } else {
+                    condition += `( ${wm[currentRule[i].when]}  ${currentRule[i].is}  ${currentRule[i].what} )`;
                 }
             }
-            if (pass) {
+
+            console.log(condition);
+            console.log(eval(condition));
+
+            if (eval(condition)) {
+                console.log("condition is true");
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
                 var removed = currentRule.splice(i,1);
+                console.log(`removed ${removed}`);
                 firedRules.push(...removed);
-                i = 0;
-            };
+                i = -1;
+            }
         }
-        $(".why-explanation").explaination(firedRules,"rules");
-
-
         console.log(wm);
+        $(".why-explanation").explaination(firedRules,"rules");
     }
-
 
     $.fn.backwardChaining = function(id) {
         wm = {};
@@ -579,36 +593,160 @@ $(document).ready(function(){
 
 
 // DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV 
+
+
+
+// $.getJSON("assets/json/rules_test.json", function(data) {
+//     rules = data;
+// });
+
+
+// wm = {
+//     "budget": 200,
+//     "occassion": "anniversary",
+//     "interest": "flowers"
+// }
+
+
+function evaluate(arr) {
+    var element = arr[0]
+    var condition = arr[1]
+
+    if(typeof arr[0] == "object") {
+        evaluate(element)
+    } else {
+        switch(condition) {
+            case "OR":
+                condition = "||";
+                break;
+            case "AND":
+                condition = "&&";
+                break;
+        }
+
+        
+    }
+}
+
+
 $("#test_jquery").click(function(){
-    wm = {} //testing
-    firedRules = []
-    $.fn.forwardChaining();
-    var recommendation = [];
-    console.log(recommendation)
-    console.log("[wm re]",wm.recommendation)
-    if (wm.recommendation !== undefined) {
-        console.log("here");
-        recommendation = wm.recommendation;
-        console.log(recommendation);
+    console.log("run");
+    
+    // let wm = {
+    //     "budget": 500,
+    //     "gender": "male"
+    // }
+
+    let currentRule = Object.assign([], rules);
+    // var condition = "";
+    for (i=0; i<currentRule.length;i++) {
+        var condition = "";
+        console.log(currentRule[i]);
+        console.log(typeof currentRule[i].when);
+
+        // if(!wm.hasOwnProperty(currentRule[i].when)) {
+        //     continue;
+        // }
+
+        if (typeof currentRule[i].when == 'object') {
+            console.log("not single rule");
+            for (j=0;j<currentRule[i].when.length;j++) {
+                console.log(typeof currentRule[i].when[j]);
+                if (typeof currentRule[i].when[j] == 'object') { // AND
+                    var andPass;
+                    for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
+                        if (typeof currentRule[i].what[j][p] == "string") {
+                            condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
+
+                        } else {
+                            condition += `( ${wm[currentRule[i].when[j][p]]}  ${currentRule[i].is[j][p]}  ${currentRule[i].what[j][p]} )`;
+                        }
+                        if(p != currentRule[i].when[j].length - 1) {
+                            condition += "&&";
+                        }
+                    }
+
+                } else { // OR
+                    console.log(`[OR RULE] ${currentRule[i].when[j]}`);
+                    if (typeof currentRule[i].what[j] == "string") {
+                        condition += `( "${wm[currentRule[i].when[j]]}"  ${currentRule[i].is[j]}  "${currentRule[i].what[j]}" )`;
+
+                    } else {
+                        condition += `( ${wm[currentRule[i].when[j]]}  ${currentRule[i].is[j]}  ${currentRule[i].what[j]} )`;
+                    }
+                    if(j != currentRule[i].when.length - 1) {
+                        condition += "||";
+                    }   
+                }
+            }
+        } else { // SINGLE RULE
+            if (typeof currentRule[i].what == "string") {
+                condition += `( "${wm[currentRule[i].when]}"  ${currentRule[i].is}  "${currentRule[i].what}" )`;
+
+            } else {
+                condition += `( ${wm[currentRule[i].when]}  ${currentRule[i].is}  ${currentRule[i].what} )`;
+            }
+        }
+
+        console.log(condition);
+        console.log(eval(condition));
+
+        if (eval(condition)) {
+
+            $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+            var removed = currentRule.splice(i,1);
+            firedRules.push(...removed);
+            i = -1;
+        }
+
+        // if (pass) {
+            //     $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+            //     var removed = currentRule.splice(i,1);
+            //     firedRules.push(...removed);
+            //     i = -1;
+            // };
+        // var pass = false;
+        // if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
+        //     var multiPass = true;
+        //     for (j = 0; j < currentRule[i].when.length; j++) {
+        //         var condition = "";
+        //         console.log(typeof wm[currentRule[i].when[j]]);
+        //         if (typeof wm[currentRule[i].when[j]] == "string") {
+        //             condition = '\"' + wm[currentRule[i].when[j]] +'\"'+ currentRule[i].is[j] + '\"'+ currentRule[i].what[j] + '\"';           
+        //         } else {
+        //             condition = wm[currentRule[i].when[j]] + currentRule[i].is[j] + currentRule[i].what[j];  
+        //         }         
+        //         console.log("[condition]",condition);
+        //         console.log("[result]",eval(condition));
+        //         if (!eval(condition)) {
+        //             multiPass = false;
+        //             break;
+        //         }
+        //     }
+        //     console.log(multiPass);
+        //     pass = multiPass;
+        // }
+        // else {
+        //     var condition = "";
+        //     console.log(currentRule[i]);
+        //     console.log(typeof wm[currentRule[i].when]);
+        //         if(typeof wm[currentRule[i].when] != "undefined") {
+        //             if (typeof wm[currentRule[i].when] == "string") {
+        //                 condition = '\"' + wm[currentRule[i].when] +'\"'+ currentRule[i].is + '\"'+ currentRule[i].what + '\"';           
+        //             } else {
+        //                 condition = wm[currentRule[i].when] + currentRule[i].is + currentRule[i].what;
+        //             }  
+        //             pass = eval(condition);
+        //         }
+        // }
+        // if (pass) {
+        //     $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+        //     var removed = currentRule.splice(i,1);
+        //     firedRules.push(...removed);
+        //     i = -1;
+        // };
     }
-    var htmlCode = "";
-    console.log("[re]",recommendation)
-    if (recommendation.length > 0) {
-        $.each(recommendation, function(index, value) {
-            console.log(value);
-            title = value
-            des = title
-            price = 0
-            htmlCode += '<div style="border: black solid 1px; margin: 10px; padding: 5px;">'+'<h1>'+title+'</h1>'+'<h2>'+
-                des+'</h2>'+'<h3>'+price+'</h3>'+'</div>';
-        })
-    }
-    $("#result").html(htmlCode);
-    whyString = ""
-    for(firedRule of firedRules) {
-        whyString += firedRule.description + "<br>";
-    }
-    $("#why").html(whyString);
+    console.log(wm);
 });
 
 
