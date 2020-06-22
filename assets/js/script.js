@@ -279,7 +279,11 @@ $(document).ready(function(){
                 if(typeof wm[name] !== 'object') {
                     wm[name] = [wm[name]];
                 }
-                wm[name].push(value);
+                if (typeof value == "object") {
+                    wm[name].push(...value);
+                } else {
+                    wm[name].push(value);
+                }
             } else {
                 wm[name] = value;
             }
@@ -341,7 +345,9 @@ $(document).ready(function(){
 
             if (eval(condition)) {
                 console.log("condition is true");
+                console.log(wm);
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
+                console.log(wm);
                 var removed = currentRule.splice(i,1);
                 console.log(`removed ${removed}`);
                 firedRules.push(...removed);
