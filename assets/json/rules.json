@@ -315,59 +315,147 @@
 
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["affordable", "beauty", "female"]],
         "put": "recommendation", 
         "as": ["B0001", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["mid-range", "beauty", "female"]],
         "put": "recommendation", 
         "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["mid-luxury", "beauty", "female"]],
         "put": "recommendation", 
         "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["luxury", "beauty", "female"]],
         "put": "recommendation", 
         "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["affordable", "beauty", "male"]],
         "put": "recommendation", 
         "as": ["B0019", "B0020"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["mid-range", "beauty", "male"]],
         "put": "recommendation", 
         "as": ["B0014", "B0015", "B0018", "B0019", "B0020"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["mid-luxury", "beauty", "male"]],
         "put": "recommendation", 
         "as": ["B0014", "B0015", "B0016", "B0017", "B0018", "B0019", "B0020"]
     },
     {
         "when": [["range", "interest", "gender"]],
-        "is": [["==", "==", "==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["luxury", "beauty", "male"]],
         "put": "recommendation", 
         "as": ["B0014", "B0015", "B0016", "B0017", "B0018", "B0019", "B0020"]
+    },
+
+
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["affordable", "accessories", "female"]],
+        "put": "recommendation", 
+        "as": ["A0001", "A0002", "A0004", "A0005", "A0006", "A0008", "A0011"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-range", "accessories", "female"]],
+        "put": "recommendation", 
+        "as": ["A0001", "A0002", "A0004", "A0005", "A0006", "A0008", "A0010", "A0011"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-luxury", "accessories", "female"]],
+        "put": "recommendation", 
+        "as": ["A0001", "A0002", "A0003", "A0004", "A0005", "A0006", "A0007", "A0008", "A0009", "A0010", "A0011", "A0012", "A0013"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["luxury", "accessories", "female"]],
+        "put": "recommendation", 
+        "as": ["A0001", "A0002", "A0003", "A0004", "A0005", "A0006", "A0007", "A0008", "A0009", "A0010", "A0011", "A0012", "A0013", "A0014"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["affordable", "accessories", "male"]],
+        "put": "recommendation", 
+        "as": ["A0019", "A0020", "A0021", "A0022", "A0023", "A0024", "A0025", "A0026"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-range", "accessories", "male"]],
+        "put": "recommendation", 
+        "as": ["A0015", "A0019", "A0020", "A0021", "A0022", "A0023", "A0024", "A0025", "A0026"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-luxury", "accessories", "male"]],
+        "put": "recommendation", 
+        "as": ["A0015", "A0016", "A0017", "A0019", "A0020", "A0021", "A0022", "A0023", "A0024", "A0025", "A0026"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["luxury", "accessories", "male"]],
+        "put": "recommendation", 
+        "as": ["A0015", "A0016", "A0017", "A0018", "A0019", "A0020", "A0021", "A0022", "A0023", "A0024", "A0025", "A0026"]
+    },
+    {
+        "when": [["range", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["affordable", "accessories"]],
+        "put": "recommendation", 
+        "as": ["A0027", "A0029"]
+    },
+    {
+        "when": [["range", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["mid-range", "accessories"]],
+        "put": "recommendation", 
+        "as": ["A0027", "A0028", "A0029", "A0030"]
+    },
+    {
+        "when": [["range", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["mid-luxury", "accessories"]],
+        "put": "recommendation", 
+        "as": ["A0027", "A0028", "A0029", "A0030", "A0031", "A0032"]
+    },
+    {
+        "when": [["range", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["luxury", "accessories"]],
+        "put": "recommendation", 
+        "as": ["A0027", "A0028", "A0029", "A0030", "A0031", "A0032"]
     }
+
+
 
 ]
