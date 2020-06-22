@@ -323,12 +323,12 @@ padding: 10px;
     margin: 5px 0 0 0;
 }
 
-.popup-content .buy-button, .popup-content .why-title, .popup-content .why, 
+.popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
 .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
 display: none;
 }
 
-.popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why.active, 
+.popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why-explanation.active, 
 .popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
 display: block;
 }
