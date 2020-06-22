@@ -23,9 +23,9 @@ $(function(){
 });
 
 // Load rules list
-// $.getJSON("assets/json/rules.json", function(data) {
-//     rules = data;
-// });
+$.getJSON("assets/json/rules.json", function(data) {
+    rules = data;
+});
 
 // Load items list
 $.getJSON("assets/json/items.json", function(data) {
@@ -336,7 +336,7 @@ $(document).ready(function(){
                 }
             }
 
-            console.log(condition);
+            console.log(`[${i}] ${condition}`);
             console.log(eval(condition));
 
             if (eval(condition)) {
@@ -608,25 +608,25 @@ $(document).ready(function(){
 // }
 
 
-function evaluate(arr) {
-    var element = arr[0]
-    var condition = arr[1]
+// function evaluate(arr) {
+//     var element = arr[0]
+//     var condition = arr[1]
 
-    if(typeof arr[0] == "object") {
-        evaluate(element)
-    } else {
-        switch(condition) {
-            case "OR":
-                condition = "||";
-                break;
-            case "AND":
-                condition = "&&";
-                break;
-        }
+//     if(typeof arr[0] == "object") {
+//         evaluate(element)
+//     } else {
+//         switch(condition) {
+//             case "OR":
+//                 condition = "||";
+//                 break;
+//             case "AND":
+//                 condition = "&&";
+//                 break;
+//         }
 
         
-    }
-}
+//     }
+// }
 
 
 $("#test_jquery").click(function(){
