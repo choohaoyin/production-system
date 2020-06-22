@@ -51,10 +51,12 @@ $("input[type=number]").keydown(function (e) {
     }
 })
 
+// Validate input to enable next button
 $("fieldset :input").change(function () {
     $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
+// Make checkbox as radio button
 $("#occassion :input").change(function () {
     console.log($(this).parents('fieldset').find('label'));
     $(this).parents('fieldset').find('label').removeClass("active");
