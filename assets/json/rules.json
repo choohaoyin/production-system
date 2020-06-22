@@ -7,9 +7,9 @@
         "as": true
     },
     { 
-        "when": "budget",
-        "is": "<",
-        "what": 1000,
+        "when": ["budget","budget"],
+        "is": ["<",">="],
+        "what": 100,
         "put": "medium", 
         "as": true
     },

@@ -135,8 +135,8 @@ $("#recommendation .carousel-inner").on("click",".carousel-item .item-container"
 });
 
 // Pop up modal window for "why these items"
-$("#why").click(function () {
-    $(".popup-overlay, .popup-content, .why-title, .why").addClass("active");
+$("#why-button").click(function () {
+    $(".popup-overlay, .popup-content, .why-title, .why-explanation").addClass("active");
 })
 
 // removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
@@ -192,21 +192,10 @@ $("#magic").click(function() {
     itemList = []
     for(categories of items) {
         for(item of categories) {
-            if (Math.random() > 0.5) {
-                break; // testing purpose, avoid too many item to be preview
+            console.log(item.id);
+            if (!["T0011","T0015","T0016","T0017","A0020","A0019"].includes(item.id)) {
+                continue; // testing purpose, avoid too many item to be preview
             }
-            console.log(item);
-            // id = item["id"];
-            // name = item["name"];
-            // price = item["price"];
-            // img = "assets/" + item["img"];
-            // link = item["link"];
-            // var add = '<a href=\"'+link+'\"'+'<div style="border: black solid 1px; margin: 10px; padding: 5px; width: 250px; float: right;">'+'<img src=\"'+img+'\" style="height: 100px; width:auto;">'+'<h3>'+name+'</h3>'+'<h4>'+
-            // price+'</h4>'+'<h5>'+id+'</h5>'+'</div>'+'</a>';
-
-            // current = $(".catalog").html();
-            // current += add
-            // $(".catalog").html(current);
             
             itemList.push(item);
         }
@@ -231,13 +220,15 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
     })
 
 
-
-
     $(".popup-overlay, .why-title, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");    
     $(".item-img").attr("src","assets/"+matched.img);
     $(".item-name").html(matched.name);
     $(".item-price").html(matched.price);
     $(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
+
+    $.fn.backwardChaining(id);
+    
+    $("#for-explanation").explaination(wm,"facts");
 
 });
 
@@ -319,45 +310,183 @@ $(document).ready(function(){
                 i = 0;
             };
         }
-        var why = "";
-        for(fireRule of firedRules) {
-            
-            if (fireRule.when != "recommendation_cat") {
-                why += "<p>";
-
-                if (typeof fireRule.when == "object") {
-                    for(i = 0; i<fireRule.when.length;i++) {
-                        why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when[i]) +"\">" + fireRule.when[i] + "</span>";
-                        why += " is "
-                        why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when[i]) +"\">" + wm[fireRule.when[i]]+ "</span>";;
-
-                        if (i != fireRule.when.length-1) {
-                            why += " and "
-                        }
-                    }
-                } else {
-                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when) +"\">" + fireRule.when + "</span>";
-                    why += " is ";
-                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.when) +"\">" + wm[fireRule.when] + "</span>";
-                }
-                why += ", so ";
-                if (fireRule.when == "budget") {
-                    why += "the gift will be in " + "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put) +"\">" + fireRule.put + "</span>"+ " range";
-                } else {
-
-                
-                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put) +"\">" + fireRule.put + "</span>";
-                    why += " is ";
-                    why += "<span id=\"tag\" style=\"background-color:"+ getColor(fireRule.put)+"\">" + fireRule.as + "</span>";
-                }
-                why += "</p>";
-            } 
-        }
-        $(".why").html(why);
-        console.log(why);
+        $(".why-explanation").explaination(firedRules,"rules");
 
 
         console.log(wm);
+    }
+
+
+    $.fn.backwardChaining = function(id) {
+        wm = {};
+        let currentRule = Object.assign([], rules);
+        // id = $(this).attr("for");
+        $.fn.addToWM("recommendation",id);
+        console.log(id);
+        for (i=0; i<currentRule.length;i++) {
+            console.log(currentRule);
+
+
+            var pass = false;
+            if ((currentRule[i].put.length > 1 ) &&  typeof currentRule[i].put == 'object') {
+                var multiPass = true;
+                for (j = 0; j < currentRule[i].put.length; j++) {
+                    var condition = "";
+                    if (typeof wm[currentRule[i].put[j]] == "string") {
+                        condition = '\"' + wm[currentRule[i].put[j]] +'\"'+ "==" + '\"'+ currentRule[i].as[j] + '\"';           
+                    } else {
+                        condition = wm[currentRule[i].put[j]] + "==" + currentRule[i].as[j];  
+                    }         
+                    console.log("[condition]",condition);
+                    console.log("[result]",eval(condition));
+                    if (!eval(condition)) {
+                        multiPass = false;
+                        break;
+                    }
+                }
+                pass = multiPass;
+            }
+
+
+            else {
+                console.log(typeof currentRule[i].as);
+
+                var condition = "";
+                if(wm.hasOwnProperty(currentRule[i].put)) {
+                    if (typeof currentRule[i].as == "object") {
+                        condition += '[';
+                        for (p = 0; p < currentRule[i].as.length; p++) {
+                            if (typeof currentRule[i].as[p] == "string") {
+                                condition += '\"' + currentRule[i].as[p] + '\"';
+                            } else {
+                                condition += currentRule[i].as[p];
+                            }
+                            if (p != currentRule[i].as.length) {
+                                condition += ",";
+                            }
+                        }
+                        condition += ']'
+                        if (typeof wm[currentRule[i].put] == "string") {
+                            condition += ".includes" + '(\"'+ wm[currentRule[i].put] + '\")';    
+                        } else {
+                            condition += ".includes" + '('+ wm[currentRule[i].put] + ')';    
+                        } 
+                    } else if (typeof currentRule[i].as == "boolean") {
+                        console.log("boolean execute");
+                        condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")'
+                    }
+                    else {
+                        if (typeof wm[currentRule[i].put] == "string") {
+                            condition = '\"' + wm[currentRule[i].put] +'\"'+ "==" + '\"'+ currentRule[i].as + '\"';           
+                        } else {
+                            condition = wm[currentRule[i].put] + "=="+ currentRule[i].as;
+                        }  
+                    }
+                    console.log(condition);
+                    pass = eval(condition);
+                } else if (typeof currentRule[i].as == "boolean"){
+                    condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")';
+                    console.log(condition);
+                    pass = eval(condition);
+                    console.log(pass);
+                }
+            } 
+            if (pass) {
+                if(typeof currentRule[i].when == "object") {
+                    for(q=0;q<currentRule[i].when.length;q++) {
+                        $.fn.addToWM(currentRule[i].when[q],currentRule[i].what[q]);
+                    }
+                } else {
+                    $.fn.addToWM(currentRule[i].when,currentRule[i].what);
+                }
+                var removed = currentRule.splice(i,1);
+                firedRules.push(...removed);
+                i = -1; //reset the loop
+            };
+        }
+        console.log(wm);
+    }
+
+
+    $.fn.explaination = function(items, option) {
+
+        function getColor(value, text=false) {
+            const tagColor = [
+                ["#ff634d","#ffffff"],
+                ["#ffa500","#ffffff"],
+                ["#f7d859","#ffffff"],
+                ["##bf00ff","#ffffff"],
+                ["#d3dd6c","#ffffff"],
+                ["#9af94e","#ffffff"],
+                ["#68df80","#ffffff"],
+                ["#67ab5b","#ffffff"],
+                ["#4694e9","#ffffff"],
+                ["#53b7ce","#ffffff"]
+            ]
+        
+            let colorCode = null;
+            if (label.includes(value)) {
+                colorCode = label.indexOf(value);
+            } else {
+                label.push(value);
+                colorCode = label.indexOf(value);
+            }
+        
+            if (!text) {
+                return tagColor[colorCode][0];
+            } else {
+                return tagColor[colorCode][1];
+            }
+        }
+
+        var why = "";
+
+        switch(option) {
+            case "rules":
+                for(item of items) {
+                    if (item.when != "recommendation_cat") {
+                        why += "<p>";
+    
+                        if (typeof item.when == "object") {
+                            for(i = 0; i<item.when.length;i++) {
+                                why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + item.when[i] + "</span>";
+                                why += " is "
+                                why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + wm[item.when[i]]+ "</span>";;
+    
+                                if (i != item.when.length-1) {
+                                    why += " and "
+                                }
+                            }
+                        } else {
+                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + item.when + "</span>";
+                            why += " is ";
+                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + wm[item.when] + "</span>";
+                        }
+                        why += ", so ";
+                        if (item.when == "budget") {
+                            why += "the gift will be in " + "<span id=\"tag\" style=\"background-color:"+ getColor(item.put) +"\">" + item.put + "</span>"+ " range";
+                        } else {
+                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.put) +"\">" + item.put + "</span>";
+                            why += " is ";
+                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.put)+"\">" + item.as + "</span>";
+                        }
+                        why += "</p>";
+                    }
+                } 
+                break;
+            case "facts":
+                for(attr in items) {
+                    if (items.hasOwnProperty(attr)) {
+                        why += '<p>' + attr + '->' + items.attr +'</p>';
+                    }
+                }
+
+                break;
+            default:
+                why = "Unknown error occured";
+                break;
+        }
+        $(this).html(why);
     }
 
     $.fn.displayItem = function(items, overwrite=true) {
@@ -371,13 +500,7 @@ $(document).ready(function(){
                 } else {
                     itemList += '<div class="carousel-item"><div class="row btn-group btn-group-toggle" data-toggle="buttons"><div class="empty"></div>';
                 }
-            }
-
-            // itemList += '<div class="item-container">'+'<span id=\"'+item.id+'\">'+
-            // '<label for=\"'+item.id+'\" class=\"btn btn-secondary\">'+
-            // '<input type=\"checkbox\" name=\"recommendation\" id=\"'+item.id+'\" value=\"'+item.id+'\" title=\"'+item.name+'\">' +
-            // '<img for=\"assets/'+item.id+'\" class="img-fluid" src=\"assets/'+item.img+'\"/>'+'</label>'+'<p>'+item.name+'</p>'+' </span>  </div>';
-            
+            }            
 
             itemList += '<div class=\"item-container\" for=\"'+item.id+'\">'+
             '<img for=\"'+item.id+'\" class="carousel-item-img" src=\"assets/'+item.img+'\"/>'+
@@ -397,34 +520,7 @@ $(document).ready(function(){
 
 
 
-function getColor(value, text=false) {
-    const tagColor = [
-        ["#ff634d","#ffffff"],
-        ["#ffa500","#ffffff"],
-        ["#f7d859","#ffffff"],
-        ["##bf00ff","#ffffff"],
-        ["#d3dd6c","#ffffff"],
-        ["#9af94e","#ffffff"],
-        ["#68df80","#ffffff"],
-        ["#67ab5b","#ffffff"],
-        ["#4694e9","#ffffff"],
-        ["#53b7ce","#ffffff"]
-    ]
 
-    let colorCode = null;
-    if (label.includes(value)) {
-        colorCode = label.indexOf(value);
-    } else {
-        label.push(value);
-        colorCode = label.indexOf(value);
-    }
-
-    if (!text) {
-        return tagColor[colorCode][0];
-    } else {
-        return tagColor[colorCode][1];
-    }
-}
 
 
 
@@ -468,12 +564,15 @@ $("#test_jquery").click(function(){
 
 $("#bktest").click(function() {
     var id = $("#bkid").val();
+    wm = {};
     let currentRule = Object.assign([], rules);
 
     $.fn.addToWM("recommendation",id);
 
     for (i=0; i<currentRule.length;i++) {
-        console.log(currentRule[i]);
+        console.log(currentRule);
+
+
         var pass = false;
         if ((currentRule[i].put.length > 1 ) &&  typeof currentRule[i].put == 'object') {
             var multiPass = true;
@@ -493,9 +592,13 @@ $("#bktest").click(function() {
             }
             pass = multiPass;
         }
+
+
         else {
+            console.log(typeof currentRule[i].as);
+
             var condition = "";
-            if(typeof wm[currentRule[i].put] != "undefined") {
+            if(wm.hasOwnProperty(currentRule[i].put)) {
                 if (typeof currentRule[i].as == "object") {
                     condition += '[';
                     for (p = 0; p < currentRule[i].as.length; p++) {
@@ -504,7 +607,7 @@ $("#bktest").click(function() {
                         } else {
                             condition += currentRule[i].as[p];
                         }
-                        if (i != currentRule[i].as.length) {
+                        if (p != currentRule[i].as.length) {
                             condition += ",";
                         }
                     }
@@ -515,6 +618,7 @@ $("#bktest").click(function() {
                         condition += ".includes" + '('+ wm[currentRule[i].put] + ')';    
                     } 
                 } else if (typeof currentRule[i].as == "boolean") {
+                    console.log("boolean execute");
                     condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")'
                 }
                 else {
@@ -526,10 +630,13 @@ $("#bktest").click(function() {
                 }
                 console.log(condition);
                 pass = eval(condition);
+            } else if (typeof currentRule[i].as == "boolean"){
+                condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")';
+                console.log(condition);
+                pass = eval(condition);
+                console.log(pass);
             }
         } 
-
-
         if (pass) {
             if(typeof currentRule[i].when == "object") {
                 for(q=0;q<currentRule[i].when.length;q++) {
@@ -540,7 +647,7 @@ $("#bktest").click(function() {
             }
             var removed = currentRule.splice(i,1);
             firedRules.push(...removed);
-            i = 0;
+            i = -1; //reset the loop
         };
     }
     console.log(wm);
