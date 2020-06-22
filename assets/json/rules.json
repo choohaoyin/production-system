@@ -174,7 +174,6 @@
         "put": "recommendation", 
         "as": ["F0009", "F0010", "F0011", "F0014", "F0015", "F0016", "F0017", "F0018"]
     },
-shenmeming
     {
         "when": [["range", "interest"]],
         "is": [["==", "=="]],
@@ -206,125 +205,51 @@ shenmeming
 
 
     {
-        "when": [["occasion", "interest","range"]],
+        "when": [["occasion", "interest"]],
         "is": [["==", "==","=="]],
-        "what": [["anniversary", "cards", "affordable"]],
+        "what": [["anniversary", "cards"]],
         "put": "recommendation", 
         "as": ["GC0001", "GC0002", "GC0003", "GC0015"]
     },
     {
-        "when": [["occasion", "interest","range"]],
-        "is": [["==", "==","=="]],
-        "what": [["anniversary", "cards", "mid-range"]],
-        "put": "recommendation", 
-        "as": ["GC0001", "GC0002", "GC0003", "GC0015"]
-    },
-    {
-        "when": [["occasion", "interest","range"]],
-        "is": [["==", "==","=="]],
-        "what": [["anniversary", "cards", "mid-luxury"]],
-        "put": "recommendation", 
-        "as": ["GC0001", "GC0002", "GC0003", "GC0015"]
-    },
-    {
-        "when": [["occasion", "interest","range"]],
-        "is": [["==", "==","=="]],
-        "what": [["anniversary", "cards", "luxury"]],
-        "put": "recommendation", 
-        "as": ["GC0001", "GC0002", "GC0003", "GC0015"]
-    },
-
-
-    {
-        "when": ["range","range", "range", "range", ["occasion", "interest"]],
-        "is": ["==", "==", "==", "==", ["==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["anniversary", "cards"]],
-        "put": "recommendation", 
-        "as": ["GC0001", "GC0002", "GC0003", "GC0015"]
-    },
-
-
-
-
-    {
-        "when": [["occasion", "interest", "gender","range"]],
-        "is": [["==", "==", "==","=="]],
-        "what": [["birthday", "cards", "male","affordable"]],
+        "when": [["occasion", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["birthday", "cards", "male"]],
         "put": "recommendation", 
         "as": ["GC0004", "GC0005", "GC0007"]
     },
     {
-        "when": [["occasion", "interest", "gender","range"]],
-        "is": [["==", "==", "==","=="]],
-        "what": [["birthday", "cards", "male","mid-range"]],
-        "put": "recommendation", 
-        "as": ["GC0004", "GC0005", "GC0007"]
-    },
-    {
-        "when": [["occasion", "interest", "gender","range"]],
-        "is": [["==", "==", "==","=="]],
-        "what": [["birthday", "cards", "male","mid-luxury"]],
-        "put": "recommendation", 
-        "as": ["GC0004", "GC0005", "GC0007"]
-    },
-    {
-        "when": [["occasion", "interest", "gender","range"]],
-        "is": [["==", "==", "==","=="]],
-        "what": [["birthday", "cards", "male","luxury"]],
-        "put": "recommendation", 
-        "as": ["GC0004", "GC0005", "GC0007"]
-    },
-
-    {
-        "when": ["range","range", "range", "range", ["occasion", "interest", "gender"]],
-        "is": ["==", "==", "==", "==", ["==", "==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["birthday", "cards", "male"]],
-        "put": "recommendation", 
-        "as": ["GC0004", "GC0005", "GC0007"]
-    },
-
-
-
-    {
-        "when": [["occasion", "interest", "gender","range"]],
-        "is": [["==", "==", "==","=="]],
-        "what": [["birthday", "cards", "female","affordable"]],
-        "put": "recommendation", 
-        "as": ["GC0004", "GC0005", "GC0007"]
-    },
-
-    {
-        "when": ["range","range", "range", "range", ["occasion", "interest", "gender"]],
-        "is": ["==", "==", "==", "==", ["==", "==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["birthday", "cards", "female"]],
+        "when": [["occasion", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["birthday", "cards", "female"]],
         "put": "recommendation", 
         "as": ["GC0004", "GC0005", "GC0006", "GC0007"]
     },
     {
-        "when": ["range","range", "range", "range", ["occasion", "interest"]],
-        "is": ["==", "==", "==", "==", ["==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["graduation", "cards"]],
+        "when": [["occasion", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["graduation", "cards"]],
         "put": "recommendation", 
         "as": ["GC0008", "GC0009"]
     },
     {
-        "when": ["range","range", "range", "range", ["occasion", "interest", "gender"]],
-        "is": ["==", "==", "==", "==", ["==", "==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["mothersday", "cards", "female"]],
+        "when": [["occasion", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mothersday", "cards", "female"]],
         "put": "recommendation", 
         "as": ["GC0010", "GC0011"]
     },
     {
-        "when": ["range","range", "range", "range", ["occasion", "interest", "gender"]],
-        "is": ["==", "==", "==", "==", ["==", "==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["fathersday", "cards", "male"]],
+        "when": [["occasion", "interest", "gender"]],
+        "is": [["==", "==", "=="]],
+        "what": [["fathersday", "cards", "male"]],
         "put": "recommendation", 
         "as": ["GC0012", "GC0013"]
     },
     {
-        "when": ["range","range", "range", "range", ["occasion", "interest"]],
-        "is": ["==", "==", "==", "==", ["==", "=="]],
-        "what": ["affordable", "mid-range", "mid-luxury", "luxury", ["wedding", "cards"]],
+        "when": [["occasion", "interest"]],
+        "is": [["==", "=="]],
+        "what": [["wedding", "cards"]],
         "put": "recommendation", 
         "as": ["GC0014", "GC0015"]
     },
