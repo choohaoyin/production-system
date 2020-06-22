@@ -3,34 +3,27 @@
         "when": "budget",
         "is": ">=",
         "what": 1000,
-        "put": "luxury", 
-        "as": true
+        "put": "range", 
+        "as": "luxury"
     },
     { 
         "when": ["budget","budget"],
         "is": ["<",">="],
         "what": 100,
-        "put": "medium", 
-        "as": true
+        "put": "range", 
+        "as": "medium"
     },
     { 
         "when": "budget",
         "is": "<",
         "what": 100,
-        "put": "lowcash", 
-        "as": true
-    },
-    { 
-        "when": ["budget","gender"],
-        "is": ["<","=="],
-        "what": [100, "male"],
-        "put": "brokeguy", 
-        "as": true
+        "put": "range", 
+        "as": "lowcash"
     },
     {
-        "when": ["luxury","interest"],
+        "when": ["range","interest"],
         "is": ["==","=="],
-        "what": [true, "technology"],
+        "what": ["luxury", "technology"],
         "put": "recommendation_cat", 
         "as": "apple product"
     },
@@ -42,9 +35,9 @@
         "as": ["T0011","T0015","T0016","T0017"]
     },
     {
-        "when": ["lowcash","interest","gender"],
+        "when": ["range","interest","gender"],
         "is": ["==","==","=="],
-        "what": [true,"Jewelry","male"],
+        "what": ["lowcash","Jewelry","male"],
         "put": "recommendation_cat", 
         "as": "casio watches"
     },

@@ -8,8 +8,8 @@ var current_fs_index = 1;
 let rules = new Object(); // to store rules list
 let items = new Object(); // to store items list
 
-// Explanation Module
-let label = []; // for tag labelling
+// // Explanation Module
+// let label = []; // for tag labelling
 
 // Disable all images to be draggable
 $("img").attr("draggable",false);
@@ -410,6 +410,9 @@ $(document).ready(function(){
 
     $.fn.explaination = function(items, option) {
 
+        // Explanation Module
+        let label = []; // for tag labelling
+
         function getColor(value, text=false) {
             const tagColor = [
                 ["#ff634d","#ffffff"],
@@ -437,6 +440,34 @@ $(document).ready(function(){
             } else {
                 return tagColor[colorCode][1];
             }
+        }
+
+        function getSpan(element, value=null) {
+            const tagColor = [
+                ["#ff634d","#ffffff"],
+                ["#ffa500","#ffffff"],
+                ["#f7d859","#ffffff"],
+                ["##bf00ff","#ffffff"],
+                ["#d3dd6c","#ffffff"],
+                ["#9af94e","#ffffff"],
+                ["#68df80","#ffffff"],
+                ["#67ab5b","#ffffff"],
+                ["#4694e9","#ffffff"],
+                ["#53b7ce","#ffffff"]
+            ]
+        
+            let colorCode = null;
+            if (label.includes(element)) {
+                colorCode = label.indexOf(element);
+            } else {
+                label.push(element);
+                colorCode = label.indexOf(element);
+            }
+            
+            if(value == null) value = element;
+
+            spanCode = `<span id=\"tag\" style=\"background-color:${tagColor[colorCode][0]}\">${value}</span>`
+            return spanCode
         }
 
         var why = "";
@@ -477,7 +508,8 @@ $(document).ready(function(){
             case "facts":
                 for(attr in items) {
                     if (items.hasOwnProperty(attr)) {
-                        why += '<p>' + attr + '->' + items.attr +'</p>';
+                        why += `<p></p>`;
+                        why += '<p>' + getSpan(attr) + '->' + getSpan(attr,items[attr]) +'</p>';
                     }
                 }
 
