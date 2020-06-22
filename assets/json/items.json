@@ -795,51 +795,37 @@
     },
     { 
         "id": "F0014",
-        "name": "Get Well Soon Basket Flowers",
-        "price": "RM168.00",
-        "img": "images/recommendations/F0014.jpg", 
-        "link": "https://www.janefloristshop.com/products/get-well-soon-05"
-    },
-    { 
-        "id": "F0015",
-        "name": "Get Well Soon Fruits & Flowers Basket",
-        "price": "RM200.00",
-        "img": "images/recommendations/F0015.jpg", 
-        "link": "https://giftr.my/collections/get-well-soon/products/get-well-fruits-flowers-basket-1"
-    },
-    { 
-        "id": "F0016",
         "name": "Camila Champagne Roses Bouquet",
         "price": "RM118.00",
-        "img": "images/recommendations/F0016.png", 
+        "img": "images/recommendations/F0014.png", 
         "link": "https://giftr.my/products/camila-champagne-roses-bouquet"
     },
     { 
-        "id": "F0017",
+        "id": "F0015",
         "name": "Pretty In Pink Roses Bouquet",
         "price": "RM160.00",
-        "img": "images/recommendations/F0017.png", 
+        "img": "images/recommendations/F0015.png", 
         "link": "https://giftr.my/products/pretty-in-pink-roses-bouquet-ipoh-delivery-only"
     },
     { 
-        "id": "F0018",
+        "id": "F0016",
         "name": "Minimalist Pink Rose Flower Bouquet",
         "price": "RM79.00",
-        "img": "images/recommendations/F0018.jpg", 
+        "img": "images/recommendations/F0016.jpg", 
         "link": "https://thefloristmarket.com/vendor/scentales/item/minimalist-pink-rose-flower-bouquet-i28562?utm_source=google&utm_medium=shopping_ad&utm_campaign=kl_flower_delivery&utm_content=kl_flowers&gclid=CjwKCAjwxLH3BRApEiwAqX9araLbxOeked2IQOEYPvWQ-UKLhDAdItQ6FtjPMeZ2M-HC28JsYcI7NhoCXRcQAvD_BwE"
     },
     { 
-        "id": "F0019",
+        "id": "F0017",
         "name": "Charm Sunflowers Flower Bouquet",
         "price": "RM68.00",
-        "img": "images/recommendations/F0019.png", 
+        "img": "images/recommendations/F0017.png", 
         "link": "https://giftr.my/collections/graduation/products/charm-sunflowers-flower-bouquet"
     },
     { 
-        "id": "F0020",
+        "id": "F0018",
         "name": "Pink Stunner Roses Bouquet",
         "price": "RM115.00",
-        "img": "images/recommendations/F0020.png", 
+        "img": "images/recommendations/F0018.png", 
         "link": "https://giftr.my/collections/get-well-soon/products/pink-stunner-roses-bouquet"
     }
 ],
