@@ -310,8 +310,64 @@
         "what": [["luxury", "toys", "children", "male"]],
         "put": "recommendation", 
         "as": ["TG0008", "TG0009", "TG0010", "TG0011", "TG0012", "TG0013", "TG0014", "TG0015", "TG0016"]
+    },
+
+
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["affordable", "beauty", "female"]],
+        "put": "recommendation", 
+        "as": ["B0001", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-range", "beauty", "female"]],
+        "put": "recommendation", 
+        "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-luxury", "beauty", "female"]],
+        "put": "recommendation", 
+        "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["luxury", "beauty", "female"]],
+        "put": "recommendation", 
+        "as": ["B0001", "B0002", "B0003", "B0004", "B0005", "B0006", "B0007", "B0008", "B0009", "B0010", "B0011", "B0012", "B0013"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["affordable", "beauty", "male"]],
+        "put": "recommendation", 
+        "as": ["B0019", "B0020"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-range", "beauty", "male"]],
+        "put": "recommendation", 
+        "as": ["B0014", "B0015", "B0018", "B0019", "B0020"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-luxury", "beauty", "male"]],
+        "put": "recommendation", 
+        "as": ["B0014", "B0015", "B0016", "B0017", "B0018", "B0019", "B0020"]
+    },
+    {
+        "when": [["range", "interest", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["luxury", "beauty", "male"]],
+        "put": "recommendation", 
+        "as": ["B0014", "B0015", "B0016", "B0017", "B0018", "B0019", "B0020"]
     }
-
-
 
 ]
