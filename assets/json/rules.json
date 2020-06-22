@@ -78,7 +78,7 @@
     },
     {
         "when": [["range", "occasion", "interest"]],
-        "is": ["==", "==", "==", ["==", "=="]],
+        "is": [["==", "==", "=="]],
         "what": [["mid-luxury", "anniversary", "flowers"]],
         "put": "recommendation", 
         "as": ["F0005", "F0006", "F0007", "F0008", "F0014", "F0015", "F0016", "F0017", "F0018"]
@@ -255,13 +255,6 @@
     },
 
 
-
-
-
-
-
-
-
     {
         "when": [["range", "interest", "age group", "gender"]],
         "is": [["==", "==", "==", "=="]],
@@ -295,7 +288,7 @@
         "is": [["==", "==", "==", "=="]],
         "what": [["mid-luxury", "toys", "children", "female"]],
         "put": "recommendation", 
-        "as": ["TG0001", "TG0002", "TG0003", "TG0004", "TG0006", "TG0007", "TG0014", "TG0015", "TG0016"]
+        "as": ["TG0001", "TG0002", "TG0003", "TG0004", "TG0005", "TG0006", "TG0007", "TG0014", "TG0015", "TG0016"]
     },
     {
         "when": [["range", "interest", "age group", "gender"]],
@@ -309,7 +302,7 @@
         "is": [["==", "==", "==", "=="]],
         "what": [["luxury", "toys", "children", "female"]],
         "put": "recommendation", 
-        "as": ["TG0001", "TG0002", "TG0003", "TG0004", "TG0006", "TG0007", "TG0014", "TG0015", "TG0016"]
+        "as": ["TG0001", "TG0002", "TG0003", "TG0004", "TG0005", "TG0006", "TG0007", "TG0014", "TG0015", "TG0016"]
     },
     {
         "when": [["range", "interest", "age group", "gender"]],
