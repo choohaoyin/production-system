@@ -207,8 +207,14 @@ footer img:hover{
     background-color: #f1dfdf;
 }
 
-#gallery img, #interest img, #recommendation img {
+#gallery img, #interest img {
     width: 300px ;
+}
+
+#recommendation img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 #gallery label:hover{
