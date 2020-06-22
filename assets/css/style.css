@@ -97,7 +97,7 @@ body {
     margin: -20px 5px;
 }
 
-#msform .action-button-why {
+#msform #why-button {
     width: 200px;
     background: #ee0979;
     font-weight: bold;
@@ -339,4 +339,9 @@ display: block;
     border: 1px solid darkgray;
     position: relative;
     text-align: left;
+}
+
+.why-explanation {
+    text-align: left;
+    line-height: 2em;
 }
