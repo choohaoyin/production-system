@@ -51,6 +51,16 @@ $("input[type=number]").keydown(function (e) {
     }
 })
 
+$("fieldset :input").change(function () {
+    $(this).parents("fieldset").children(".next").prop("disabled", false);
+})
+
+$("#occassion :input").change(function () {
+    console.log($(this).parents('fieldset').find('label'));
+    $(this).parents('fieldset').find('label').removeClass("active");
+    $(this).addClass("active");
+})
+
 // Next & submit animation
 $(".next").click(function(){
     // animation
@@ -91,6 +101,15 @@ $(".next").click(function(){
 		easing: 'easeInOutBack'
     });
     // /.amimation
+
+    // $("input:radio").change(function () {$("#postGender").prop("disabled", false);})
+
+    console.log(current_fs.find("input"));
+
+    current_fs.find("input").each(function () {
+        console.log(this);
+    })
+
 
     // Footer re-position
     $(".form-container").height(next_fs.height());
@@ -512,7 +531,6 @@ $(document).ready(function(){
                         why += '<p>' + getSpan(attr) + '->' + getSpan(attr,items[attr]) +'</p>';
                     }
                 }
-
                 break;
             default:
                 why = "Unknown error occured";
