@@ -50,7 +50,7 @@
             <input type="button" name="next" class="next action-button" value="Next" disabled/>
         </fieldset> 
 
-        <fieldset id="occassion">
+        <fieldset id="occ">
             <h2 class="fs-title">What is the occassion?</h2>
             <h3 class="fs-subtitle">select one occasion</h3>
             <div id="gallery" class="carousel slide" data-ride="carousel">
@@ -61,7 +61,7 @@
                                 <div class="col"></div>
                                 <div class="col">
                                     <span id="anniversary"> 
-                                        <label for="anniversary" class="col btn btn-secondary">
+                                        <label for="anniversary" class="col btn btn-secondary occ-button">
                                             <input type="checkbox" name="occasion" id="anniversary" value="anniversary" title="anniversary"> 
                                             <img for="anniversary" class="img-fluid" src="assets/images/anniversary.png"/>
                                         </label>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="col">
                                     <span id="birthday"> 
-                                        <label for="birthday" class="col btn btn-secondary">
+                                        <label for="birthday" class="col btn btn-secondary occ-button">
                                             <input type="checkbox" name="occassion" id="birthday" value="birthday" title="birthday"> 
                                             <img for="birthday" class="img-fluid" src="assets/images/birthday.png"/>
                                         </label>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col">
                                     <span id="graduation"> 
-                                        <label for="graduation" class="col btn btn-secondary">
+                                        <label for="graduation" class="col btn btn-secondary occ-button">
                                             <input type="checkbox" name="occasion" id="graduation" value="graduation" title="graduation"> 
                                             <img for="graduation" class="img-fluid" src="assets/images/graduation.png"/>
                                         </label>
@@ -94,7 +94,7 @@
                                 <div class="col"></div>
                                 <div class="col">
                                     <span id="mothersday"> 
-                                        <label for="mothersday" class="btn btn-secondary">
+                                        <label for="mothersday" class="btn btn-secondary occ-button">
                                             <input type="checkbox" name="occasion" id="mothersday" value="mothersday" title="mothersday"> 
                                             <img for="mothersday" class="img-fluid" src="assets/images/mothersday.png"/>
                                         </label>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col">
                                     <span id="fathersday"> 
-                                        <label for="fathersday" class="btn btn-secondary">
+                                        <label for="fathersday" class="btn btn-secondary occ-button">
                                             <input type="checkbox" name="occasion" id="fathersday" value="fathersday" title="fathersday"> 
                                             <img for="fathersday" class="img-fluid" src="assets/images/fathersday.png"/>
                                         </label>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col">
                                     <span id="wedding"> 
-                                        <label for="wedding" class="btn btn-secondary">
+                                        <label for="wedding" class="btn btn-secondary occ-button">
                                             <input type="checkbox" name="occasion" id="wedding" value="wedding" title="wedding"> 
                                             <img for="wedding" class="img-fluid" src="assets/images/wedding.png"/>
                                         </label>
@@ -293,7 +293,8 @@
 </div>
 
 <!--Creates the popup body-->
-<div class="popup-overlay">
+<div class="popup-container">
+    <div class="popup-overlay"></div>
     <!--Creates the popup content-->
     <div class="popup-content">
         <div class="why-title">

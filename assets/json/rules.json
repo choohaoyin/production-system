@@ -7,23 +7,23 @@
         "as": "baby"
     },
     {
-        "when": "age",
-        "is": "<=",
-        "what": 12,
+        "when": [["age","age"]],
+        "is": [[">","<="]],
+        "what": [[2,12]],
         "put": "age group",
         "as": "children"
     },
     {
-        "when": "age",
-        "is": "<=",
-        "what": 18, 
+        "when": [["age","age"]],
+        "is": [[">","<="]],
+        "what": [[12,18]], 
         "put": "age group",
         "as": "teenager"
     },
     {
-        "when": "age",
-        "is": "<=",
-        "what": 59, 
+        "when": [["age","age"]],
+        "is": [[">","<="]],
+        "what": [[18,59]], 
         "put": "age group",
         "as": "adult"
     },
