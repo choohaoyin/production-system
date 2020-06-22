@@ -310,41 +310,8 @@
         "what": [["luxury", "toys", "children", "male"]],
         "put": "recommendation", 
         "as": ["TG0008", "TG0009", "TG0010", "TG0011", "TG0012", "TG0013", "TG0014", "TG0015", "TG0016"]
-    },
-
-
-
-
-
-
-
-
-    {
-        "when": ["range","interest"],
-        "is": ["==","=="],
-        "what": ["luxury", "technology"],
-        "put": "recommendation_cat", 
-        "as": "apple product"
-    },
-    {
-        "when": "recommendation_cat",
-        "is": "==",
-        "what": "apple product",
-        "put": "recommendation", 
-        "as": ["T0011","T0015","T0016","T0017"]
-    },
-    {
-        "when": ["range","interest","gender"],
-        "is": ["==","==","=="],
-        "what": ["lowcash","Jewelry","male"],
-        "put": "recommendation_cat", 
-        "as": "casio watches"
-    },
-    {
-        "when": "recommendation_cat",
-        "is": "==",
-        "what": "casio watches",
-        "put": "recommendation", 
-        "as": ["A0020","A0019"]
     }
+
+
+
 ]
