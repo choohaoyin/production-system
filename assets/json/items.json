@@ -103,27 +103,6 @@
         "price": "RM14.50",
         "img": "images/recommendations/GC0015.png", 
         "link": "https://naiise.com.my/collections/wedding-cards/products/love-message-greeting-card"
-    },
-    { 
-        "id": "GC0016",
-        "name": "Get Well Soon Whale Card",
-        "price": "RM16.90",
-        "img": "images/recommendations/GC0016.png", 
-        "link": "https://naiise.com.my/collections/cards/products/get-well-soon-whale-greeting-card"
-    },
-    { 
-        "id": "GC0017",
-        "name": "Get Well Soon Card",
-        "price": "RM14.50",
-        "img": "images/recommendations/GC0017.png", 
-        "link": "https://naiise.com.my/collections/get-well-soon-cards/products/get-well-soon-greeting-card"
-    },
-    { 
-        "id": "GC0018",
-        "name": "First Aid Card",
-        "price": "RM14.50",
-        "img": "images/recommendations/GC0018.png", 
-        "link": "https://naiise.com.my/collections/get-well-soon-cards/products/first-aid-greeting-card"
     }
 ],
 [
