@@ -70,10 +70,30 @@ $("fieldset :input").change(function () {
 })
 
 // Make checkbox as radio button
-$("#occassion :input").change(function () {
+// $("#occ :input").change(function () {
+//     $(this).parents('fieldset').find('label').removeClass("active");
+//     $(this).addClass("active");
+//     alert("run");
+//     $.fn.getForm("#msform");
+//     console.log(wm)
+// });
+
+$(".occ-button").click(function () {
     $(this).parents('fieldset').find('label').removeClass("active");
     $(this).addClass("active");
 })
+
+
+// $("#occassion label").on("click", function () {
+//     console.log("run");
+//     $(this).parents('fieldset').find('label').removeClass("active");
+//     $(this).addClass("active");
+
+//     $.fn.getForm("#msform");
+//     console.log(wm)
+// });
+
+
 
 // Next & submit animation
 $(".next").click(function(){
@@ -264,6 +284,7 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
 $(document).ready(function(){
     $.fn.getForm = function(form){ 
         var data = $(form).serializeArray();
+        console.log(data);
         $.each(data, function(index, value) {
             $.fn.addToWM(value.name,value.value);
         })
@@ -536,11 +557,9 @@ $(document).ready(function(){
                         }
                         why += ", so ";
                         if (item.when == "budget") {
-                            why += "the gift will be in " + "<span id=\"tag\" style=\"background-color:"+ getColor(item.put) +"\">" + item.put + "</span>"+ " range";
+                            why += `the gift will be in ${getSpan(item.put)} range`;
                         } else {
-                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.put) +"\">" + item.put + "</span>";
-                            why += " is ";
-                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.put)+"\">" + item.as + "</span>";
+                            why += `${getSpan(item.put)} is ${getSpan(item.put,item.as)}`;
                         }
                         why += "</p>";
                     }
