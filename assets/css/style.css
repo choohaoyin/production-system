@@ -330,6 +330,12 @@ padding: 10px;
     margin: 5px 0 0 0;
 }
 
+.buy-button {
+    background-color: #eee6e6 !important;
+    left: 75px !important;
+    width: 150px !important;
+}
+
 .popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
 .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
 display: none;
@@ -361,4 +367,11 @@ display: block;
 
 .recommendation p{
     font-size: 14px !important;
+}
+
+#for-explanation {
+    margin: 30px 20px 0;
+    font-size: 17px;
+    border-top: solid 0.5px lightslategray;
+    padding: 20px;
 }
