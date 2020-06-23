@@ -49,9 +49,10 @@ $("input[type=number]").keydown(function (e) {
       || e.keyCode == 8)) {
         return false;
     }
+    $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
-  $("#age").on('input',function () {
+$("#age").on('input',function () {
     var max = parseInt($(this).attr('max'));
     var min = parseInt($(this).attr('min'));
     if ($(this).val() > max)
@@ -62,7 +63,7 @@ $("input[type=number]").keydown(function (e) {
     {
         $(this).val(min);
     }
-  });
+});
 
 // Validate input to enable next button
 $("fieldset :input").change(function () {
@@ -295,15 +296,23 @@ $(document).ready(function(){
         if(!isNaN(value) && typeof value !== 'boolean') {
             value = parseInt(value);
         }
+
         if(typeof wm[name] !== 'undefined') {
             if(typeof wm[name] !== 'boolean') {
                 if(typeof wm[name] !== 'object') {
                     wm[name] = [wm[name]];
                 }
                 if (typeof value == "object") {
-                    wm[name].push(...value);
+                    // wm[name].push(...value);
+                    for (i = 0; i<value.length;i++) {
+                        if(!wm[name].includes(value[i])){
+                            wm[name].push(value);
+                        }
+                    }
                 } else {
-                    wm[name].push(value);
+                    if(!wm[name].includes(value[i])){
+                        wm[name].push(value);
+                    }
                 }
             } else {
                 wm[name] = value;
