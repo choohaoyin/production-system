@@ -395,6 +395,34 @@
         "put": "recommendation", 
         "as": ["TG0008", "TG0009", "TG0010", "TG0011", "TG0012", "TG0013", "TG0014", "TG0015", "TG0016"]
     },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["affordable", "toys", "baby"]],
+        "put": "recommendation", 
+        "as": ["TG0017", "TG0018", "TG0019", "TG0020", "TG0021", "TG0022", "TG0023", "TG0024"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-range", "toys", "baby"]],
+        "put": "recommendation", 
+        "as": ["TG0025", "TG0026", "TG0027", "TG0017", "TG0018", "TG0019", "TG0020", "TG0021", "TG0022", "TG0023", "TG0024"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-luxury", "toys", "baby"]],
+        "put": "recommendation", 
+        "as": ["TG0025", "TG0026", "TG0027", "TG0017", "TG0018", "TG0019", "TG0020", "TG0021", "TG0022", "TG0023", "TG0024"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["luxury", "toys", "baby"]],
+        "put": "recommendation", 
+        "as": ["TG0025", "TG0026", "TG0027", "TG0017", "TG0018", "TG0019", "TG0020", "TG0021", "TG0022", "TG0023", "TG0024"]
+    },
 
 
     {
