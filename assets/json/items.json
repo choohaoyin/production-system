@@ -1233,6 +1233,125 @@
         "price": "RM260.00",
         "img": "images/recommendations/BG0016.jpg", 
         "link": "https://www.eskacreative.com/product/my-little-dimple/"
+    },
+    {
+        "id": "BG0017",
+        "name": "Floral Print Dress",
+        "price": "RM99.90",
+        "img": "images/recommendations/BG0017.jpg",
+        "link": "https://www.zalora.com.my/mango-baby-floral-print-dress-white-2106366.html"
+    },
+    {
+        "id": "BG0018",
+        "name": "Short Sleeve Bodysuit",
+        "price": "RM65.70",
+        "img": "images/recommendations/BG0018.jpg",
+        "link": "https://www.zalora.com.my/fox-kids-baby-short-sleeve-bodysuit-yellow-2134551.html"
+    },
+    {
+        "id": "BG0019",
+        "name": "Baby's 2 Piece Set-Girl",
+        "price": "RM289.00",
+        "img": "images/recommendations/BG0019.jpg",
+        "link": "https://www.zalora.com.my/babybol-baby-s-2-piece-set-white-2105677.html"
+    },
+    {
+        "id": "BG0020",
+        "name": "Baby Romper 3 Packs",
+        "price": "RM59.00",
+        "img": "images/recommendations/BG0020.jpg",
+        "link": "https://www.zalora.com.my/baby-9months-baby-romper-3-packs-option-d-white-pink-multi-2128346.html"
+    },
+    {
+        "id": "BG0021",
+        "name": "Baby Girl Casual Dress",
+        "price": "RM104.70",
+        "img": "images/recommendations/BG0021.jpg",
+        "link": "https://www.zalora.com.my/fox-kids-baby-baby-girl-casual-dress-white-2134451.html"
+    },
+    {
+        "id": "BG0022",
+        "name": "Disney Romper",
+        "price": "RM65.70",
+        "img": "images/recommendations/BG0022.jpg",
+        "link": "https://www.zalora.com.my/fox-kids-baby-disney-romper-pink-2134603.html"
+    },
+    {
+        "id": "BG0023",
+        "name": "Beep Beep Cotton Sandals-Girl",
+        "price": "RM49.90",
+        "img": "images/recommendations/BG0023.jpg",
+        "link": "https://www.zalora.com.my/treehouse-beep-beep-cotton-sandals-1832912.html"
+    },
+    {
+        "id": "BG0024",
+        "name": "Bunny Shoes - White",
+        "price": "RM59.90",
+        "img": "images/recommendations/BG0024.jpg",
+        "link": "https://www.zalora.com.my/aikaydan-bunny-shoes-white-white-2093655.html"
+    },
+    {
+        "id": "BG0025",
+        "name": "Adidas Originals Superstar 360 Sandal I",
+        "price": "RM169.90",
+        "img": "images/recommendations/BG0025.jpg",
+        "link": "https://www.zalora.com.my/adidas-adidas-originals-superstar-360-sandal-i-pink-1905306.html"
+    },
+    {
+        "id": "BG0026",
+        "name": "Unicorn Shoes",
+        "price": "RM49.00",
+        "img": "images/recommendations/BG0026.jpg",
+        "link": "https://www.zalora.com.my/aikaydan-unicorn-shoes-white-pink-multi-2104569.html"
+    },
+    {
+        "id": "BG0027",
+        "name": "Ladybird Mini Shoes",
+        "price": "RM119.00",
+        "img": "images/recommendations/BG0027.jpg",
+        "link": "https://www.zalora.com.my/poco-nido-poco-nido-ladybird-mini-shoes-pink-1976771.html"
+    },
+    {
+        "id": "BG0028",
+        "name": "Philips Avent Anti-colic bottle",
+        "price": "RM34.00",
+        "img": "images/recommendations/BG0028.jpg",
+        "link": "https://www.philips.com.my/c-e/mo/baby-bottles-nipples/anti-colic-bottles.html"
+    },
+    {
+        "id": "BG0029",
+        "name": "Philips Avent baby bottle",
+        "price": "RM41.00",
+        "img": "images/recommendations/BG0029.jpg",
+        "link": "https://www.philips.com.my/c-m-mo/baby-bottles-nipples"
+    },
+    {
+        "id": "BG0030",
+        "name": "Wide Neck Nursing Bottle",
+        "price": "RM74.56",
+        "img": "images/recommendations/BG0030.jpg",
+        "link": "https://pigeon.com.my/product/wide-neck-nursing-bottle-glass/"
+    },
+    {
+        "id": "BG0031",
+        "name": "Nursing Bottle Polypropylene",
+        "price": "RM37.63",
+        "img": "images/recommendations/BG0031.jpg",
+        "link": "https://pigeon.com.my/product/wide-neck-nursing-bottle-pp-polypropylene/"
+    },
+    {
+        "id": "BG0032",
+        "name": "Hegen PCTO Feeding Bottle",
+        "price": "RM89.90",
+        "img": "images/recommendations/BG0032.png",
+        "link": "https://www.hegenmalaysia.com/product/hegen-pcto-240ml-8oz-feeding-bottle-ppsu/"
+    },
+    {
+        "id": "BG0033",
+        "name": "Hegen Feeding Bottle (2-pack)",
+        "price": "RM179.90",
+        "img": "images/recommendations/BG0033.png",
+        "link": "https://www.hegenmalaysia.com/product/hegen-pcto-330ml-11oz-feeding-bottle-ppsu-2-pack/"
     }
 ],
 

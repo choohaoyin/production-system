@@ -484,8 +484,64 @@
         "what": [["luxury", "chocolate", "baby"]],
         "put": "recommendation", 
         "as": ["C0016", "C0015", "C0017", "C0018", "C0014", "C0001", "C0002", "C0003", "C0004", "C0005", "C0006", "C0007", "C0008", "C0009", "C0010", "C0011", "C0012", "C0013"]
-    }
+    },
 
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["affordable", "baby goods", "baby", "male"]],
+        "put": "recommendation", 
+        "as": ["BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-range", "baby goods", "baby", "male"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-luxury", "baby goods", "baby", "male"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["luxury", "baby goods", "baby", "male"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["affordable", "baby goods", "baby", "female"]],
+        "put": "recommendation", 
+        "as": ["BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-range", "baby goods", "baby", "female"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["mid-luxury", "baby goods", "baby", "female"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
+    {
+        "when": [["range", "interest", "age group", "gender"]],
+        "is": [["==", "==", "==", "=="]],
+        "what": [["luxury", "baby goods", "baby", "female"]],
+        "put": "recommendation", 
+        "as": ["BG0008", "BG0005", "BG0006", "BG0015", "BG0001", "BG0002", "BG0003", "BG0004", "BG0007", "BG0009", "BG0010", "BG0011", "BG0012"]
+    },
 
 
 ]
