@@ -328,7 +328,21 @@ $(document).ready(function(){
                     if (typeof currentRule[i].when[j] == 'object') { // AND
                         var andPass;
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
-                            if (typeof currentRule[i].what[j][p] == "string") {
+                            if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
+                                console.log(`${currentRule[i].when[j][p]} in WM is object`);
+
+                                var arr = "";
+
+                                for (q = 0; q <  wm[currentRule[i].when[j][p]].length ; q++) {
+                                    arr += `"${wm[currentRule[i].when[j][p]][q]}"`;
+                                    
+                                    if(q != wm[currentRule[i].when[j][p]].length - 1) {
+                                        arr += ",";
+                                    }
+                                }
+
+                                condition += `( [${arr}].includes("${currentRule[i].what[j][p]}") )`;
+                            } else if (typeof currentRule[i].what[j][p] == "string") {
                                 condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
 
                             } else {
@@ -633,23 +647,98 @@ $(document).ready(function(){
 // }
 
 
-// function evaluate(arr) {
-//     var element = arr[0]
-//     var condition = arr[1]
 
-//     if(typeof arr[0] == "object") {
-//         evaluate(element)
-//     } else {
-//         switch(condition) {
+/* 
+rule = {
+    "when" : [[[["x","y"],"AND"],"z"],"OR"]
+    "is": [[[["==","=="],"AND"],"=="],"OR"]
+    "what": [[[[1,2],"AND"],3],"OR"]
+    "put": "something"
+    "as": "nothing"
+}
+
+
+cond = {
+    "when" : [[[["x","y"],"AND"],"z"],"OR"]
+    "is": [[[["==","=="],"AND"],"=="],"OR"]
+    "what": [[[[1,2],"AND"],3],"OR"]
+}
+
+*/
+
+
+
+
+// let test_cond = {
+//     "when" : [[[["x","y"],"OR"],"z"],"AND"],
+//     "is": [[[["==","=="],"OR"],"=="],"AND"],
+//     "what": [[[[1,2],"OR"],3],"AND"]
+// }
+
+
+// let test_cond2 = {
+//     "when" : [[[[[["x","y"],"OR"],"z"],"AND"],"w"],"OR"],
+//     "is": [[[[[["==","=="],"OR"],"=="],"AND"],"=="],"OR"],
+//     "what": [[[[[[1,2],"OR"],3],"AND"],3],"OR"]
+// }
+
+
+
+// function evaluate(cond) {
+//     console.log(cond);
+//     wm = {
+//         "x": 3,
+//         "y": 3,
+//         "z": 3,
+//         "w": 3
+//     }
+
+//     if(typeof cond.when[0][0] == "object") {
+//         let sub_cond = {
+//             "when": cond.when[0][0],
+//             "is" :cond.is[0][0],
+//             "what": cond.what[0][0]
+//         }
+//         sub_cond_result = evaluate(sub_cond);
+//         outer_cond = ""
+//         switch(cond.when[1]) {
 //             case "OR":
-//                 condition = "||";
+//                 logic_symbol = "||";
+//                 outer_cond += `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${logic_symbol} ${sub_cond_result}`;
+//                 // statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
 //                 break;
 //             case "AND":
-//                 condition = "&&";
+//                 logic_symbol = "&&";
+//                 outer_cond += `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${logic_symbol} ${sub_cond_result}`;
 //                 break;
 //         }
+//         // outer_cond = `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${cond.when[1]} ${sub_cond_result}`;
+//         console.log(outer_cond);
+//         out_result = eval(outer_cond);
+//         return out_result;
+//     } else {
+//         console.log("here");
+//         let logic = cond.when[1];
+//         let element = cond.when[0];
+//         let operator = cond.is[0];
+//         let value = cond.what[0];
+//         let statement = "";
 
-        
+//         console.log(logic, element, operator, value);
+//         switch(logic) {
+//             case "OR":
+//                 logic_symbol = "||";
+//                 statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
+//                 break;
+//             case "AND":
+//                 logic_symbol = "&&";
+//                 statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
+//                 break;
+//         }
+//         console.log(statement);
+//         result = eval(statement);
+//         console.log(result);
+//         return result;
 //     }
 // }
 

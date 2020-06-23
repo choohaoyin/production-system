@@ -164,7 +164,7 @@ body {
     font-size: 72px !important;
 }
 
-#msform input[type="checkbox"] {
+#msform input[type="checkbox"], #msform input[type="radio"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
