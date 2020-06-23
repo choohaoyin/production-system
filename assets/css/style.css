@@ -330,10 +330,6 @@ padding: 10px;
     margin: 5px 0 0 0;
 }
 
-.buy-button {
-    background-color: #eee6e6 !important;
-}
-
 .popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
 .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
 display: none;
