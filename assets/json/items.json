@@ -217,6 +217,83 @@
         "price": "RM129.99",
         "img": "images/recommendations/TG0016.png", 
         "link": "https://www.toysrus.com.my/toy-story-whack-an-alien_8846903/en-au/"
+    },
+    { 
+        "id": "TG0017",
+        "name": "Building breakers",
+        "price": "RM7.90",
+        "img": "images/recommendations/TG0017.jpg", 
+        "link": "https://www.ikea.com/my/en/p/mula-building-beakers-40294878/"
+    },
+    { 
+        "id": "TG0018",
+        "name": "Bead roller coaster",
+        "price": "RM39.90",
+        "img": "images/recommendations/TG0018.jpg", 
+        "link": "https://www.ikea.com/my/en/p/mula-bead-roller-coaster-60452126/"
+    },
+    { 
+        "id": "TG0019",
+        "name": "Shape sorter",
+        "price": "RM24.90",
+        "img": "images/recommendations/TG0019.jpg", 
+        "link": "https://www.ikea.com/my/en/p/mula-shape-sorter-multicolour-90294890/"
+    },
+    { 
+        "id": "TG0020",
+        "name": "Toddle truck",
+        "price": "RM69.90",
+        "img": "images/recommendations/TG0020.jpg", 
+        "link": "https://www.ikea.com/my/en/p/mula-toddle-truck-green-birch-10283579/"
+    },
+    { 
+        "id": "TG0021",
+        "name": "Musical toy",
+        "price": "RM39.90",
+        "img": "images/recommendations/TG0021.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-musical-toy-caterpillar-60372634/"
+    },
+    { 
+        "id": "TG0022",
+        "name": "Yellow Rattle",
+        "price": "RM14.90",
+        "img": "images/recommendations/TG0022.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-rattle-multicolour-yellow-20365032/"
+    },
+    { 
+        "id": "TG0023",
+        "name": "White Rattle",
+        "price": "RM14.90",
+        "img": "images/recommendations/TG0023.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-rattle-multicolour-white-40372649/"
+    },
+    { 
+        "id": "TG0024",
+        "name": "Blue Rattle",
+        "price": "RM14.90",
+        "img": "images/recommendations/TG0024.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-rattle-blue-10422740/"
+    },
+    { 
+        "id": "TG0025",
+        "name": "Baby gym",
+        "price": "RM149.00",
+        "img": "images/recommendations/TG0025.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-baby-gym-90372623/"
+    },
+    { 
+        "id": "TG0026",
+        "name": "Baby gym",
+        "price": "RM129.00",
+        "img": "images/recommendations/TG0026.jpg", 
+        "link": "https://www.ikea.com/my/en/p/leka-baby-gym-birch-multicolour-60167704/"
+    },
+    { 
+        "id": "TG0027",
+        "name": "Play mat",
+        "price": "RM139.00",
+        "img": "images/recommendations/TG0027.jpg", 
+        "link": "https://www.ikea.com/my/en/p/klappa-play-mat-10372641/"
     }
 ],
 [
