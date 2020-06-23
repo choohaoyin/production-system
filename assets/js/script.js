@@ -49,9 +49,10 @@ $("input[type=number]").keydown(function (e) {
       || e.keyCode == 8)) {
         return false;
     }
+    $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
-  $("#age").on('input',function () {
+$("#age").on('input',function () {
     var max = parseInt($(this).attr('max'));
     var min = parseInt($(this).attr('min'));
     if ($(this).val() > max)
@@ -62,7 +63,7 @@ $("input[type=number]").keydown(function (e) {
     {
         $(this).val(min);
     }
-  });
+});
 
 // Validate input to enable next button
 $("fieldset :input").change(function () {
@@ -237,7 +238,7 @@ $("#magic").click(function() {
     for(categories of items) {
         for(item of categories) {
             console.log(item.id);
-            if (!["T0011","T0015","T0016","T0017","A0020","A0019"].includes(item.id)) {
+            if (Math.random > 0.5) {
                 continue; // testing purpose, avoid too many item to be preview
             }
             
@@ -295,15 +296,22 @@ $(document).ready(function(){
         if(!isNaN(value) && typeof value !== 'boolean') {
             value = parseInt(value);
         }
+        console.log("wm[name] ",wm[name]);
         if(typeof wm[name] !== 'undefined') {
             if(typeof wm[name] !== 'boolean') {
                 if(typeof wm[name] !== 'object') {
                     wm[name] = [wm[name]];
                 }
                 if (typeof value == "object") {
-                    wm[name].push(...value);
+                    for (i = 0; i<value.length;i++) {
+                        if(!wm[name].includes(value[i])){
+                            wm[name].push(value);
+                        }
+                    }
                 } else {
-                    wm[name].push(value);
+                    if(!wm[name].includes(value)){
+                        wm[name].push(value);
+                    }
                 }
             } else {
                 wm[name] = value;
@@ -394,91 +402,136 @@ $(document).ready(function(){
     }
 
     $.fn.backwardChaining = function(id) {
-        wm = {};
+        wm = {}; // clear wm
         let currentRule = Object.assign([], rules);
-        // id = $(this).attr("for");
         $.fn.addToWM("recommendation",id);
         console.log(id);
         for (i=0; i<currentRule.length;i++) {
-            console.log(currentRule);
-
-
-            var pass = false;
-            if ((currentRule[i].put.length > 1 ) &&  typeof currentRule[i].put == 'object') {
-                var multiPass = true;
-                for (j = 0; j < currentRule[i].put.length; j++) {
-                    var condition = "";
-                    if (typeof wm[currentRule[i].put[j]] == "string") {
-                        condition = '\"' + wm[currentRule[i].put[j]] +'\"'+ "==" + '\"'+ currentRule[i].as[j] + '\"';           
-                    } else {
-                        condition = wm[currentRule[i].put[j]] + "==" + currentRule[i].as[j];  
-                    }         
-                    console.log("[condition]",condition);
-                    console.log("[result]",eval(condition));
-                    if (!eval(condition)) {
-                        multiPass = false;
-                        break;
-                    }
-                }
-                pass = multiPass;
-            }
-
-
-            else {
-                console.log(typeof currentRule[i].as);
-
-                var condition = "";
-                if(wm.hasOwnProperty(currentRule[i].put)) {
-                    if (typeof currentRule[i].as == "object") {
-                        condition += '[';
-                        for (p = 0; p < currentRule[i].as.length; p++) {
-                            if (typeof currentRule[i].as[p] == "string") {
-                                condition += '\"' + currentRule[i].as[p] + '\"';
+            var condition = "";
+            if (typeof currentRule[i].put == 'object') {
+                for (j=0;j<currentRule[i].put.length;j++) {
+                    if (typeof wm[currentRule[i].put[j]] == "object") {
+                        var arr = ""
+                        for (p = 0 ; p < wm[currentRule[i].put[j]].length; p++) {
+                            if (typeof wm[currentRule[i].put[j]][p] == "string") {
+                                arr += `"${wm[currentRule[i].put[j]][p]}"`;
                             } else {
-                                condition += currentRule[i].as[p];
+                                arr += `${wm[currentRule[i].put[j]][p]}`;
                             }
-                            if (p != currentRule[i].as.length) {
-                                condition += ",";
+
+                            if(p != wm[currentRule[i].put[j]].length -1){
+                                arr += ","
                             }
                         }
-                        condition += ']'
-                        if (typeof wm[currentRule[i].put] == "string") {
-                            condition += ".includes" + '(\"'+ wm[currentRule[i].put] + '\")';    
+                        if (typeof currentRule[i].as == "string ") {
+                            condition += `([${arr}].includes("${currentRule[i].as}"))`;
                         } else {
-                            condition += ".includes" + '('+ wm[currentRule[i].put] + ')';    
-                        } 
-                    } else if (typeof currentRule[i].as == "boolean") {
-                        console.log("boolean execute");
-                        condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")'
-                    }
-                    else {
-                        if (typeof wm[currentRule[i].put] == "string") {
-                            condition = '\"' + wm[currentRule[i].put] +'\"'+ "==" + '\"'+ currentRule[i].as + '\"';           
+                            condition += `([${arr}].includes(${currentRule[i].as}))`;
+                        }
+                    } else {
+                        if (typeof currentRule[i].as[j] == "string") {
+                            condition += `( "${wm[currentRule[i].put[j]]}"  ==  "${currentRule[i].as[j]}" )`;
+
                         } else {
-                            condition = wm[currentRule[i].put] + "=="+ currentRule[i].as;
-                        }  
-                    }
-                    console.log(condition);
-                    pass = eval(condition);
-                } else if (typeof currentRule[i].as == "boolean"){
-                    condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")';
-                    console.log(condition);
-                    pass = eval(condition);
-                    console.log(pass);
+                            condition += `( ${wm[currentRule[i].when[j]]}  ==  ${currentRule[i].what[j]} )`;
+                        }      
+                    }  
+                    if(j != currentRule[i].when.length - 1) {
+                        condition += "||";
+                    } 
+                    
                 }
-            } 
-            if (pass) {
-                if(typeof currentRule[i].when == "object") {
-                    for(q=0;q<currentRule[i].when.length;q++) {
-                        $.fn.addToWM(currentRule[i].when[q],currentRule[i].what[q]);
+            } else {
+                if (typeof currentRule[i].as == "object") {
+                    var arr = ""
+                    for (p = 0 ; p < currentRule[i].as.length; p++) {
+                        if (typeof currentRule[i].as[p] == "string") {
+                            arr += `"${currentRule[i].as[p]}"`;
+                        } else {
+                            arr += `${currentRule[i].as[p]}`;
+                        }
+
+                        if(p != currentRule[i].as.length -1){
+                            arr += ","
+                        }
+                    }
+                    if (typeof wm[currentRule[i].put] == "string") {
+                        condition += `([${arr}].includes("${wm[currentRule[i].put]}"))`;
+                    } else {
+                        condition += `([${arr}].includes(${wm[currentRule[i].put]}))`;
+                    }
+                } else if((typeof wm[currentRule[i].put] == "object")) {
+                    
+                    var arrWM = "";
+
+                    for (n = 0 ; n < wm[currentRule[i].put].length; n++) {
+                        if (typeof wm[currentRule[i].put][n] == "string") {
+                            arrWM += `"${wm[currentRule[i].put][n]}"`;
+                        } else {
+                            arrWM += `${wm[currentRule[i].put][n]}`;
+                        }
+
+                        if(n != wm[currentRule[i].put].length - 1){
+                            arrWM += ","
+                        }
+                    }
+
+                    if (typeof currentRule[i].as == "object") {
+                        var arrRule = "";
+                        for (m = 0 ; m < currentRule[i].as.length; m++) {
+                            if (typeof currentRule[i].as[m] == "string") {
+                                arrRule += `"${currentRule[i].as[m]}"`;
+                            } else {
+                                arrRule += `${currentRule[i].as[m]}`;
+                            }
+
+                            if(m != currentRule[i].as.length - 1){
+                                arrRule += ","
+                            }
+                        }
+                        condition += `([${arrWM}].includes("${arrRule}"))`;
+                    } else if (typeof currentRule[i].as == "string") {
+                        condition += `([${arrWM}].includes("${currentRule[i].as}"))`;
+                    } else {
+                        condition += `([${arrWM}].includes(${currentRule[i].as}))`;
+                    }
+
+                    
+                    
+                } else {
+                    if (typeof currentRule[i].as == "string") {
+                        condition += `( "${wm[currentRule[i].put]}"  ==  "${currentRule[i].as}" )`;
+                    } else {
+                        condition += `( ${wm[currentRule[i].put]}  ==  ${currentRule[i].as} )`;
+                    }      
+                }  
+            }
+
+            console.log(`[${i}] ${condition}`);
+            console.log(eval(condition));
+
+            if (eval(condition)) {
+                console.log("condition is true");
+                console.log(wm);
+                if (typeof currentRule[i].when == "object") {
+                    for(k=0;k<currentRule[i].when.length;k++) {
+                        if (typeof currentRule[i].when[k] == "object") {
+                            for(m=0;m<currentRule[i].when[k].length ; m++) {
+                                $.fn.addToWM(currentRule[i].when[k][m],currentRule[i].what[k][m])
+                            }
+                        } else {
+                            $.fn.addToWM(currentRule[i].when[k],currentRule[i].what[k])
+                        }
                     }
                 } else {
                     $.fn.addToWM(currentRule[i].when,currentRule[i].what);
                 }
+                console.log(wm);
                 var removed = currentRule.splice(i,1);
+                console.log("removed",removed);
                 firedRules.push(...removed);
-                i = -1; //reset the loop
-            };
+                i = -1;
+            }
         }
         console.log(wm);
     }
@@ -546,6 +599,9 @@ $(document).ready(function(){
             return spanCode
         }
 
+        
+
+
         var why = "";
 
         switch(option) {
@@ -581,9 +637,48 @@ $(document).ready(function(){
                 break;
             case "facts":
                 for(attr in items) {
-                    if (items.hasOwnProperty(attr)) {
-                        why += `<p></p>`;
-                        why += '<p>' + getSpan(attr) + '->' + getSpan(attr,items[attr]) +'</p>';
+                    if (items.hasOwnProperty(attr)) { 
+                        switch(attr) {
+                            case "occasion":
+                                why += `<p>You can give this gift during ${getSpan(attr)} like ${getSpan(attr,items[attr])}</p>`;
+                                break;
+                            case "interest":
+                                why += `<p>This gift is suitable for someone who have ${getSpan(attr)} with ${getSpan(attr,items[attr])}</p>`;
+                                break;
+                            case "age":
+                                var age_group = "";
+                                if (items.hasOwnProperty("age group")) {
+                                    if (typeof items["age group"] == "object") {
+                                        let nAgeGroup = items["age group"].length
+                                        for (k=0; k<nAgeGroup ; k++) {
+                                            age_group += getSpan("age group", items["age group"][k]);
+                                            if ((nAgeGroup == 2) && (k != nAgeGroup - 1)) {
+                                                age_group += "or";
+                                            } else if (k != nAgeGroup - 1){
+                                                age_group += ", "
+                                            }
+                                        }
+                                    } else {
+                                        age_group += items["age group"];
+                                    }
+                                } else {
+                                    age_group += "person";
+                                }
+
+
+                                if (typeof items[attr] == "object"){
+                                    why += `<p>For a ${getSpan("age group",items["age group"])} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                } else {
+                                    why += `<p>For a ${getSpan("age group",items["age group"])} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+                                }
+                                break;
+                            case "gender":
+                                why += `<p>The gift is for a ${getSpan(attr,items[attr])} receipient</p>`;
+                                break;
+                            case "budget":
+                                why += `<p>If your ${getSpan(attr)} is around ${getSpan(attr,`RM ${items[attr][0]}`)}</p>`;
+                                break;
+                        }
                     }
                 }
                 break;
