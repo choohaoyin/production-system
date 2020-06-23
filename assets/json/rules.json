@@ -653,6 +653,37 @@
         "what": [["luxury", "baby goods", "baby"]],
         "put": "recommendation", 
         "as": ["BG0013", "BG0014", "BG0016", "BG0028", "BG0029", "BG0030", "BG0031", "BG0032", "BG0033"]
+    },
+
+
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "!="]],
+        "what": [["affordable", "technology", "baby"]],
+        "put": "recommendation", 
+        "as": ["T0001", "T0002", "T0003", "T0004", "T0005", "T0006", "T0008", "T0018", "T0019", "T0020", "T0025", "T0026", "T0027"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "!="]],
+        "what": [["mid-range", "technology", "baby"]],
+        "put": "recommendation", 
+        "as": ["T0022", "T0021", "T0007", "T0001", "T0002", "T0003", "T0004", "T0005", "T0006", "T0008", "T0018", "T0019", "T0020", "T0025", "T0026", "T0027"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "!="]],
+        "what": [["mid-luxury", "technology", "baby"]],
+        "put": "recommendation", 
+        "as": ["T0023", "T0014", "T0022", "T0021", "T0007", "T0001", "T0002", "T0003", "T0004", "T0005", "T0006", "T0008", "T0018", "T0019", "T0020", "T0025", "T0026", "T0027"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "!="]],
+        "what": [["luxury", "technology", "baby"]],
+        "put": "recommendation", 
+        "as": ["T0024", "T0017", "T0016", "T0015", "T0013", "T0012", "T0011", "T0010", "T0009", "T0023", "T0014", "T0022", "T0021", "T0007", "T0001", "T0002", "T0003", "T0004", "T0005", "T0006", "T0008", "T0018", "T0019", "T0020", "T0025", "T0026", "T0027"]
     }
 
+    
 ]
