@@ -690,35 +690,35 @@
         "id": "C0004", 
         "name": "Nama Chocolate-Au Lait",
         "price": "RM52.00",
-        "img": "images/recommendations/C0004.png", 
+        "img": "images/recommendations/C0004.jpg", 
         "link": "https://royce.com.my/collections/nama-chocolate/products/nama-chocolate-au-lait"
     },
     { 
         "id": "C0005",
         "name": "Nama Chocolate-Strawberry",
         "price": "RM52.00",
-        "img": "images/recommendations/C0005.png", 
+        "img": "images/recommendations/C0005.jpg", 
         "link": "https://royce.com.my/collections/nama-chocolate/products/strawberry"
     },
     { 
         "id": "C0006",
         "name": "Nama Chocolate-Matcha",
         "price": "RM52.00",
-        "img": "images/recommendations/C0006.png", 
+        "img": "images/recommendations/C0006.jpg", 
         "link": "https://royce.com.my/collections/nama-chocolate/products/nama-chocolate-matcha"
     },
     { 
         "id": "C0007",
         "name": "Nama Chocolate-Champagne Pierre Mignon",
         "price": "RM52.00",
-        "img": "images/recommendations/C0007.png", 
+        "img": "images/recommendations/C0007.jpg", 
         "link": "https://royce.com.my/collections/nama-chocolate/products/nama-chocolate-champagne-pierre-mignon"
     },
     { 
         "id": "C0008",
         "name": "Nama Chocolate-Strawberry Champagne",
         "price": "RM52.00",
-        "img": "images/recommendations/C0008.png", 
+        "img": "images/recommendations/C0008.jpg", 
         "link": "https://royce.com.my/collections/nama-chocolate/products/strawberry-champagne"
     },
     { 
@@ -818,35 +818,35 @@
         "id": "F0004",
         "name": "Sunflower Graduation Petite Flower",
         "price": "RM65.00",
-        "img": "images/recommendations/F0004.png", 
+        "img": "images/recommendations/F0004.jpg", 
         "link": "https://giftr.my/collections/graduation/products/sunflower-graduation-petite-flower-bouquet-cream-pink"
     },
     { 
         "id": "F0005",
         "name": "You Are My Cappucino Bouquet",
         "price": "RM89.00",
-        "img": "images/recommendations/F0005.png", 
+        "img": "images/recommendations/F0005.jpg", 
         "link": "https://giftr.my/collections/graduation/products/youre-my-cappucino-flower-bouquet"
     },
     { 
         "id": "F0006",
         "name": "Hopeless Romantic",
         "price": "RM133.00",
-        "img": "images/recommendations/F0006.png", 
+        "img": "images/recommendations/F0006.jpg", 
         "link": "https://giftr.my/collections/graduation/products/hopeless-romantic-vday-special"
     },
     { 
         "id": "F0007",
         "name": "Angel's Whisper",
         "price": "RM199.00",
-        "img": "images/recommendations/F0007.png", 
+        "img": "images/recommendations/F0007.jpg", 
         "link": "https://giftr.my/collections/graduation/products/angels-whisper-beige"
     },
     { 
         "id": "F0008",
         "name": "Happy Anniversary Flower Bouquet",
         "price": "RM130.00",
-        "img": "images/recommendations/F0008.png", 
+        "img": "images/recommendations/F0008.jpg", 
         "link": "https://giftr.my/products/flower-bouquet-for-mothers-day-2"
     },
     { 
@@ -860,28 +860,28 @@
         "id": "F0010",
         "name": "Superwoman Mother's Day Bouquet",
         "price": "RM188.00",
-        "img": "images/recommendations/F0010.png", 
+        "img": "images/recommendations/F0010.jpg", 
         "link": "https://giftr.my/products/superwoman-mothers-day-2020"
     },
     { 
         "id": "F0011",
         "name": "Sweet Carnation Mother's Day Bouquet",
         "price": "RM148.00",
-        "img": "images/recommendations/F0011.png", 
+        "img": "images/recommendations/F0011.jpg", 
         "link": "https://giftr.my/products/sweet-carnation-bouquet"
     },
     { 
         "id": "F0012",
         "name": "Flower Box with Birthday Ballon",
         "price": "RM116.10",
-        "img": "images/recommendations/F0012.png", 
+        "img": "images/recommendations/F0012.jpg", 
         "link": "https://bloomthis.co/products/cheerful-birthday-balloons?variant=32007402356799&utm_source=google&utm_campaign=gg/sea/[shopping]/smart-shopping-(my)&utm_medium=cpc&utm_content=&utm_term=73821529390&gclid=CjwKCAjwxLH3BRApEiwAqX9ard5uwoKcTEgRqDxpf0g3a6l03t4hb1rzuMKmdHAqLaQkIpuVEtFnsxoCs1YQAvD_BwE"
     },
     { 
         "id": "F0013",
         "name": "Happy Birthday Bouquet",
         "price": "RM180.00",
-        "img": "images/recommendations/F0013.png", 
+        "img": "images/recommendations/F0013.jpg", 
         "link": "https://giftr.my/products/flower-bouquet-for-mothers-day-2020"
     },
     { 
@@ -895,7 +895,7 @@
         "id": "F0015",
         "name": "Pretty In Pink Roses Bouquet",
         "price": "RM160.00",
-        "img": "images/recommendations/F0015.png", 
+        "img": "images/recommendations/F0015.jpg", 
         "link": "https://giftr.my/products/pretty-in-pink-roses-bouquet-ipoh-delivery-only"
     },
     { 
@@ -909,14 +909,14 @@
         "id": "F0017",
         "name": "Charm Sunflowers Flower Bouquet",
         "price": "RM68.00",
-        "img": "images/recommendations/F0017.png", 
+        "img": "images/recommendations/F0017.jpg", 
         "link": "https://giftr.my/collections/graduation/products/charm-sunflowers-flower-bouquet"
     },
     { 
         "id": "F0018",
         "name": "Pink Stunner Roses Bouquet",
         "price": "RM115.00",
-        "img": "images/recommendations/F0018.png", 
+        "img": "images/recommendations/F0018.jpg", 
         "link": "https://giftr.my/collections/get-well-soon/products/pink-stunner-roses-bouquet"
     }
 ],
@@ -925,14 +925,14 @@
         "id": "T0001",
         "name": "RADIO BLUETOOTH SPEAKER",
         "price": "RM69.00",
-        "img": "images/recommendations/T0001.png",
+        "img": "images/recommendations/T0001.jpg",
         "link": "https://www.ryolifestyle.com/collections/gadget/products/bluetooth-speaker"
     },
     { 
         "id": "T0002", 
         "name": "NOVELTY POWERBANK",
         "price": "RM39.00",
-        "img": "images/recommendations/T0002.png", 
+        "img": "images/recommendations/T0002.jpg", 
         "link": "https://www.ryolifestyle.com/collections/gadget/products/novelty-powerbank"
     },
     { 
@@ -960,7 +960,7 @@
         "id": "T0006",
         "name": "CUTE ROBOT BLUETOOTH SPEAKER",
         "price": "RM69.00",
-        "img": "images/recommendations/T0006.png", 
+        "img": "images/recommendations/T0006.jpg", 
         "link": "https://www.ryolifestyle.com/collections/gadget/products/robot-bluetooth-speaker"
     },
     { 
@@ -974,7 +974,7 @@
         "id": "T0008",
         "name": "STEREO BLUETOOTH SPEAKER",
         "price": "RM69.00",
-        "img": "images/recommendations/T0008.png", 
+        "img": "images/recommendations/T0008.jpg", 
         "link": "https://www.ryolifestyle.com/collections/gadget/products/3-way-bluetooth-player-1"
     },
     { 
@@ -1044,14 +1044,14 @@
         "id": "T0018",
         "name": "USB Cable with Multi Connectors",
         "price": "RM59.00",
-        "img": "images/recommendations/T0018.png", 
+        "img": "images/recommendations/T0018.jpg", 
         "link": "https://www.thehipsterr.com/collections/gadget-phone-accessories/products/retractable-3-in-1-fast-charging-usb-cable"
     },
     { 
         "id": "T0019",
         "name": "Solar Power Bank",
         "price": "RM89.00",
-        "img": "images/recommendations/T0019.png", 
+        "img": "images/recommendations/T0019.jpg", 
         "link": "https://www.thehipsterr.com/collections/gadget-phone-accessories/products/solar-power-bank-20000mah-dual-usb-solar-panel-charger-with-led-light-compass-for-emergency-outdoor-camping-travel"
     },
     { 
@@ -1065,15 +1065,15 @@
         "id": "T0021",
         "name": "Wi-Fi Enabled Smart LED Light Bulb",
         "price": "RM249.00",
-        "img": "images/recommendations/T0021.png", 
+        "img": "images/recommendations/T0021.jpg", 
         "link": "https://www.iotasiamy.online/collections/wearables/products/homekit-koogeek-lb1-smart-rgb-led-light-bulb-e27-duo-pack"
     },
     { 
         "id": "T0022",
         "name": "Innr Wi-Fi Enabled Tunable White Bulb",
         "price": "RM119.00",
-        "img": "images/recommendations/T0022.png", 
-        "link": "iotasiamy.online/collections/wearables/products/innr-bulb-tunable-white-rb178t"
+        "img": "images/recommendations/T0022.jpg", 
+        "link": "https://iotasiamy.online/collections/wearables/products/innr-bulb-tunable-white-rb178t"
     },
     { 
         "id": "T0023",
