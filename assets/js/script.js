@@ -609,7 +609,7 @@ $(document).ready(function(){
 
             itemList += '<div class=\"item-container\" for=\"'+item.id+'\">'+
             '<img for=\"'+item.id+'\" class="carousel-item-img" src=\"assets/'+item.img+'\"/>'+
-            '<p>'+item.name+'</p>'+
+            '<p class="carousel-item-title">'+item.name+'</p>'+
             ' </div>';
 
             if(((i+1)%3 == 0) || (i == items.length)) {

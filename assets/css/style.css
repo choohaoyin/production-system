@@ -104,15 +104,16 @@ body {
 }
 
 #msform #why-button {
-    width: 200px;
+    width: 170px;
     background: #ee0979;
     font-weight: bold;
     color: white;
     border: 0 none;
     border-radius: 25px;
     cursor: pointer;
-    padding: 10px 5px;
-    margin: -20px 5px;
+    padding: 8px -2px;
+    margin: -10px 5px;
+    margin-top: 10px;
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
@@ -261,6 +262,11 @@ footer img:hover{
     padding: 10px;
 }
 
+
+.carousel-item-title {
+    font-size: 14px !important;
+}
+
 .item-container:hover {
     transform: scale(1.05);
 }
@@ -351,4 +357,8 @@ display: block;
 .why-explanation {
     text-align: left;
     line-height: 2em;
+}
+
+.recommendation p{
+    font-size: 14px !important;
 }
