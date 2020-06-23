@@ -1456,52 +1456,52 @@
 [
     {
     	"id": "W0001",
-        "name": "Summer Surprises",
+        "name": "Penfolds Bin 28",
         "price": "RM208.00",
         "img": "images/recommendations/W0001.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/summer-surprises/"
+        "link": "https://kanpai.my/shop/penfolds-bin-28-kalimna-shiraz-750ml/"
     },
     {
     	"id": "W0002",
-        "name": "Vineyard Gems",
-        "price": "RM328.00",
-        "img": "images/recommendations/W0002.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/vineyard-gems/"
+        "name": "Penfolds Bin 407",
+        "price": "RM359.90",
+        "img": "images/recommendations/W0002.png", 
+        "link": "https://www.winewarehouse.my/wine/penfolds-bin-407-cabernet-sauvignon-1424.html"
     },
     {
     	"id": "W0003",
-        "name": "Swangau",
-        "price": "RM348.00",
-        "img": "images/recommendations/W0003.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/swangau/"
+        "name": "PRUNOTTO BUSSIA 2014",
+        "price": "RM358.00",
+        "img": "images/recommendations/W0003.png", 
+        "link": "https://www.winewarehouse.my/wine/prunotto-bussia-barolo-docg-2014.html"
     },
     {
     	"id": "W0004",
-        "name": "Moet Love",
-        "price": "RM678.00",
-        "img": "images/recommendations/W0004.jpg", 
-        "link": "https://florygift.com.my/https://florygift.com.my/florist-gifts/wine-gifts/moet-love/"
+        "name": "CLOS DE TART",
+        "price": "RM2358.00",
+        "img": "images/recommendations/W0004.png", 
+        "link": "https://www.winewarehouse.my/wine/domaine-du-clos-de-tart-clos-de-tart-grand-cru-monopole-cote-de-nuits-06.html"
     },
     {
     	"id": "W0005",
-        "name": "Steingaden",
-        "price": "RM769.00",
-        "img": "images/recommendations/W0005.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/steingaden/"
+        "name": "Penfolds Bin 95",
+        "price": "RM3118.00",
+        "img": "images/recommendations/W0005.png", 
+        "link": "https://www.winewarehouse.my/wine/penfolds-grange-hermitage-bin95-330.html"
     },
     {
     	"id": "W0006",
-        "name": "Opulent",
-        "price": "RM1128.00",
+        "name": "MARTINI PROSECCO",
+        "price": "RM130.00",
         "img": "images/recommendations/W0006.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/opulent/"
+        "link": "https://www.winewarehouse.my/champagne-sparkling/martini-prosecco.html"
     },
     {
     	"id": "W0007",
-        "name": "Moet Supreme",
-        "price": "RM677.00",
-        "img": "images/recommendations/W0007.jpg", 
-        "link": "https://florygift.com.my/florist-gifts/wine-gifts/champagne-experience/"
+        "name": "POKER FACE SHIRAZ",
+        "price": "RM48.90",
+        "img": "images/recommendations/W0007.png", 
+        "link": "https://www.winewarehouse.my/wine/poker-face-shiraz.html"
     },
     {
     	"id": "W0008",

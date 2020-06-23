@@ -711,7 +711,93 @@
         "what": [["luxury", "technology", "baby"]],
         "put": "recommendation", 
         "as": ["T0024", "T0017", "T0016", "T0015", "T0013", "T0012", "T0011", "T0010", "T0009", "T0023", "T0014", "T0022", "T0021", "T0007", "T0001", "T0002", "T0003", "T0004", "T0005", "T0006", "T0008", "T0018", "T0019", "T0020", "T0025", "T0026", "T0027"]
-    }
+    },
 
-    
+
+    {
+        "when": [["range", "interest", "age group", "age group"]],
+        "is": [["==", "==", "!=", "!="]],
+        "what": [["affordable", "homeandliving", "baby", "children"]],
+        "put": "recommendation", 
+        "as": []
+    },
+    {
+        "when": [["range", "interest", "age group", "age group"]],
+        "is": [["==", "==", "!=", "!="]],
+        "what": [["mid-range", "homeandliving", "baby", "children"]],
+        "put": "recommendation", 
+        "as": []
+    },
+    {
+        "when": [["range", "interest", "age group", "age group"]],
+        "is": [["==", "==", "!=", "!="]],
+        "what": [["mid-luxury", "homeandliving", "baby", "children"]],
+        "put": "recommendation", 
+        "as": []
+    },
+    {
+        "when": [["range", "interest", "age group", "age group"]],
+        "is": [["==", "==", "!=", "!="]],
+        "what": [["luxury", "homeandliving", "baby", "children"]],
+        "put": "recommendation", 
+        "as": []
+    },
+
+
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["affordable", "wine", "adult"]],
+        "put": "recommendation", 
+        "as": ["W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["affordable", "wine", "senior adult"]],
+        "put": "recommendation", 
+        "as": ["W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-range", "wine", "adult"]],
+        "put": "recommendation", 
+        "as": ["W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-range", "wine", "senior adult"]],
+        "put": "recommendation", 
+        "as": ["W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-luxury", "wine", "adult"]],
+        "put": "recommendation", 
+        "as": ["W0002", "W0003", "W0012", "W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["mid-luxury", "wine", "senior adult"]],
+        "put": "recommendation", 
+        "as": ["W0002", "W0003", "W0012", "W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["luxury", "wine", "adult"]],
+        "put": "recommendation", 
+        "as": ["W0004", "W0005", "W0002", "W0003", "W0012", "W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    },
+    {
+        "when": [["range", "interest", "age group"]],
+        "is": [["==", "==", "=="]],
+        "what": [["luxury", "wine", "senior adult"]],
+        "put": "recommendation", 
+        "as": ["W0004", "W0005", "W0002", "W0003", "W0012", "W0001", "W0006", "W0011", "W0007", "W0008", "W0009", "W0010"]
+    }
 ]
