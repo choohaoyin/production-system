@@ -1113,109 +1113,144 @@
 ],
 [
     {
-    	"id": "H0001",
-        "name": "FÄRGRIK",
+    	"id": "H0001", 
+        "name": "Dark Turquoise Mug",
         "price": "RM2.90",
         "img": "images/recommendations/H0001.jpg", 
         "link": "https://www.ikea.com/my/en/p/faergrik-mug-dark-turquoise-60330564/"
     },
     {
     	"id": "H0002",
-        "name": "STELNA",
+        "name": "Clear Glass Mug",
         "price": "RM2.50",
         "img": "images/recommendations/H0002.jpg", 
         "link": "https://www.ikea.com/my/en/p/stelna-mug-clear-glass-50258912/"
     },
     {
     	"id": "H0003",
-        "name": "VARDAGEN",
+        "name": "White Coffee Cup and Saucer",
         "price": "RM9.90",
         "img": "images/recommendations/H0003.jpg", 
         "link": "https://www.ikea.com/my/en/p/vardagen-coffee-cup-and-saucer-off-white-10288317/"
     },
     {
     	"id": "H0004",
-        "name": "FRAMKALLA",
-        "price": "RM29.90",
+        "name": "Patterned Blue Mug (4pc)",
+        "price": "RM49.90",
         "img": "images/recommendations/H0004.jpg", 
-        "link": "https://www.ikea.com/my/en/p/framkalla-mug-mixed-patterns-00420082/"
+        "link": "https://www.ikea.com/my/en/p/entusiasm-mug-patterned-blue-80417245/"
     },
     {
     	"id": "H0005",
-        "name": "OSTRON",
-        "price": "RM22.90",
+        "name": "12-piece Cutlery Set",
+        "price": "RM19.90",
         "img": "images/recommendations/H0005.jpg", 
-        "link": "https://www.ikea.com/my/en/p/ostron-12-piece-cutlery-set-grey-10287365/"
+        "link": "https://www.ikea.com/my/en/p/mopsig-12-piece-cutlery-set-30377911/"
     },
     {
     	"id": "H0006",
-        "name": "MEDHJÄLPARE",
+        "name": "Bamboo Chopsticks (10 pairs)",
         "price": "RM4.90",
         "img": "images/recommendations/H0006.jpg", 
         "link": "https://www.ikea.com/my/en/p/medhjaelpare-chopsticks-10-pairs-bamboo-50429438/"
     },
     {
     	"id": "H0007",
-        "name": "ROCKÅN",
+        "name": "Grey Bath Robe",
         "price": "RM119.90",
         "img": "images/recommendations/H0007.jpg", 
         "link": "https://www.ikea.com/my/en/p/rockan-bath-robe-grey-30392030/"
     },
     {
     	"id": "H0008",
-        "name": "TÅSJÖN",
+        "name": "Grey Bath Slippers",
         "price": "RM8.90",
         "img": "images/recommendations/H0008.jpg", 
         "link": "https://www.ikea.com/my/en/p/tasjoen-slippers-grey-20391936/"
     },
     {
     	"id": "H0009",
-        "name": "VÅGSJÖN",
+        "name": "Purple Bath Towel - 70x140cm",
         "price": "RM19.90",
         "img": "images/recommendations/H0009.jpg", 
         "link": "https://www.ikea.com/my/en/p/vagsjoen-bath-towel-purple-00439406/"
     },
     {
     	"id": "H0010",
-        "name": "NÄVLINGE",
+        "name": "White LED Clamp Spotlight",
         "price": "RM59.00",
         "img": "images/recommendations/H0010.jpg", 
         "link": "https://www.ikea.com/my/en/p/naevlinge-led-clamp-spotlight-white-10449891/"
     },
     {
     	"id": "H0011",
-        "name": "HEKTAR",
+        "name": "Dark Grey Work Lamp with Wireless Charging",
         "price": "RM249.00",
         "img": "images/recommendations/H0011.jpg", 
         "link": "https://www.ikea.com/my/en/p/hektar-work-lamp-with-wireless-charging-dark-grey-20323438/"
     },
     {
-    	"id": "H00012",
-        "name": "SINNLIG",
+    	"id": "H0012",
+        "name": "Green Scented Candle in Glass-Apple and pear",
         "price": "RM12.90",
         "img": "images/recommendations/H0012.jpg", 
         "link": "https://www.ikea.com/my/en/p/sinnlig-scented-candle-in-glass-apple-and-pear-green-40337415/"
     },
     {
     	"id": "H0013",
-        "name": "VÄLDOFT",
+        "name": "Grey Scented Candle in Glass-Salty sweets",
         "price": "RM6.90",
         "img": "images/recommendations/H0013.jpg", 
         "link": "https://www.ikea.com/my/en/p/vaeldoft-scented-candle-in-glass-salty-sweets-grey-60442298/"
     },
     {
     	"id": "H0014",
-        "name": "OSKILJAKTIG",
+        "name": "Black Steel Vacuum Flask-0.5l",
         "price": "RM49.90",
         "img": "images/recommendations/H0014.jpg", 
         "link": "https://www.ikea.com/my/en/p/oskiljaktig-steel-vacuum-flask-black-20467158/"
     },
     {
     	"id": "H0015",
-        "name": "HÄLSA",
+        "name": "Blue Steel Vacuum Flask-0.5l",
         "price": "RM19.90",
         "img": "images/recommendations/H0015.jpg", 
         "link": "https://www.ikea.com/my/en/p/haelsa-steel-vacuum-flask-blue-60450641/"
+    },
+    {
+    	"id": "H0016",
+        "name": "Laundry basket with lining",
+        "price": "RM199.00",
+        "img": "images/recommendations/H0016.jpg", 
+        "link": "https://www.ikea.com/my/en/p/branaes-laundry-basket-with-lining-rattan-70216935/"
+    },
+    {
+    	"id": "H0017",
+        "name": "18-piece service, white",
+        "price": "RM249.00",
+        "img": "images/recommendations/H0017.jpg", 
+        "link": "https://www.ikea.com/my/en/p/upplaga-18-piece-service-white-00443804/"
+    },
+    {
+    	"id": "H0018",
+        "name": "White Kitchen trolley",
+        "price": "RM590.00",
+        "img": "images/recommendations/H0018.jpg", 
+        "link": "https://www.ikea.com/my/en/p/stenstorp-kitchen-trolley-white-oak-20201917/"
+    },
+    {
+    	"id": "H0019",
+        "name": "Marble table lamp",
+        "price": "RM599.00",
+        "img": "images/recommendations/H0019.jpg", 
+        "link": "https://www.ikea.com/my/en/p/evedal-table-lamp-grey-marble-grey-80405737/"
+    },
+    {
+    	"id": "H0020",
+        "name": "Bookcase",
+        "price": "RM1017.00",
+        "img": "images/recommendations/H0020.jpg", 
+        "link": "https://www.ikea.com/my/en/p/billy-bookcase-black-brown-s59184511/"
     }
 ],
 
