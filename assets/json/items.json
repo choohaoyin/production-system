@@ -678,6 +678,41 @@
         "price": "RM28.00",
         "img": "images/recommendations/C0013.jpg", 
         "link": "https://royce.com.my/collections/bar-chocolate/products/bar-chocolate-milk"
+    },
+    { 
+        "id": "C0014",
+        "name": "Chocolate Carre All Dark Collection",
+        "price": "RM242.00",
+        "img": "images/recommendations/C0014.png", 
+        "link": "https://www.godiva.my/myen/new-carres-all-dark-36pcs.html"
+    },
+    { 
+        "id": "C0015",
+        "name": "Gold Collection 32 Pieces",
+        "price": "RM308.00",
+        "img": "images/recommendations/C0015.jpg", 
+        "link": "https://www.godiva.my/myen/gold-collection-32pcs.html"
+    },
+    { 
+        "id": "C0016",
+        "name": "Chocolate Luxury Gift Box",
+        "price": "RM825.00",
+        "img": "images/recommendations/C0016.png", 
+        "link": "https://www.godiva.my/myen/luxury-box-red-59pcs.html"
+    },
+    { 
+        "id": "C0017",
+        "name": "Chocolate Truffes Collection",
+        "price": "RM198.00",
+        "img": "images/recommendations/C0017.png", 
+        "link": "https://www.godiva.my/myen/chocolate-assortments/truffes/truffes-collection-box-12pcs.html"
+    },
+    { 
+        "id": "C0018",
+        "name": "Gold Discovery Chocolate 6pcs",
+        "price": "RM104.00",
+        "img": "images/recommendations/C0018.jpg", 
+        "link": "https://www.godiva.my/myen/chocolate-assortments/chocolate-gold-discoery-collection/gold-discovery-chocolate-giftbox-6pcs.html"
     }
 ],
 [
