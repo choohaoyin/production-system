@@ -87,7 +87,7 @@ body {
 /*buttons*/
 #msform .action-button, .popup-content .action-button {
     width: 100px;
-    background: lightpink;
+    background: #ee0979;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -104,7 +104,7 @@ body {
 }
 
 #msform #why-button {
-    width: 170px;
+    width: 225px;
     background: #ee0979;
     font-weight: bold;
     color: white;
@@ -117,12 +117,12 @@ body {
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px lightpink;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
 }
 
 #msform .action-button-previous {
     width: 100px;
-    background: lightblue;
+    background: #234099;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -134,7 +134,7 @@ body {
 }
 
 #msform .action-button-previous:hover, #msform .action-button-previous:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px lightblue;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #234099;
 }
 
 /*headings*/
@@ -332,8 +332,6 @@ padding: 10px;
 
 .buy-button {
     background-color: #eee6e6 !important;
-    left: 75px !important;
-    width: 150px !important;
 }
 
 .popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
@@ -344,6 +342,10 @@ display: none;
 .popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why-explanation.active, 
 .popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
 display: block;
+}
+
+.item-img {
+    width: 75%;
 }
 
 #tag {
@@ -374,4 +376,17 @@ display: block;
     font-size: 17px;
     border-top: solid 0.5px lightslategray;
     padding: 20px;
+}
+
+#ohno img{
+    width: 400px;
+}
+
+.oh-no-button {
+    margin: 20px 0 !important;
+    background-color: #5cb38e !important;
+}
+
+.oh-no-button:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #5cb38e !important;
 }
