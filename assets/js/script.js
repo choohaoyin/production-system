@@ -145,18 +145,27 @@ $(".next").click(function(){
     // If the next button is submit button
     if ($(this).hasClass("submit")) {
         $.fn.forwardChaining("#msform");
-        var matched = []
-        for(recommendation of wm["recommendation"]) {
-            var test = items.filter(function (category) {
-                var x = category.filter(function (item) {
-                    return item.id == recommendation
+        if (wm.hasOwnProperty("recommendation")) {
+            var matched = []
+            for(recommendation of wm["recommendation"]) {
+                var test = items.filter(function (category) {
+                    var x = category.filter(function (item) {
+                        return item.id == recommendation
+                    })
+                    if ((x.length != 0) && (typeof x !== "undefined")) {
+                        matched.push(...x)
+                    }
                 })
-                if ((x.length != 0) && (typeof x !== "undefined")) {
-                    matched.push(...x)
-                }
-            })
+            }
+            $("#recommendation").children(".carousel-inner").displayItem(matched);
+
+            if (matched.length <= 3) {
+                $(".recommendation-arrow").css("display","none");
+            }
+        } else {
+            $("#recommendation").css("display","none");
+            $("#ohno").css("display","block");
         }
-        $("#recommendation").children(".carousel-inner").displayItem(matched);
     }
 });
 
@@ -305,7 +314,7 @@ $(document).ready(function(){
                 if (typeof value == "object") {
                     for (i = 0; i<value.length;i++) {
                         if(!wm[name].includes(value[i])){
-                            wm[name].push(value);
+                            wm[name].push(value[i]);
                         }
                     }
                 } else {
@@ -542,34 +551,6 @@ $(document).ready(function(){
         // Explanation Module
         let label = []; // for tag labelling
 
-        function getColor(value, text=false) {
-            const tagColor = [
-                ["#ff634d","#ffffff"],
-                ["#ffa500","#ffffff"],
-                ["#f7d859","#ffffff"],
-                ["##bf00ff","#ffffff"],
-                ["#d3dd6c","#ffffff"],
-                ["#9af94e","#ffffff"],
-                ["#68df80","#ffffff"],
-                ["#67ab5b","#ffffff"],
-                ["#4694e9","#ffffff"],
-                ["#53b7ce","#ffffff"]
-            ]
-        
-            let colorCode = null;
-            if (label.includes(value)) {
-                colorCode = label.indexOf(value);
-            } else {
-                label.push(value);
-                colorCode = label.indexOf(value);
-            }
-        
-            if (!text) {
-                return tagColor[colorCode][0];
-            } else {
-                return tagColor[colorCode][1];
-            }
-        }
 
         function getSpan(element, value=null) {
             const tagColor = [
@@ -606,34 +587,34 @@ $(document).ready(function(){
 
         switch(option) {
             case "rules":
-                for(item of items) {
-                    if (item.when != "recommendation_cat") {
-                        why += "<p>";
+                // for(item of items) {
+                //     if (item.when != "recommendation_cat") {
+                //         why += "<p>";
     
-                        if (typeof item.when == "object") {
-                            for(i = 0; i<item.when.length;i++) {
-                                why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + item.when[i] + "</span>";
-                                why += " is "
-                                why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + wm[item.when[i]]+ "</span>";;
+                //         if (typeof item.when == "object") {
+                //             for(i = 0; i<item.when.length;i++) {
+                //                 why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + item.when[i] + "</span>";
+                //                 why += " is "
+                //                 why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + wm[item.when[i]]+ "</span>";;
     
-                                if (i != item.when.length-1) {
-                                    why += " and "
-                                }
-                            }
-                        } else {
-                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + item.when + "</span>";
-                            why += " is ";
-                            why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + wm[item.when] + "</span>";
-                        }
-                        why += ", so ";
-                        if (item.when == "budget") {
-                            why += `the gift will be in ${getSpan(item.put)} range`;
-                        } else {
-                            why += `${getSpan(item.put)} is ${getSpan(item.put,item.as)}`;
-                        }
-                        why += "</p>";
-                    }
-                } 
+                //                 if (i != item.when.length-1) {
+                //                     why += " and "
+                //                 }
+                //             }
+                //         } else {
+                //             why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + item.when + "</span>";
+                //             why += " is ";
+                //             why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + wm[item.when] + "</span>";
+                //         }
+                //         why += ", so ";
+                //         if (item.when == "budget") {
+                //             why += `the gift will be in ${getSpan(item.put)} range`;
+                //         } else {
+                //             why += `${getSpan(item.put)} is ${getSpan(item.put,item.as)}`;
+                //         }
+                //         why += "</p>";
+                //     }
+                // } 
                 break;
             case "facts":
                 for(attr in items) {
