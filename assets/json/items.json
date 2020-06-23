@@ -1011,6 +1011,27 @@
         "price": "RM949.00",
         "img": "images/recommendations/T0024.jpg", 
         "link": "https://www.fruugo.my/google-home-smart-speaker-home-assistant/p-38278688-78580648?language=en&ac=google&gclid=CjwKCAjwxLH3BRApEiwAqX9arRl-gsKUUadp3XppF1MNbq5rsuGzUe_ug8Hgh3f-PV-31_saxytxOxoCuZQQAvD_BwE"
+    },
+    { 
+        "id": "T0025",
+        "name": "Logitech X50 Mobile Wireless Speaker",
+        "price": "RM98.00",
+        "img": "images/recommendations/T0025.png", 
+        "link": "https://www.logitech.com/en-my/product/x50-wireless-speaker?crid=1548"
+    },
+    { 
+        "id": "T0026",
+        "name": "Logitech M331 Silent Plus",
+        "price": "RM76.00",
+        "img": "images/recommendations/T0026.png", 
+        "link": "https://www.logitech.com/en-my/product/m331-silent-plus?crid=7"
+    },
+    { 
+        "id": "T0027",
+        "name": "Logitech Wireless Keyboard K270",
+        "price": "RM84.90",
+        "img": "images/recommendations/T0027.png", 
+        "link": "https://www.logitech.com/en-my/product/wireless-keyboard-k270?crid=27"
     }
 ],
 [
