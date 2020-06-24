@@ -230,70 +230,70 @@
         "id": "TG0018",
         "name": "Bead roller coaster",
         "price": "RM39.90",
-        "img": "images/recommendations/TG0018.jpg", 
+        "img": "images/recommendations/TG0018.png", 
         "link": "https://www.ikea.com/my/en/p/mula-bead-roller-coaster-60452126/"
     },
     { 
         "id": "TG0019",
         "name": "Shape sorter",
         "price": "RM24.90",
-        "img": "images/recommendations/TG0019.jpg", 
+        "img": "images/recommendations/TG0019.png", 
         "link": "https://www.ikea.com/my/en/p/mula-shape-sorter-multicolour-90294890/"
     },
     { 
         "id": "TG0020",
         "name": "Toddle truck",
         "price": "RM69.90",
-        "img": "images/recommendations/TG0020.jpg", 
+        "img": "images/recommendations/TG0020.png", 
         "link": "https://www.ikea.com/my/en/p/mula-toddle-truck-green-birch-10283579/"
     },
     { 
         "id": "TG0021",
         "name": "Musical toy",
         "price": "RM39.90",
-        "img": "images/recommendations/TG0021.jpg", 
+        "img": "images/recommendations/TG0021.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-musical-toy-caterpillar-60372634/"
     },
     { 
         "id": "TG0022",
         "name": "Yellow Rattle",
         "price": "RM14.90",
-        "img": "images/recommendations/TG0022.jpg", 
+        "img": "images/recommendations/TG0022.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-rattle-multicolour-yellow-20365032/"
     },
     { 
         "id": "TG0023",
         "name": "White Rattle",
         "price": "RM14.90",
-        "img": "images/recommendations/TG0023.jpg", 
+        "img": "images/recommendations/TG0023.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-rattle-multicolour-white-40372649/"
     },
     { 
         "id": "TG0024",
         "name": "Blue Rattle",
         "price": "RM14.90",
-        "img": "images/recommendations/TG0024.jpg", 
+        "img": "images/recommendations/TG0024.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-rattle-blue-10422740/"
     },
     { 
         "id": "TG0025",
         "name": "Baby gym",
         "price": "RM149.00",
-        "img": "images/recommendations/TG0025.jpg", 
+        "img": "images/recommendations/TG0025.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-baby-gym-90372623/"
     },
     { 
         "id": "TG0026",
         "name": "Baby gym",
         "price": "RM129.00",
-        "img": "images/recommendations/TG0026.jpg", 
+        "img": "images/recommendations/TG0026.png", 
         "link": "https://www.ikea.com/my/en/p/leka-baby-gym-birch-multicolour-60167704/"
     },
     { 
         "id": "TG0027",
         "name": "Play mat",
         "price": "RM139.00",
-        "img": "images/recommendations/TG0027.jpg", 
+        "img": "images/recommendations/TG0027.png", 
         "link": "https://www.ikea.com/my/en/p/klappa-play-mat-10372641/"
     }
 ],
@@ -372,14 +372,14 @@
         "id": "B0011",
         "name": "MAKEUP BRUSH-ROSE GOLD PINK",
         "price": "RM20.00",
-        "img": "images/recommendations/B0011.png", 
+        "img": "images/recommendations/B0011.jpg", 
         "link": "https://www.ryolifestyle.com/collections/cosmetic-brush/products/makeup-brush-d?variant=31989745877070"
     },
     { 
         "id": "B0012",
         "name": "MAKEUP BRUSH-ACRYLIC GLITTER",
         "price": "RM20.00",
-        "img": "images/recommendations/B0012.png", 
+        "img": "images/recommendations/B0012.jpg", 
         "link": "https://www.ryolifestyle.com/collections/cosmetic-brush/products/makeup-brush-c"
     },
     { 
@@ -1222,35 +1222,35 @@
     	"id": "H0016",
         "name": "Laundry basket with lining",
         "price": "RM199.00",
-        "img": "images/recommendations/H0016.jpg", 
+        "img": "images/recommendations/H0016.png", 
         "link": "https://www.ikea.com/my/en/p/branaes-laundry-basket-with-lining-rattan-70216935/"
     },
     {
     	"id": "H0017",
         "name": "18-piece service, white",
         "price": "RM249.00",
-        "img": "images/recommendations/H0017.jpg", 
+        "img": "images/recommendations/H0017.png", 
         "link": "https://www.ikea.com/my/en/p/upplaga-18-piece-service-white-00443804/"
     },
     {
     	"id": "H0018",
         "name": "White Kitchen trolley",
         "price": "RM590.00",
-        "img": "images/recommendations/H0018.jpg", 
+        "img": "images/recommendations/H0018.png", 
         "link": "https://www.ikea.com/my/en/p/stenstorp-kitchen-trolley-white-oak-20201917/"
     },
     {
     	"id": "H0019",
         "name": "Marble table lamp",
         "price": "RM599.00",
-        "img": "images/recommendations/H0019.jpg", 
+        "img": "images/recommendations/H0019.png", 
         "link": "https://www.ikea.com/my/en/p/evedal-table-lamp-grey-marble-grey-80405737/"
     },
     {
     	"id": "H0020",
         "name": "Bookcase",
         "price": "RM1017.00",
-        "img": "images/recommendations/H0020.jpg", 
+        "img": "images/recommendations/H0020.png", 
         "link": "https://www.ikea.com/my/en/p/billy-bookcase-black-brown-s59184511/"
     }
 ],
