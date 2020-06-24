@@ -175,15 +175,7 @@ $(".next").click(function(){
 // Pop up modal window for each item detail
 $("#recommendation .carousel-inner").on("click",".carousel-item .item-container", function () {
     var id = $(this).attr("for");
-    var matched = null;
-    var test = items.filter(function (category) {
-        var x = category.filter(function (item) {
-            return item.id == id
-        })
-        if ((x.length != 0) && (typeof x !== "undefined")) {
-            matched = x[0];
-        }
-    })
+    var matched = getItem(id);
     $(".popup-overlay, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");
     $(".popup-content").children(".item-img").attr("src","assets/"+matched.img);
     $(".popup-content").children(".item-name").html(matched.name);
@@ -197,7 +189,7 @@ $("#why-button").click(function () {
 })
 
 // removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
-$(".close, .popup-overlay").on("click", function() {
+$(".close").on("click", function() {
     $(".popup-overlay, .popup-content").removeClass("active");
 
     $(".popup-content").find("*").each(function () {
@@ -345,19 +337,20 @@ $(document).ready(function(){
                         var andPass;
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
                             if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
-                                console.log(`${currentRule[i].when[j][p]} in WM is object`);
-
+                                
                                 var arr = "";
 
                                 for (q = 0; q <  wm[currentRule[i].when[j][p]].length ; q++) {
-                                    arr += `"${wm[currentRule[i].when[j][p]][q]}"`;
+                                    if (typeof wm[currentRule[i].when[j][p]][q] == "string") {
+                                        condition += `("${wm[currentRule[i].when[j][p]][q]}" ${currentRule[i].is[j][p]} "${currentRule[i].what[j][p]}")`;
+                                    } else {
+                                        condition += `(${wm[currentRule[i].when[j][p]][q]} ${currentRule[i].is[j][p]} ${currentRule[i].what[j][p]})`;
+                                    }
                                     
                                     if(q != wm[currentRule[i].when[j][p]].length - 1) {
-                                        arr += ",";
+                                        condition += "&&";
                                     }
                                 }
-
-                                condition += `( [${arr}].includes("${currentRule[i].what[j][p]}") )`;
                             } else if (typeof currentRule[i].what[j][p] == "string") {
                                 condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
 
@@ -395,12 +388,12 @@ $(document).ready(function(){
             console.log(eval(condition));
 
             if (eval(condition)) {
-                console.log("condition is true");
+                console.log("condition is true",currentRule[i].put,currentRule[i].as);
                 console.log(wm);
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
                 console.log(wm);
                 var removed = currentRule.splice(i,1);
-                console.log(`removed ${removed}`);
+                console.log("removed", removed);
                 firedRules.push(...removed);
                 i = -1;
             }
@@ -433,10 +426,6 @@ $(document).ready(function(){
                                 cond += `(${fact} ${logic}  ${wm[currentRule[i].put[j]][p]})`;
                             }
 
-                            // if (p != wm[currentRule[i].put[j]].length - 1) {
-                            //     cond += "||";
-                            // }
-
                             if(p != wm[currentRule[i].put[j]].length - 1) {
                                 if (logic == "=="){
                                     condition += "||";
@@ -444,23 +433,7 @@ $(document).ready(function(){
                                     condition += "&&";
                                 }
                             }
-
-
-                            // if (typeof wm[currentRule[i].put[j]][p] == "string") {
-                            //     arr += `"${wm[currentRule[i].put[j]][p]}"`;
-                            // } else {
-                            //     arr += `${wm[currentRule[i].put[j]][p]}`;
-                            // }
-
-                            // if(p != wm[currentRule[i].put[j]].length -1){
-                            //     arr += ",";
-                            // }
                         }
-                        // if (typeof currentRule[i].as == "string ") {
-                        //     condition += `([${arr}].includes("${currentRule[i].as}"))`;
-                        // } else {
-                        //     condition += `([${arr}].includes(${currentRule[i].as}))`;
-                        // }
                     } else {
                         var logic = "==";
                         var fact= wm[currentRule[i].put[j]];
@@ -495,15 +468,11 @@ $(document).ready(function(){
                     var arr = ""
                     for (p = 0 ; p < currentRule[i].as.length; p++) {
                         if (typeof currentRule[i].as[p] == "string") {
-                            // arr += `"${currentRule[i].as[p]}"`;
                             condition += `("${fact}" ${logic} "${currentRule[i].as[p]}")`;
                         } else {
                             condition += `(${fact} ${logic} ${currentRule[i].as[p]})`;
                         }
 
-                        // if(p != currentRule[i].as.length -1){
-                        //     condition += "||"
-                        // }
 
                         if(p != currentRule[i].as.length -1) {
                             if (logic == "=="){
@@ -513,11 +482,6 @@ $(document).ready(function(){
                             }
                         }
                     }
-                    // if (typeof wm[currentRule[i].put] == "string") {
-                    //     condition += `([${arr}].includes("${wm[currentRule[i].put]}"))`;
-                    // } else {
-                    //     condition += `([${arr}].includes(${wm[currentRule[i].put]}))`;
-                    // }
                 } else if((typeof wm[currentRule[i].put] == "object")) {
                     
                     var arrWM = "";
@@ -533,16 +497,10 @@ $(document).ready(function(){
                                 }
         
                                 if (typeof fact == "string") {
-                                    // arrWM += `"${wm[currentRule[i].put][n]}"`;
                                     condition += `("${fact}" ${logic} "${currentRule[i].as[m]}")`;
                                 } else {
                                     condition += `("${fact}" ${logic} "${currentRule[i].as[m]}")`;
                                 }
-
-                                // if (n != wm[currentRule[i].put].length -1) {
-                                //     condition += "||"
-                                // }
-
                                 if(n != wm[currentRule[i].put].length -1) {
                                     if (logic == "=="){
                                         condition += "||";
@@ -551,9 +509,6 @@ $(document).ready(function(){
                                     }
                                 }
                             }
-                            // if (m != currentRule[i].as.length.length -1) {
-                            //     condition += "||"
-                            // }
 
                             if(m != currentRule[i].as.length.length -1) {
                                 if (logic == "=="){
@@ -573,16 +528,10 @@ $(document).ready(function(){
                             }
     
                             if (typeof fact == "string") {
-                                // arrWM += `"${wm[currentRule[i].put][n]}"`;
                                 condition += `("${fact}" ${logic} "${currentRule[i].as}")`;
                             } else {
                                 condition += `(${fact} ${logic} ${currentRule[i].as})`;
                             }
-
-                            // if (n != wm[currentRule[i].put].length -1) {
-                            //     condition += "||"
-                            // }
-
 
                             if(n != wm[currentRule[i].put].length -1) {
                                 if (logic == "=="){
@@ -591,57 +540,8 @@ $(document).ready(function(){
                                     condition += "&&";
                                 }
                             }
-
-                            
-    
-                            // if (typeof currentRule[i].as == "string") {
-                            //     condition += `([${arrWM}].includes("${currentRule[i].as}"))`;
-                            // } else {
-                            //     condition += `([${arrWM}].includes(${currentRule[i].as}))`;
-                            // }
                         }
                     }
-
-                    // for (n = 0 ; n < wm[currentRule[i].put].length; n++) {
-                    //     var fact= wm[currentRule[i].put][n];
-                    //     if (fact.replace(/[^!=]/gi, '') == "!=") {
-                    //         logic = "!=";
-                    //         fact = fact.replace(/[^a-z]/gi, '')
-                    //     }
-
-                    //     if (typeof fact == "string") {
-                    //         // arrWM += `"${wm[currentRule[i].put][n]}"`;
-                    //         condition += `(${fact} ${logic} ${})`;
-                    //     } else {
-                    //         arrWM += `${wm[currentRule[i].put][n]}`;
-                    //     }
-
-                    //     if(n != wm[currentRule[i].put].length - 1){
-                    //         arrWM += ","
-                    //     }
-                    // }
-
-                    // if (typeof currentRule[i].as == "object") {
-                    //     var arrRule = "";
-                    //     for (m = 0 ; m < currentRule[i].as.length; m++) {
-                    //         if (typeof currentRule[i].as[m] == "string") {
-                    //             arrRule += `"${currentRule[i].as[m]}"`;
-                    //         } else {
-                    //             arrRule += `${currentRule[i].as[m]}`;
-                    //         }
-
-                    //         if(m != currentRule[i].as.length - 1){
-                    //             arrRule += ","
-                    //         }
-                    //     }
-                    //     condition += `([${arrWM}].includes("${arrRule}"))`;
-                    // } else if (typeof currentRule[i].as == "string") {
-                    //     condition += `([${arrWM}].includes("${currentRule[i].as}"))`;
-                    // } else {
-                    //     condition += `([${arrWM}].includes(${currentRule[i].as}))`;
-                    // }
-
-                    
                     
                 } else {
                     var logic = "==";
@@ -733,42 +633,249 @@ $(document).ready(function(){
         switch(option) {
             case "rules":
                 for(rule of items) {
-                    switch(rule.when) {
-                        case "":
-                            break;
+                    if (typeof rule.when == "object") {
+                        switch(rule.put) {
+                            case "age group":
+                                if (typeof rule.when[0] != "object") {
+                                    why += `<p>The receipient ${getSpan(rule.when[0])} `
+                                } else {
+                                    why += `<p>The receipient ${getSpan(rule.when[0][0])} `
+                                }
+                                for(i=0;i<rule.when.length;i++) {
+                                    if (typeof rule.when[i] == "object") {
+                                        for (j=0;j<rule.when[i].length;j++) {
+                                            var is;
+                                            switch(rule.is[i][j]) {
+                                                case "==":
+                                                    is = "is";
+                                                    break;
+                                                case "!=":
+                                                    is = "is not";
+                                                    break;
+                                                case ">=":
+                                                case ">":
+                                                    is = "is more than";
+                                                    break;
+                                                case "<=":
+                                                case "<":
+                                                    is = "is less than";
+                                                    break;
+                                            }
+                                            why += `${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+
+                                            if (i != rule.when[i].length - 1) why += " and "
+                                        }
+                                    } else {
+                                        var is;
+                                        switch(rule.is[i]) {
+                                            case "==":
+                                                is = "is";
+                                                break;
+                                            case "!=":
+                                                is = "is not";
+                                                break;
+                                            case ">=":
+                                            case ">":
+                                                is = "is more than";
+                                                break;
+                                            case "<=":
+                                            case "<":
+                                                is = "is less than";
+                                                break;
+                                        }
+                                        why += `${is} ${getSpan(rule.when[i],rule.what[i])}`;
+
+                                        if (i != rule.when.length - 1) why += " or "
+                                    }
+                                }
+                                why += `, so the ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                break;
+                            case "range":
+                                if (typeof rule.when[0] != "object") {
+                                    why += `<p>The ${getSpan(rule.when[0])} `
+                                } else {
+                                    why += `<p>The ${getSpan(rule.when[0][0])} `
+                                }
+                                for(i=0;i<rule.when.length;i++) {
+                                    if (typeof rule.when[i] == "object") {
+                                        for (j=0;j<rule.when[i].length;j++) {
+                                            var is;
+                                            switch(rule.is[i][j]) {
+                                                case "==":
+                                                    is = "is";
+                                                    break;
+                                                case "!=":
+                                                    is = "is not";
+                                                    break;
+                                                case ">=":
+                                                case ">":
+                                                    is = "is more than";
+                                                    break;
+                                                case "<=":
+                                                case "<":
+                                                    is = "is less than";
+                                                    break;
+                                            }
+                                            why += `${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+
+                                            if (i != rule.when[i].length - 1) why += " and "
+                                        }
+                                    } else {
+                                        var is;
+                                        switch(rule.is[i]) {
+                                            case "==":
+                                                is = "is";
+                                                break;
+                                            case "!=":
+                                                is = "is not";
+                                                break;
+                                            case ">=":
+                                            case ">":
+                                                is = "is more than";
+                                                break;
+                                            case "<=":
+                                            case "<":
+                                                is = "is less than";
+                                                break;
+                                        }
+                                        why += `${is} ${getSpan(rule.when[i],rule.what[i])}`;
+
+                                        if (i != rule.when.length - 1) why += " or "
+                                    }
+                                }
+                                why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                break;
+                            case "recommendation":
+                                why += `<p>The`;
+                                for(i=0;i<rule.when.length;i++) {
+                                    for(j=0;j<rule.when[i].length;j++) {
+                                        var is;
+                                        switch(rule.is[i][j]) {
+                                            case "==":
+                                                is = "is";
+                                                break;
+                                            case "!=":
+                                                is = "is not";
+                                                break;
+                                            case ">=":
+                                            case ">":
+                                                is = "is more than";
+                                                break;
+                                            case "<=":
+                                            case "<":
+                                                is = "is less than";
+                                                break;
+                                        }
+                                        why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+                                        if (j != rule.when[i].length - 1 ) {
+                                            if (rule.when[i].length != 2) {
+                                                why += ", ";
+                                            } else {
+                                                why += " and"
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        
+                    } else {
+                        switch(rule.put) {
+                            case "age group":
+                                why += `<p>The ${getSpan(rule.when)} `;
+                                var is;
+                                switch(rule.is) {
+                                    case "==":
+                                        is = "is";
+                                        break;
+                                    case "!=":
+                                        is = "is not";
+                                        break;
+                                    case ">=":
+                                    case ">":
+                                        is = "is more than";
+                                        break;
+                                    case "<=":
+                                    case "<":
+                                        is = "is less than";
+                                        break;
+                                }
+                                why += `${is} ${getSpan(rule.when,rule.what)}`;
+                                why += `, so the ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                break;
+                            case "range":
+                                why += `<p>The receipient ${getSpan(rule.when)} `;
+                                var is;
+                                switch(rule.is) {
+                                    case "==":
+                                        is = "is";
+                                        break;
+                                    case "!=":
+                                        is = "is not";
+                                        break;
+                                    case ">=":
+                                    case ">":
+                                        is = "is more than";
+                                        break;
+                                    case "<=":
+                                    case "<":
+                                        is = "is less than";
+                                        break;
+                                }
+                                why += `${is} ${getSpan(rule.when,rule.what)}`;
+                                why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                break;
+                            case "recommendation":
+                                why += `<p>The`;
+                                for(i=0;i<rule.when.length;i++) {
+                                    for(j=0;j<rule.when[i].length;j++) {
+                                        var is;
+                                        switch(rule.is[i][j]) {
+                                            case "==":
+                                                is = "is";
+                                                break;
+                                            case "!=":
+                                                is = "is not";
+                                                break;
+                                            case ">=":
+                                            case ">":
+                                                is = "is more than";
+                                                break;
+                                            case "<=":
+                                            case "<":
+                                                is = "is less than";
+                                                break;
+                                        }
+                                        why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+                                        if (j != rule.when[i].length - 1 ) {
+                                            if (rule.when[i].length != 2) {
+                                                why += ", ";
+                                            } else {
+                                                why += " and"
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                        }
                     }
-                    // if (item.when != "recommendation_cat") {
-                    //     why += "<p>";
-    
-                    //     if (typeof item.when == "object") {
-                    //         for(i = 0; i<item.when.length;i++) {
-                    //             why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + item.when[i] + "</span>";
-                    //             why += " is "
-                    //             why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when[i]) +"\">" + wm[item.when[i]]+ "</span>";;
-    
-                    //             if (i != item.when.length-1) {
-                    //                 why += " and "
-                    //             }
-                    //         }
-                    //     } else {
-                    //         why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + item.when + "</span>";
-                    //         why += " is ";
-                    //         why += "<span id=\"tag\" style=\"background-color:"+ getColor(item.when) +"\">" + wm[item.when] + "</span>";
-                    //     }
-                    //     why += ", so ";
-                    //     if (item.when == "budget") {
-                    //         why += `the gift will be in ${getSpan(item.put)} range`;
-                    //     } else {
-                    //         why += `${getSpan(item.put)} is ${getSpan(item.put,item.as)}`;
-                    //     }
-                    //     why += "</p>";
-                    // }
                 } 
                 break;
             case "facts":
                 for(attr in items) {
                     if (items.hasOwnProperty(attr)) { 
                         switch(attr) {
+                            case "budget":
+                                var budget = items[attr];
+                                if (typeof budget == "object") {
+                                    budget = budget[0];
+                                }
+                                compare = "more than"
+                                if(budget == 100) {
+                                    compare = "around"
+                                }
+                                why += `<p>For the ${getSpan(attr)} ${compare} ${getSpan(attr,`RM ${budget}`)}</p>`;
+                                break;
                             case "occasion":
                                 why += `<p>You can give this gift during ${getSpan(attr)} like ${getSpan(attr,items[attr])}</p>`;
                                 break;
@@ -777,45 +884,49 @@ $(document).ready(function(){
                                 break;
                             case "age":
                                 var age_group = "";
+
                                 if (items.hasOwnProperty("age group")) {
-                                    console.log(items["age group"], typeof items["age group"]);
                                     if (typeof items["age group"] == "object") {
                                         let nAgeGroup = items["age group"].length;
                                         for (k=0; k<nAgeGroup ; k++) {
                                             var fact= items["age group"][k];
-                                            logic = "";
                                             if (fact.replace(/[^!=]/gi, '') == "!=") {
-                                                logic = "not ";
-                                                fact = fact.replace(/[^a-z]/gi, '')
-                                            }
-                                            console.log(logic,fact);
-                                            age_group += getSpan("age group", logic+fact);
-                                            if ((nAgeGroup == 2) && (k != nAgeGroup - 1)) {
-                                                age_group += " or ";
-                                            } else if (k != nAgeGroup - 1){
-                                                age_group += ", "
+                                                age_group = "";
+                                                break;
+                                            } else {
+                                                age_group += getSpan("age group", items["age group"][k]);
+                                                if ((nAgeGroup == 2) && (k != nAgeGroup - 1)) {
+                                                    age_group += " or ";
+                                                } else if (k != nAgeGroup - 1){
+                                                    age_group += ", "
+                                                }
                                             }
                                         }
-                                    } else {
-                                        age_group += items["age group"];
                                     }
-                                } else {
-                                    age_group += "person";
+
+                                    if (age_group != "") {
+                                        if (typeof items[attr] == "object"){
+                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                            } else {
+                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+                                            }
+                                    } else {
+                                        if (typeof items[attr] == "object"){
+                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                        } else {
+                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+
+                                        }
+                                    }
                                 }
 
 
-                                if (typeof items[attr] == "object"){
-                                    why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
-                                } else {
-                                    why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
-                                }
+
                                 break;
                             case "gender":
                                 why += `<p>The gift is for a ${getSpan(attr,items[attr])} receipient</p>`;
                                 break;
-                            case "budget":
-                                why += `<p>If your ${getSpan(attr)} is around ${getSpan(attr,`RM ${items[attr][0]}`)}</p>`;
-                                break;
+                            
                         }
                     }
                 }

@@ -980,28 +980,28 @@
     },
     { 
         "id": "T0009",
-        "name": "iphone 11",
+        "name": "iPhone 11",
         "price": "From RM3399.00",
         "img": "images/recommendations/T0009.jpg", 
         "link": "https://www.apple.com/my/shop/buy-iphone/iphone-11"
     },
     { 
         "id": "T0010",
-        "name": "iphone 11 Pro",
+        "name": "iPhone 11 Pro",
         "price": "From RM4899.00",
         "img": "images/recommendations/T0010.jpg", 
         "link": "https://www.apple.com/my/shop/buy-iphone/iphone-11-pro"
     },
     { 
         "id": "T0011",
-        "name": "iphone 11 Pro Max",
+        "name": "iPhone 11 Pro Max",
         "price": "From RM5299.00",
         "img": "images/recommendations/T0011.jpg", 
         "link": "https://www.apple.com/my/shop/buy-iphone/iphone-11-pro"
     },
     { 
         "id": "T0012",
-        "name": "iphone SE",
+        "name": "iPhone SE",
         "price": "From RM1999.00",
         "img": "images/recommendations/T0012.jpg", 
         "link": "https://www.apple.com/my/shop/buy-iphone/iphone-se"
