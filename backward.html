@@ -17,18 +17,40 @@
     <!-- /.CDN -->
     <script defer src="assets/js/script.js"></script>
     <script>
-        // $(".items").
+        $(window).on('load',function () {
+            $('#items').children('.carousel-inner').getCategory("all");
+});
     </script>
 </head>
 <body>
 <header></header>
 
-<div class="catalog">
-    <h2 class="fs-title">Select the recipient interests</h2>
-    <h3 class="fs-subtitle">you can select more than one option.</h3>
-    <div id="items" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+
+<fieldset class="catalog">
+    <div class="container ">
+    <div class="row justify-content-center">
+        <h2 class="fs-title ">Gift Catalog</h2>
+    </div>
+    <!-- <h3 class="fs-subtitle">you can select more than one option.</h3> -->
+    <div class="row justify-content-center">
+        <div class="form-group ">
+            <select class="form-control" id="category">
+                <option value="all">All categories</option>
+                <option value="F">Flowers</option>
+                <option value="GC">Gift Cards</option>
+                <option value="TG">Toys & Games</option>
+                <option value="B">Beauty</option>
+                <option value="C">Chocolates</option>
+                <option value="A">Accessories</option>
+                <option value="T">Technology</option>
+                <option value="H">Home & Living</option>
+                <option value="W">Wine</option>
+                <option value="BG">Baby Goods</option>
+            </select>
         </div>
+    </div>
+    <div id="items" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner"> </div>
     
         <a class="carousel-control-prev" href="#items" role="button" data-slide="prev" style="left: 100px;">
             <span class="sr-only">Previous</span>
@@ -42,6 +64,7 @@
         </a>
     </div>
 </div>
+</fieldset>
 <div class="popup-overlay">
     <!--Creates the popup content-->
     <div class="popup-content container">
@@ -61,8 +84,9 @@
     </div>
     
 </div>
-<button id="magic">Show me magic</button>
+<!-- <button id="magic">Show me magic</button> -->
 <footer></footer>
 </div>
+
 </body>
 </html>
