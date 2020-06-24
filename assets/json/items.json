@@ -1,4 +1,5 @@
-[[
+{
+    "GC":[
     { 
         "id": "GC0001",
         "name": "I'm Nuts About You Card",
@@ -105,7 +106,7 @@
         "link": "https://naiise.com.my/collections/wedding-cards/products/love-message-greeting-card"
     }
 ],
-[
+"TG":[
     { 
         "id": "TG0001",
         "name": "Pixie Belle 4",
@@ -296,7 +297,7 @@
         "link": "https://www.ikea.com/my/en/p/klappa-play-mat-10372641/"
     }
 ],
-[
+"B":[
     { 
         "id": "B0001",
         "name": "Benefit Mini Vans Set",
@@ -438,7 +439,7 @@
         "link": "https://www.zalora.com.my/hollister-fragrances-hollister-festival-vibes-for-him-edt-15ml-blue-2107012.html"
     }
 ],
-[
+"A":[
     { 
         "id": "A0001", 
         "name": "Bloom Within Gold Anklet",
@@ -664,7 +665,7 @@
         "link": "https://www.zalora.com.my/daniel-wellington-classic-sheffield-black-36mm-gold-2063862.html?last_csa=oos_similar"
     }
 ],
-[
+"C":[
     { 
         "id": "C0001", 
         "name": "Nama Chocolate-Port Charlotte",
@@ -792,7 +793,7 @@
         "link": "https://www.godiva.my/myen/chocolate-assortments/chocolate-gold-discoery-collection/gold-discovery-chocolate-giftbox-6pcs.html"
     }
 ],
-[
+"F":[
     { 
         "id": "F0001", 
         "name": "Brightful Graduation Bouquet",
@@ -920,7 +921,7 @@
         "link": "https://giftr.my/collections/get-well-soon/products/pink-stunner-roses-bouquet"
     }
 ],
-[
+"T":[
     { 
         "id": "T0001",
         "name": "RADIO BLUETOOTH SPEAKER",
@@ -1111,7 +1112,7 @@
         "link": "https://www.logitech.com/en-my/product/wireless-keyboard-k270?crid=27"
     }
 ],
-[
+"H":[
     {
     	"id": "H0001", 
         "name": "Dark Turquoise Mug",
@@ -1253,8 +1254,7 @@
         "link": "https://www.ikea.com/my/en/p/billy-bookcase-black-brown-s59184511/"
     }
 ],
-
-[
+"BG":[
     {
     	"id": "BG0001",
         "name": "Baby Romper & Wrap Pyjamas Set-Option B",
@@ -1487,8 +1487,7 @@
         "link": "https://www.hegenmalaysia.com/product/hegen-pcto-330ml-11oz-feeding-bottle-ppsu-2-pack/"
     }
 ],
-
-[
+"W":[
     {
     	"id": "W0001",
         "name": "Penfolds Bin 28",
@@ -1528,7 +1527,7 @@
     	"id": "W0006",
         "name": "MARTINI PROSECCO",
         "price": "RM130.00",
-        "img": "images/recommendations/W0006.jpg", 
+        "img": "images/recommendations/W0006.png", 
         "link": "https://www.winewarehouse.my/champagne-sparkling/martini-prosecco.html"
     },
     {
@@ -1574,4 +1573,4 @@
         "link": "https://whisky.my/product/veuve-clicquot-yellow-label-nv-champagne/"
     }
 
-]]
+]}

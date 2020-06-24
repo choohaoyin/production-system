@@ -1,67 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .3s ease;
-  background-color: red;
-}
-
-.container:hover .overlay {
-  opacity: 1;
-}
-
-.icon {
-  color: white;
-  font-size: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.fa-user:hover {
-  color: #eee;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+    <script>
+        function FileFinder()
+{
+            var Path, foundFiles, aFile, Path, attr, i, e, dyear;
+            var DateVal, Handle, FileDate, ReadOnlyFile;
+            
+            Path = "/Users/haoyin/Documents/BCS/Sem 6/Artificial-Intelligence_CSC3206/Assignment 2/system/assets/images/recommendation"; //Folder where we will search for files
+            foundFiles=aqFileSystem.FindFiles(Path, "*.*");
+            
+            if (!strictEqual(foundFiles, null))
+            while (foundFiles.HasNext())
+                {
+                aFile=foundFiles.Next();
+                Log.Message("Processing the file " + Path + aFile.Name);
+                
+                // Checks whether the file date is earlier than 01/01/2004
+                FileDate = aqFile.GetLastWriteTime(Path + aFile.Name); // Obtains the file date
+                dyear = aqDateTime.GetYear(FileDate); // Gets the year
+                if (dyear < 2004)
+                {
+                    // Changes the file date
+                    DateVal = aqConvert.StrToDateTime("1/1/2004 00:01:00"); // New date & time
 
-<h2>Fade in Overlay Icon</h2>
-<p>Hover over the image to see the effect.</p>
-
-<div class="container">
-  <img src="assets/images/downasaur.svg" alt="Avatar" class="image">
-  <div class="overlay">
-  <a href="#" class="icon" title="User Profile">
-    <!-- <i class="fa fa-user"></i> -->
-  </a>
-  </div>
-</div>
-
+                    // Checks whether the file is read-only
+                    ReadOnlyFile = (aFile.Attributes & 1) != 0;
+                    // If the file is read-only, we should make it writable.
+                    // Else, the file date cannot be changed.
+                    if (ReadOnlyFile)
+                    {
+                    // Removes the ReadOnly attribute
+                    attr = aFile.Attributes & (~1);
+                    aqFile.SetFileAttributes(Path + aFile.Name, attr);
+                    };
+                
+                    // Changes the file date
+                    e = aqFile.SetLastWriteTime(Path + aFile.Name, DateVal);
+                    // Reports whether the change was performed successfully
+                    if (e)
+                    Log.Message ("File date was changed successfully!");
+                    else 
+                    Log.Warning ("File date was not changed. Error: " + SysErrorMessage(e));
+                    
+                    // Restores the ReadOnly attribute, if necessary
+                    if (ReadOnlyFile)
+                    aqFile.SetFileAttributes(Path + aFile.Name, 1);
+                };
+                }
+            else Log.Message("No files were found.");
+            }
+    </script>
 </body>
 </html>

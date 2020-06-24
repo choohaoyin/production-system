@@ -19,8 +19,23 @@ $("img").attr("draggable",false);
 // Load header and footer
 $(function(){
     $("header").load("assets/html/header.html"); 
-    $("footer").load("assets/html/footer.html"); 
+    $("footer").load("assets/html/footer.html");
 });
+
+// retrieve item
+function getItem(id) {
+    var cat = id.replace(/[^a-z]/gi, '');
+    console.log(cat,id);
+
+    var matched = items[cat].filter(function (item) {
+        return item.id == id;
+    })[0];
+
+    console.log(matched)
+
+    return matched;
+}
+
 
 // Load rules list
 $.getJSON("assets/json/rules.json", function(data) {
@@ -70,30 +85,10 @@ $("fieldset :input").change(function () {
     $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
-// Make checkbox as radio button
-// $("#occ :input").change(function () {
-//     $(this).parents('fieldset').find('label').removeClass("active");
-//     $(this).addClass("active");
-//     alert("run");
-//     $.fn.getForm("#msform");
-//     console.log(wm)
-// });
-
 $(".occ-button").click(function () {
     $(this).parents('fieldset').find('label').removeClass("active");
     $(this).addClass("active");
 })
-
-
-// $("#occassion label").on("click", function () {
-//     console.log("run");
-//     $(this).parents('fieldset').find('label').removeClass("active");
-//     $(this).addClass("active");
-
-//     $.fn.getForm("#msform");
-//     console.log(wm)
-// });
-
 
 
 // Next & submit animation
@@ -137,29 +132,35 @@ $(".next").click(function(){
     });
     // /.amimation
 
-    // $("input:radio").change(function () {$("#postGender").prop("disabled", false);})
-
     // Footer re-position
     $(".form-container").height(next_fs.height());
 
+
+    function getItem(id) {
+        var cat = id.replace(/[^a-z]/gi, '');
+        console.log(cat,id);
+
+        var matched = items[cat].filter(function (item) {
+            return item.id == id;
+        })[0];
+
+        console.log(matched)
+
+        return matched;
+    }
+
     // If the next button is submit button
     if ($(this).hasClass("submit")) {
+        // disableButton(this,fw);
         $.fn.forwardChaining("#msform");
         if (wm.hasOwnProperty("recommendation")) {
-            var matched = []
-            for(recommendation of wm["recommendation"]) {
-                var test = items.filter(function (category) {
-                    var x = category.filter(function (item) {
-                        return item.id == recommendation
-                    })
-                    if ((x.length != 0) && (typeof x !== "undefined")) {
-                        matched.push(...x)
-                    }
-                })
+            var recommendation_item = []
+            for(recommendation_id of wm["recommendation"]) {
+                recommendation_item.push(getItem(recommendation_id));
             }
-            $("#recommendation").children(".carousel-inner").displayItem(matched);
+            $("#recommendation").children(".carousel-inner").displayItem(recommendation_item);
 
-            if (matched.length <= 3) {
+            if (recommendation_item.length <= 3) {
                 $(".recommendation-arrow").css("display","none");
             }
         } else {
@@ -168,6 +169,8 @@ $(".next").click(function(){
         }
     }
 });
+
+
 
 // Pop up modal window for each item detail
 $("#recommendation .carousel-inner").on("click",".carousel-item .item-container", function () {
@@ -258,21 +261,21 @@ $("#magic").click(function() {
     $('#items').children('.carousel-inner').displayItem(itemList);
 });
 
+$("#category").change(function () {
+    $('#items').children('.carousel-inner').getCategory($(this).val());
+})
 
 // Pop up modal window for each item detail
 $("#items .carousel-inner").on("click",".carousel-item .item-container", function () {
     var id = $(this).attr("for");
-    console.log(id);
-    var matched = null;
-    var test = items.filter(function (category) {
-        var x = category.filter(function (item) {
-            return item.id == id
-        })
-        if ((x.length != 0) && (typeof x !== "undefined")) {
-            matched = x[0];
-        }
-    })
+    var cat = id.replace(/[^a-z]/gi, '');
 
+
+    console.log(cat,id);
+
+    var matched = getItem(id);
+
+    console.log(matched);
 
     $(".popup-overlay, .why-title, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");    
     $(".item-img").attr("src","assets/"+matched.img);
@@ -285,10 +288,6 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
     $("#for-explanation").explaination(wm,"facts");
 
 });
-
-
-// let wm = {};
-// let firedRules = [];
 
 // Define jQuery Function
 $(document).ready(function(){
@@ -695,7 +694,18 @@ $(document).ready(function(){
 
         $(this).html(itemList);
     }
-    
+
+    $.fn.getCategory = function (category_code) {
+        itemList = []
+        if (category_code == "all") {
+            for(category in items) {
+                itemList.push(...items[category])
+            }
+            $(this).displayItem(itemList);
+        } else {
+            $(this).displayItem(items[category_code]);
+        }
+    }
 });
 
 

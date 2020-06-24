@@ -386,3 +386,13 @@ display: block;
 .oh-no-button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #5cb38e !important;
 }
+
+
+#category {
+    text-align: center;
+    width: 300px;
+}
+
+.submit:visited {
+    background-color: black;
+}
