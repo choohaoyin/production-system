@@ -10,9 +10,6 @@ let items = new Object(); // to store items list
 let wm = {}; // W
 let firedRules = [];
 
-// // Explanation Module
-// let label = []; // for tag labelling
-
 // Disable all images to be draggable
 $("img").attr("draggable",false);
 
@@ -22,7 +19,7 @@ $(function(){
     $("footer").load("assets/html/footer.html");
 });
 
-// retrieve item
+// Retrieve item
 function getItem(id) {
     var cat = id.replace(/[^a-z]/gi, '');
     console.log(cat,id);
@@ -31,11 +28,8 @@ function getItem(id) {
         return item.id == id;
     })[0];
 
-    console.log(matched)
-
     return matched;
 }
-
 
 // Load rules list
 $.getJSON("assets/json/rules.json", function(data) {
@@ -67,6 +61,7 @@ $("input[type=number]").keydown(function (e) {
     $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
+// Restrict age on max input
 $("#age").on('input',function () {
     var max = parseInt($(this).attr('max'));
     var min = parseInt($(this).attr('min'));
@@ -85,6 +80,7 @@ $("fieldset :input").change(function () {
     $(this).parents("fieldset").children(".next").prop("disabled", false);
 })
 
+// Allow one occassion to be picked only
 $(".occ-button").click(function () {
     $(this).parents('fieldset').find('label').removeClass("active");
     $(this).addClass("active");
@@ -101,8 +97,6 @@ $(".next").click(function(){
 	next_fs = $(this).parent().next();
     current_fs_index = $(this).index();
     
-	//activate next step on progressbar using the index of next_fs
-	// $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
 	//show the next fieldset
 	next_fs.show(); 
@@ -151,7 +145,6 @@ $(".next").click(function(){
 
     // If the next button is submit button
     if ($(this).hasClass("submit")) {
-        // disableButton(this,fw);
         $.fn.forwardChaining("#msform");
         if (wm.hasOwnProperty("recommendation")) {
             var recommendation_item = []
@@ -206,9 +199,6 @@ $(".previous").click(function(){
 	previous_fs = $(this).parent().prev();
     current_fs_index = $(this).parent().index();
     
-	//de-activate current step on progressbar
-	// $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-	
 	//show the previous fieldset
 	previous_fs.show(); 
 	//hide the current fieldset with style
@@ -236,23 +226,24 @@ $(".previous").click(function(){
 });
 
 
-$("#magic").click(function() {
-    console.log("magic");
-    itemList = []
-    for(categories of items) {
-        for(item of categories) {
-            console.log(item.id);
-            if (Math.random > 0.5) {
-                continue; // testing purpose, avoid too many item to be preview
-            }
+// $("#magic").click(function() {
+//     console.log("magic");
+//     itemList = []
+//     for(categories of items) {
+//         for(item of categories) {
+//             console.log(item.id);
+//             if (Math.random > 0.5) {
+//                 continue; // testing purpose, avoid too many item to be preview
+//             }
             
-            itemList.push(item);
-        }
-    }
+//             itemList.push(item);
+//         }
+//     }
 
-    $('#items').children('.carousel-inner').displayItem(itemList);
-});
+//     $('#items').children('.carousel-inner').displayItem(itemList);
+// });
 
+// Gift catalog category changing
 $("#category").change(function () {
     $('#items').children('.carousel-inner').getCategory($(this).val());
 })
@@ -262,12 +253,7 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
     var id = $(this).attr("for");
     var cat = id.replace(/[^a-z]/gi, '');
 
-
-    console.log(cat,id);
-
     var matched = getItem(id);
-
-    console.log(matched);
 
     $(".popup-overlay, .why-title, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");    
     $(".item-img").attr("src","assets/"+matched.img);
@@ -283,6 +269,7 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
 
 // Define jQuery Function
 $(document).ready(function(){
+    // Retrieve form data
     $.fn.getForm = function(form){ 
         var data = $(form).serializeArray();
         console.log(data);
@@ -291,7 +278,7 @@ $(document).ready(function(){
         })
     }
 
-
+    // Add data to WM
     $.fn.addToWM = function(name,value) {
         if(!isNaN(value) && typeof value !== 'boolean') {
             value = parseInt(value);
@@ -321,6 +308,7 @@ $(document).ready(function(){
         }
     }
 
+    // Forward chaining inference engine
     $.fn.forwardChaining = function(form) {
         $.fn.getForm(form);
         let currentRule = Object.assign([], rules);
@@ -328,10 +316,10 @@ $(document).ready(function(){
         // for (i=0; i<currentRule.length;i++) {
         while (i < currentRule.length) {
             var condition = "";
-            console.log(currentRule[0]);
+            // console.log(currentRule[0]);
             if (typeof currentRule[i].when == 'object') {
                 for (j=0;j<currentRule[i].when.length;j++) {
-                    console.log(typeof currentRule[i].when[j]);
+                    // console.log(typeof currentRule[i].when[j]);
                     if (typeof currentRule[i].when[j] == 'object') { // AND
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
                             if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
@@ -381,28 +369,28 @@ $(document).ready(function(){
                 }
             }
 
-            console.log(`[${i}] ${condition}`,eval(condition));
+            // console.log(`[${i}] ${condition}`,eval(condition));
 
             if (eval(condition)) {
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
                 var removed = currentRule.splice(i,1);
-                console.log(currentRule);
-                console.log("removed", removed);
+                // console.log(currentRule);
+                // console.log("removed", removed);
                 firedRules.push(...removed);
                 i = -1;
             }
             i++;
         }
-        console.log(wm);
+        // console.log(wm);
         $(".why-explanation").explaination(firedRules,"rules");
-        console.log(currentRule);
+        // console.log(currentRule);
     }
 
+    // Backward chaining inference engine
     $.fn.backwardChaining = function(id) {
-        wm = {}; // clear wm
+        wm = {};
         let currentRule = Object.assign([], rules);
         $.fn.addToWM("recommendation",id);
-        console.log(id);
         for (i=0; i<currentRule.length;i++) {
             var condition = "";
             if (typeof currentRule[i].put == 'object') {
@@ -469,7 +457,6 @@ $(document).ready(function(){
                             condition += `(${fact} ${logic} ${currentRule[i].as[p]})`;
                         }
 
-
                         if(p != currentRule[i].as.length -1) {
                             if (logic == "=="){
                                 condition += "||";
@@ -479,8 +466,6 @@ $(document).ready(function(){
                         }
                     }
                 } else if((typeof wm[currentRule[i].put] == "object")) {
-                    
-                    var arrWM = "";
                     var logic = "==";
                     
                     if (typeof currentRule[i].as == "object") {
@@ -513,7 +498,6 @@ $(document).ready(function(){
                                     condition += "&&";
                                 }
                             }
-                            
                         }
                     } else {
                         for (n = 0 ; n < wm[currentRule[i].put].length; n++) {
@@ -558,12 +542,12 @@ $(document).ready(function(){
                 }
             }
 
-            console.log(`[condition] [${i}] ${condition}`);
-            console.log(eval(condition));
+            // console.log(`[condition] [${i}] ${condition}`);
+            // console.log(eval(condition));
 
             if (eval(condition)) {
-                console.log("condition is true");
-                console.log(wm);
+                // console.log("condition is true");
+                // console.log(wm);
                 var logic = "";
                 if (typeof currentRule[i].when == "object") {
                     for(k=0;k<currentRule[i].when.length;k++) {
@@ -581,19 +565,18 @@ $(document).ready(function(){
                     if (currentRule[i].is == "!=") logic = "!=";
                     $.fn.addToWM(currentRule[i].when,logic+currentRule[i].what);
                 }
-                console.log(wm);
+                // console.log(wm);
                 var removed = currentRule.splice(i,1);
-                console.log("removed",removed);
+                // console.log("removed",removed);
                 firedRules.push(...removed);
                 i = -1;
             }
         }
-        console.log(wm);
+        // console.log(wm);
     }
 
-
+    // Explanation Module
     $.fn.explaination = function(items, option) {
-        // Explanation Module
         let label = []; // for tag labelling
 
         function getSpan(element, value=null) {
@@ -934,6 +917,7 @@ $(document).ready(function(){
         $(this).html(why);
     }
 
+    // Display item to carousel
     $.fn.displayItem = function(items, overwrite=true) {
         var itemList = "";
         for(i = 0; i<items.length;i++) {
@@ -960,6 +944,7 @@ $(document).ready(function(){
         $(this).html(itemList);
     }
 
+    // Get category
     $.fn.getCategory = function (category_code) {
         itemList = []
         if (category_code == "all") {
@@ -971,187 +956,4 @@ $(document).ready(function(){
             $(this).displayItem(items[category_code]);
         }
     }
-});
-
-
-
-
-
-
-
-
-
-
-// DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV DEV 
-
-
-
-
-
-$("#test_jquery").click(function(){
-    console.log("run");
-    
-    // let wm = {
-    //     "budget": 500,
-    //     "gender": "male"
-    // }
-
-    let currentRule = Object.assign([], rules);
-    // var condition = "";
-    for (i=0; i<currentRule.length;i++) {
-        var condition = "";
-        console.log(currentRule[i]);
-        console.log(typeof currentRule[i].when);
-
-        // if(!wm.hasOwnProperty(currentRule[i].when)) {
-        //     continue;
-        // }
-
-        if (typeof currentRule[i].when == 'object') {
-            console.log("not single rule");
-            for (j=0;j<currentRule[i].when.length;j++) {
-                console.log(typeof currentRule[i].when[j]);
-                if (typeof currentRule[i].when[j] == 'object') { // AND
-                    var andPass;
-                    for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
-                        if (typeof currentRule[i].what[j][p] == "string") {
-                            condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
-
-                        } else {
-                            condition += `( ${wm[currentRule[i].when[j][p]]}  ${currentRule[i].is[j][p]}  ${currentRule[i].what[j][p]} )`;
-                        }
-                        if(p != currentRule[i].when[j].length - 1) {
-                            condition += "&&";
-                        }
-                    }
-
-                } else { // OR
-                    console.log(`[OR RULE] ${currentRule[i].when[j]}`);
-                    if (typeof currentRule[i].what[j] == "string") {
-                        condition += `( "${wm[currentRule[i].when[j]]}"  ${currentRule[i].is[j]}  "${currentRule[i].what[j]}" )`;
-
-                    } else {
-                        condition += `( ${wm[currentRule[i].when[j]]}  ${currentRule[i].is[j]}  ${currentRule[i].what[j]} )`;
-                    }
-                    if(j != currentRule[i].when.length - 1) {
-                        condition += "||";
-                    }   
-                }
-            }
-        } else { // SINGLE RULE
-            if (typeof currentRule[i].what == "string") {
-                condition += `( "${wm[currentRule[i].when]}"  ${currentRule[i].is}  "${currentRule[i].what}" )`;
-
-            } else {
-                condition += `( ${wm[currentRule[i].when]}  ${currentRule[i].is}  ${currentRule[i].what} )`;
-            }
-        }
-
-        console.log(condition);
-        console.log(eval(condition));
-
-        if (eval(condition)) {
-
-            $.fn.addToWM(currentRule[i].put,currentRule[i].as);
-            var removed = currentRule.splice(i,1);
-            firedRules.push(...removed);
-            i = -1;
-        }
-
-    }
-    console.log(wm);
-});
-
-
-
-
-$("#bktest").click(function() {
-    var id = $("#bkid").val();
-    wm = {};
-    let currentRule = Object.assign([], rules);
-
-    $.fn.addToWM("recommendation",id);
-
-    for (i=0; i<currentRule.length;i++) {
-        console.log(currentRule);
-
-
-        var pass = false;
-        if ((currentRule[i].put.length > 1 ) &&  typeof currentRule[i].put == 'object') {
-            var multiPass = true;
-            for (j = 0; j < currentRule[i].put.length; j++) {
-                var condition = "";
-                if (typeof wm[currentRule[i].put[j]] == "string") {
-                    condition = '\"' + wm[currentRule[i].put[j]] +'\"'+ "==" + '\"'+ currentRule[i].as[j] + '\"';           
-                } else {
-                    condition = wm[currentRule[i].put[j]] + "==" + currentRule[i].as[j];  
-                }         
-                console.log("[condition]",condition);
-                console.log("[result]",eval(condition));
-                if (!eval(condition)) {
-                    multiPass = false;
-                    break;
-                }
-            }
-            pass = multiPass;
-        }
-
-
-        else {
-            console.log(typeof currentRule[i].as);
-
-            var condition = "";
-            if(wm.hasOwnProperty(currentRule[i].put)) {
-                if (typeof currentRule[i].as == "object") {
-                    condition += '[';
-                    for (p = 0; p < currentRule[i].as.length; p++) {
-                        if (typeof currentRule[i].as[p] == "string") {
-                            condition += '\"' + currentRule[i].as[p] + '\"';
-                        } else {
-                            condition += currentRule[i].as[p];
-                        }
-                        if (p != currentRule[i].as.length) {
-                            condition += ",";
-                        }
-                    }
-                    condition += ']'
-                    if (typeof wm[currentRule[i].put] == "string") {
-                        condition += ".includes" + '(\"'+ wm[currentRule[i].put] + '\")';    
-                    } else {
-                        condition += ".includes" + '('+ wm[currentRule[i].put] + ')';    
-                    } 
-                } else if (typeof currentRule[i].as == "boolean") {
-                    console.log("boolean execute");
-                    condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")'
-                }
-                else {
-                    if (typeof wm[currentRule[i].put] == "string") {
-                        condition = '\"' + wm[currentRule[i].put] +'\"'+ "==" + '\"'+ currentRule[i].as + '\"';           
-                    } else {
-                        condition = wm[currentRule[i].put] + "=="+ currentRule[i].as;
-                    }  
-                }
-                console.log(condition);
-                pass = eval(condition);
-            } else if (typeof currentRule[i].as == "boolean"){
-                condition = 'wm.hasOwnProperty(\"' + currentRule[i].put + '\")';
-                console.log(condition);
-                pass = eval(condition);
-                console.log(pass);
-            }
-        } 
-        if (pass) {
-            if(typeof currentRule[i].when == "object") {
-                for(q=0;q<currentRule[i].when.length;q++) {
-                    $.fn.addToWM(currentRule[i].when[q],currentRule[i].what[q]);
-                }
-            } else {
-                $.fn.addToWM(currentRule[i].when,currentRule[i].what);
-            }
-            var removed = currentRule.splice(i,1);
-            firedRules.push(...removed);
-            i = -1; //reset the loop
-        };
-    }
-    console.log(wm);
 });
