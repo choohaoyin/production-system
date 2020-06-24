@@ -324,22 +324,18 @@ $(document).ready(function(){
     $.fn.forwardChaining = function(form) {
         $.fn.getForm(form);
         let currentRule = Object.assign([], rules);
-        for (i=0; i<currentRule.length;i++) {
+        var i = 0;
+        // for (i=0; i<currentRule.length;i++) {
+        while (i < currentRule.length) {
             var condition = "";
-            console.log(currentRule);
-            console.log(typeof currentRule[i].when);
-
+            console.log(currentRule[0]);
             if (typeof currentRule[i].when == 'object') {
-                console.log("not single rule");
                 for (j=0;j<currentRule[i].when.length;j++) {
                     console.log(typeof currentRule[i].when[j]);
                     if (typeof currentRule[i].when[j] == 'object') { // AND
-                        var andPass;
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
                             if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
-                                
-                                var arr = "";
-
+                                condition += "("
                                 for (q = 0; q <  wm[currentRule[i].when[j][p]].length ; q++) {
                                     if (typeof wm[currentRule[i].when[j][p]][q] == "string") {
                                         condition += `("${wm[currentRule[i].when[j][p]][q]}" ${currentRule[i].is[j][p]} "${currentRule[i].what[j][p]}")`;
@@ -348,22 +344,23 @@ $(document).ready(function(){
                                     }
                                     
                                     if(q != wm[currentRule[i].when[j][p]].length - 1) {
-                                        condition += "&&";
+                                        condition += "||";
                                     }
                                 }
+                                condition += ")"
                             } else if (typeof currentRule[i].what[j][p] == "string") {
                                 condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
 
                             } else {
                                 condition += `( ${wm[currentRule[i].when[j][p]]}  ${currentRule[i].is[j][p]}  ${currentRule[i].what[j][p]} )`;
                             }
+
                             if(p != currentRule[i].when[j].length - 1) {
                                 condition += "&&";
                             }
                         }
 
                     } else { // OR
-                        console.log(`[OR RULE] ${currentRule[i].when[j]}`);
                         if (typeof currentRule[i].what[j] == "string") {
                             condition += `( "${wm[currentRule[i].when[j]]}"  ${currentRule[i].is[j]}  "${currentRule[i].what[j]}" )`;
 
@@ -384,22 +381,21 @@ $(document).ready(function(){
                 }
             }
 
-            console.log(`[${i}] ${condition}`);
-            console.log(eval(condition));
+            console.log(`[${i}] ${condition}`,eval(condition));
 
             if (eval(condition)) {
-                console.log("condition is true",currentRule[i].put,currentRule[i].as);
-                console.log(wm);
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
-                console.log(wm);
                 var removed = currentRule.splice(i,1);
+                console.log(currentRule);
                 console.log("removed", removed);
                 firedRules.push(...removed);
                 i = -1;
             }
+            i++;
         }
         console.log(wm);
         $(".why-explanation").explaination(firedRules,"rules");
+        console.log(currentRule);
     }
 
     $.fn.backwardChaining = function(id) {
@@ -746,7 +742,7 @@ $(document).ready(function(){
                                 why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
                                 break;
                             case "recommendation":
-                                why += `<p>The`;
+                                why += `<p>The `;
                                 for(i=0;i<rule.when.length;i++) {
                                     for(j=0;j<rule.when[i].length;j++) {
                                         var is;
@@ -990,112 +986,6 @@ $(document).ready(function(){
 
 
 
-// $.getJSON("assets/json/rules_test.json", function(data) {
-//     rules = data;
-// });
-
-
-// wm = {
-//     "budget": 200,
-//     "occassion": "anniversary",
-//     "interest": "flowers"
-// }
-
-
-
-/* 
-rule = {
-    "when" : [[[["x","y"],"AND"],"z"],"OR"]
-    "is": [[[["==","=="],"AND"],"=="],"OR"]
-    "what": [[[[1,2],"AND"],3],"OR"]
-    "put": "something"
-    "as": "nothing"
-}
-
-
-cond = {
-    "when" : [[[["x","y"],"AND"],"z"],"OR"]
-    "is": [[[["==","=="],"AND"],"=="],"OR"]
-    "what": [[[[1,2],"AND"],3],"OR"]
-}
-
-*/
-
-
-
-
-// let test_cond = {
-//     "when" : [[[["x","y"],"OR"],"z"],"AND"],
-//     "is": [[[["==","=="],"OR"],"=="],"AND"],
-//     "what": [[[[1,2],"OR"],3],"AND"]
-// }
-
-
-// let test_cond2 = {
-//     "when" : [[[[[["x","y"],"OR"],"z"],"AND"],"w"],"OR"],
-//     "is": [[[[[["==","=="],"OR"],"=="],"AND"],"=="],"OR"],
-//     "what": [[[[[[1,2],"OR"],3],"AND"],3],"OR"]
-// }
-
-
-
-// function evaluate(cond) {
-//     console.log(cond);
-//     wm = {
-//         "x": 3,
-//         "y": 3,
-//         "z": 3,
-//         "w": 3
-//     }
-
-//     if(typeof cond.when[0][0] == "object") {
-//         let sub_cond = {
-//             "when": cond.when[0][0],
-//             "is" :cond.is[0][0],
-//             "what": cond.what[0][0]
-//         }
-//         sub_cond_result = evaluate(sub_cond);
-//         outer_cond = ""
-//         switch(cond.when[1]) {
-//             case "OR":
-//                 logic_symbol = "||";
-//                 outer_cond += `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${logic_symbol} ${sub_cond_result}`;
-//                 // statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
-//                 break;
-//             case "AND":
-//                 logic_symbol = "&&";
-//                 outer_cond += `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${logic_symbol} ${sub_cond_result}`;
-//                 break;
-//         }
-//         // outer_cond = `(${wm[cond.when[0][1]]} ${cond.is[0][1]} ${cond.what[0][1]}) ${cond.when[1]} ${sub_cond_result}`;
-//         console.log(outer_cond);
-//         out_result = eval(outer_cond);
-//         return out_result;
-//     } else {
-//         console.log("here");
-//         let logic = cond.when[1];
-//         let element = cond.when[0];
-//         let operator = cond.is[0];
-//         let value = cond.what[0];
-//         let statement = "";
-
-//         console.log(logic, element, operator, value);
-//         switch(logic) {
-//             case "OR":
-//                 logic_symbol = "||";
-//                 statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
-//                 break;
-//             case "AND":
-//                 logic_symbol = "&&";
-//                 statement += `(${wm[element[0]]} ${operator[0]} ${value[0]} ) ${logic_symbol} (${wm[element[1]]} ${operator[1]} ${value[1]} ) `;
-//                 break;
-//         }
-//         console.log(statement);
-//         result = eval(statement);
-//         console.log(result);
-//         return result;
-//     }
-// }
 
 
 $("#test_jquery").click(function(){
@@ -1168,52 +1058,6 @@ $("#test_jquery").click(function(){
             i = -1;
         }
 
-        // if (pass) {
-            //     $.fn.addToWM(currentRule[i].put,currentRule[i].as);
-            //     var removed = currentRule.splice(i,1);
-            //     firedRules.push(...removed);
-            //     i = -1;
-            // };
-        // var pass = false;
-        // if ((currentRule[i].when.length > 1 ) &&  typeof currentRule[i].when == 'object') {
-        //     var multiPass = true;
-        //     for (j = 0; j < currentRule[i].when.length; j++) {
-        //         var condition = "";
-        //         console.log(typeof wm[currentRule[i].when[j]]);
-        //         if (typeof wm[currentRule[i].when[j]] == "string") {
-        //             condition = '\"' + wm[currentRule[i].when[j]] +'\"'+ currentRule[i].is[j] + '\"'+ currentRule[i].what[j] + '\"';           
-        //         } else {
-        //             condition = wm[currentRule[i].when[j]] + currentRule[i].is[j] + currentRule[i].what[j];  
-        //         }         
-        //         console.log("[condition]",condition);
-        //         console.log("[result]",eval(condition));
-        //         if (!eval(condition)) {
-        //             multiPass = false;
-        //             break;
-        //         }
-        //     }
-        //     console.log(multiPass);
-        //     pass = multiPass;
-        // }
-        // else {
-        //     var condition = "";
-        //     console.log(currentRule[i]);
-        //     console.log(typeof wm[currentRule[i].when]);
-        //         if(typeof wm[currentRule[i].when] != "undefined") {
-        //             if (typeof wm[currentRule[i].when] == "string") {
-        //                 condition = '\"' + wm[currentRule[i].when] +'\"'+ currentRule[i].is + '\"'+ currentRule[i].what + '\"';           
-        //             } else {
-        //                 condition = wm[currentRule[i].when] + currentRule[i].is + currentRule[i].what;
-        //             }  
-        //             pass = eval(condition);
-        //         }
-        // }
-        // if (pass) {
-        //     $.fn.addToWM(currentRule[i].put,currentRule[i].as);
-        //     var removed = currentRule.splice(i,1);
-        //     firedRules.push(...removed);
-        //     i = -1;
-        // };
     }
     console.log(wm);
 });
