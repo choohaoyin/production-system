@@ -175,15 +175,7 @@ $(".next").click(function(){
 // Pop up modal window for each item detail
 $("#recommendation .carousel-inner").on("click",".carousel-item .item-container", function () {
     var id = $(this).attr("for");
-    var matched = null;
-    var test = items.filter(function (category) {
-        var x = category.filter(function (item) {
-            return item.id == id
-        })
-        if ((x.length != 0) && (typeof x !== "undefined")) {
-            matched = x[0];
-        }
-    })
+    var matched = getItem(id);
     $(".popup-overlay, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");
     $(".popup-content").children(".item-img").attr("src","assets/"+matched.img);
     $(".popup-content").children(".item-name").html(matched.name);
@@ -197,7 +189,7 @@ $("#why-button").click(function () {
 })
 
 // removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
-$(".close, .popup-overlay").on("click", function() {
+$(".close").on("click", function() {
     $(".popup-overlay, .popup-content").removeClass("active");
 
     $(".popup-content").find("*").each(function () {
@@ -769,6 +761,17 @@ $(document).ready(function(){
                 for(attr in items) {
                     if (items.hasOwnProperty(attr)) { 
                         switch(attr) {
+                            case "budget":
+                                var budget = items[attr];
+                                if (typeof budget == "object") {
+                                    budget = budget[0];
+                                }
+                                compare = "more than"
+                                if(budget == 100) {
+                                    compare = "around"
+                                }
+                                why += `<p>For the ${getSpan(attr)} ${compare} ${getSpan(attr,`RM ${budget}`)}</p>`;
+                                break;
                             case "occasion":
                                 why += `<p>You can give this gift during ${getSpan(attr)} like ${getSpan(attr,items[attr])}</p>`;
                                 break;
@@ -777,45 +780,49 @@ $(document).ready(function(){
                                 break;
                             case "age":
                                 var age_group = "";
+
                                 if (items.hasOwnProperty("age group")) {
-                                    console.log(items["age group"], typeof items["age group"]);
                                     if (typeof items["age group"] == "object") {
                                         let nAgeGroup = items["age group"].length;
                                         for (k=0; k<nAgeGroup ; k++) {
                                             var fact= items["age group"][k];
-                                            logic = "";
                                             if (fact.replace(/[^!=]/gi, '') == "!=") {
-                                                logic = "not ";
-                                                fact = fact.replace(/[^a-z]/gi, '')
-                                            }
-                                            console.log(logic,fact);
-                                            age_group += getSpan("age group", logic+fact);
-                                            if ((nAgeGroup == 2) && (k != nAgeGroup - 1)) {
-                                                age_group += " or ";
-                                            } else if (k != nAgeGroup - 1){
-                                                age_group += ", "
+                                                age_group = "";
+                                                break;
+                                            } else {
+                                                age_group += getSpan("age group", items["age group"][k]);
+                                                if ((nAgeGroup == 2) && (k != nAgeGroup - 1)) {
+                                                    age_group += " or ";
+                                                } else if (k != nAgeGroup - 1){
+                                                    age_group += ", "
+                                                }
                                             }
                                         }
-                                    } else {
-                                        age_group += items["age group"];
                                     }
-                                } else {
-                                    age_group += "person";
+
+                                    if (age_group != "") {
+                                        if (typeof items[attr] == "object"){
+                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                            } else {
+                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+                                            }
+                                    } else {
+                                        if (typeof items[attr] == "object"){
+                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                        } else {
+                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+
+                                        }
+                                    }
                                 }
 
 
-                                if (typeof items[attr] == "object"){
-                                    why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
-                                } else {
-                                    why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
-                                }
+
                                 break;
                             case "gender":
                                 why += `<p>The gift is for a ${getSpan(attr,items[attr])} receipient</p>`;
                                 break;
-                            case "budget":
-                                why += `<p>If your ${getSpan(attr)} is around ${getSpan(attr,`RM ${items[attr][0]}`)}</p>`;
-                                break;
+                            
                         }
                     }
                 }
