@@ -116,7 +116,7 @@ body {
     margin-top: 10px;
 }
 
-#msform .action-button:hover, #msform .action-button:focus {
+#msform .action-button:hover:enabled, #msform .action-button:focus:enabled {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
 }
 
@@ -133,7 +133,7 @@ body {
     transition: 0.2s ease;
 }
 
-#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+#msform .action-button-previous:hover:enabled, #msform .action-button-previous:focus:enabled {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #234099;
 }
 

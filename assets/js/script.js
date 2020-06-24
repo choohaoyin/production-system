@@ -324,21 +324,18 @@ $(document).ready(function(){
     $.fn.forwardChaining = function(form) {
         $.fn.getForm(form);
         let currentRule = Object.assign([], rules);
-        for (i=0; i<currentRule.length;i++) {
+        var i = 0;
+        // for (i=0; i<currentRule.length;i++) {
+        while (i < currentRule.length) {
             var condition = "";
-            console.log(currentRule);
-            console.log(typeof currentRule[i].when);
-
+            console.log(currentRule[0]);
             if (typeof currentRule[i].when == 'object') {
-                console.log("not single rule");
                 for (j=0;j<currentRule[i].when.length;j++) {
                     console.log(typeof currentRule[i].when[j]);
                     if (typeof currentRule[i].when[j] == 'object') { // AND
-                        var andPass;
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
                             if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
-                                
-
+                                condition += "("
                                 for (q = 0; q <  wm[currentRule[i].when[j][p]].length ; q++) {
                                     if (typeof wm[currentRule[i].when[j][p]][q] == "string") {
                                         condition += `("${wm[currentRule[i].when[j][p]][q]}" ${currentRule[i].is[j][p]} "${currentRule[i].what[j][p]}")`;
@@ -350,6 +347,7 @@ $(document).ready(function(){
                                         condition += "||";
                                     }
                                 }
+                                condition += ")"
                             } else if (typeof currentRule[i].what[j][p] == "string") {
                                 condition += `( "${wm[currentRule[i].when[j][p]]}"  ${currentRule[i].is[j][p]}  "${currentRule[i].what[j][p]}" )`;
 
@@ -363,7 +361,6 @@ $(document).ready(function(){
                         }
 
                     } else { // OR
-                        console.log(`[OR RULE] ${currentRule[i].when[j]}`);
                         if (typeof currentRule[i].what[j] == "string") {
                             condition += `( "${wm[currentRule[i].when[j]]}"  ${currentRule[i].is[j]}  "${currentRule[i].what[j]}" )`;
 
@@ -384,22 +381,21 @@ $(document).ready(function(){
                 }
             }
 
-            console.log(`[${i}] ${condition}`);
-            console.log(eval(condition));
+            console.log(`[${i}] ${condition}`,eval(condition));
 
             if (eval(condition)) {
-                console.log("condition is true",currentRule[i].put,currentRule[i].as);
-                console.log(wm);
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
-                console.log(wm);
                 var removed = currentRule.splice(i,1);
+                console.log(currentRule);
                 console.log("removed", removed);
                 firedRules.push(...removed);
                 i = -1;
             }
+            i++;
         }
         console.log(wm);
         $(".why-explanation").explaination(firedRules,"rules");
+        console.log(currentRule);
     }
 
     $.fn.backwardChaining = function(id) {
@@ -746,7 +742,7 @@ $(document).ready(function(){
                                 why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
                                 break;
                             case "recommendation":
-                                why += `<p>The`;
+                                why += `<p>The `;
                                 for(i=0;i<rule.when.length;i++) {
                                     for(j=0;j<rule.when[i].length;j++) {
                                         var is;
