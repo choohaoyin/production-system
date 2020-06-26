@@ -291,15 +291,16 @@ text-align: center;
   
 .popup-content {
 /*Hides pop-up content when there is no "active" class */
-background-color: white;
-width: 75%;
-height: auto;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-visibility: hidden;
-padding: 10px;
+    background-color: white;
+    width: 75%;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
+    padding: 10px;
+    text-align: center;
 }
 
 .popup-content img {
@@ -321,14 +322,9 @@ padding: 10px;
     left: 50%; 
     transform: translate(-50%);
     margin: 5px 0 0 0;
+    width: 150px;
 }
 
-.popup-content .buy-button {
-    position: relative; 
-    left: 50%; 
-    transform: translate(-50%);
-    margin: 5px 0 0 0;
-}
 
 .popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
 .popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
@@ -341,8 +337,8 @@ display: block;
 }
 
 .item-img {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 35%;
+    max-height: 35%;
 }
 
 #tag {
