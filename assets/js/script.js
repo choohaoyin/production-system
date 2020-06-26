@@ -608,6 +608,7 @@ $(document).ready(function(){
         }
 
         var why = "";
+        var recommendation = []
 
         switch(option) {
             case "rules":
@@ -725,6 +726,7 @@ $(document).ready(function(){
                                 why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
                                 break;
                             case "recommendation":
+                                recommendation.push(rule);
                                 why += `<p>The `;
                                 for(i=0;i<rule.when.length;i++) {
                                     for(j=0;j<rule.when[i].length;j++) {
@@ -914,6 +916,9 @@ $(document).ready(function(){
                 why = "Unknown error occured";
                 break;
         }
+
+        console.log(recommendation);
+
         $(this).html(why);
     }
 
