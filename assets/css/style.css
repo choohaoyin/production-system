@@ -393,3 +393,13 @@ display: block;
 .submit:visited {
     background-color: black;
 }
+
+.categorise {
+    list-style-type: none;
+    padding: 0;
+    margin:0 20px;
+}
+
+.categorise > li {
+    padding-bottom: 5px;
+}
