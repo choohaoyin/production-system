@@ -341,7 +341,8 @@ display: block;
 }
 
 .item-img {
-    width: 50%;
+    max-width: 500px;
+    max-height: 500px;
 }
 
 #tag {
