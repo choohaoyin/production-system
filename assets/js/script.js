@@ -256,7 +256,7 @@ $("#items .carousel-inner").on("click",".carousel-item .item-container", functio
     var matched = getItem(id);
 
     $(".popup-overlay, .why-title, .popup-content, .buy-button, .item-img, .item-name, .item-price").addClass("active");    
-    $(".item-img").attr("src","assets/"+matched.img);
+    $(".explanation-item-img").attr("src","assets/"+matched.img);
     $(".item-name").html(matched.name);
     $(".item-price").html(matched.price);
     $(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
@@ -727,37 +727,37 @@ $(document).ready(function(){
                                 break;
                             case "recommendation":
                                 recommendation.push(rule);
-                                why += `<p>The `;
-                                for(i=0;i<rule.when.length;i++) {
-                                    for(j=0;j<rule.when[i].length;j++) {
-                                        var is;
-                                        switch(rule.is[i][j]) {
-                                            case "==":
-                                                is = "is";
-                                                break;
-                                            case "!=":
-                                                is = "is not";
-                                                break;
-                                            case ">=":
-                                            case ">":
-                                                is = "is more than";
-                                                break;
-                                            case "<=":
-                                            case "<":
-                                                is = "is less than";
-                                                break;
-                                        }
-                                        why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
-                                        if (j != rule.when[i].length - 1 ) {
-                                            if (rule.when[i].length != 2) {
-                                                why += ", ";
-                                            } else {
-                                                why += " and"
-                                            }
-                                        }
-                                    }
-                                }
-                                break;
+                            //     why += `<p>The `;
+                            //     for(i=0;i<rule.when.length;i++) {
+                            //         for(j=0;j<rule.when[i].length;j++) {
+                            //             var is;
+                            //             switch(rule.is[i][j]) {
+                            //                 case "==":
+                            //                     is = "is";
+                            //                     break;
+                            //                 case "!=":
+                            //                     is = "is not";
+                            //                     break;
+                            //                 case ">=":
+                            //                 case ">":
+                            //                     is = "is more than";
+                            //                     break;
+                            //                 case "<=":
+                            //                 case "<":
+                            //                     is = "is less than";
+                            //                     break;
+                            //             }
+                            //             why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+                            //             if (j != rule.when[i].length - 1 ) {
+                            //                 if (rule.when[i].length != 2) {
+                            //                     why += ", ";
+                            //                 } else {
+                            //                     why += " and"
+                            //                 }
+                            //             }
+                            //         }
+                            //     }
+                            //     break;
                         }
                         
                     } else {
@@ -807,40 +807,111 @@ $(document).ready(function(){
                                 why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
                                 break;
                             case "recommendation":
-                                why += `<p>The`;
-                                for(i=0;i<rule.when.length;i++) {
-                                    for(j=0;j<rule.when[i].length;j++) {
-                                        var is;
-                                        switch(rule.is[i][j]) {
-                                            case "==":
-                                                is = "is";
-                                                break;
-                                            case "!=":
-                                                is = "is not";
-                                                break;
-                                            case ">=":
-                                            case ">":
-                                                is = "is more than";
-                                                break;
-                                            case "<=":
-                                            case "<":
-                                                is = "is less than";
-                                                break;
-                                        }
-                                        why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
-                                        if (j != rule.when[i].length - 1 ) {
-                                            if (rule.when[i].length != 2) {
-                                                why += ", ";
-                                            } else {
-                                                why += " and"
-                                            }
-                                        }
-                                    }
-                                }
-                                break;
+                                recommendation.push(rule);
+                            //     why += `<p>The`;
+                            //     for(i=0;i<rule.when.length;i++) {
+                            //         for(j=0;j<rule.when[i].length;j++) {
+                            //             var is;
+                            //             switch(rule.is[i][j]) {
+                            //                 case "==":
+                            //                     is = "is";
+                            //                     break;
+                            //                 case "!=":
+                            //                     is = "is not";
+                            //                     break;
+                            //                 case ">=":
+                            //                 case ">":
+                            //                     is = "is more than";
+                            //                     break;
+                            //                 case "<=":
+                            //                 case "<":
+                            //                     is = "is less than";
+                            //                     break;
+                            //             }
+                            //             why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
+                            //             if (j != rule.when[i].length - 1 ) {
+                            //                 if (rule.when[i].length != 2) {
+                            //                     why += ", ";
+                            //                 } else {
+                            //                     why += " and"
+                            //                 }
+                            //             }
+                            //         }
+                            //     }
+                            //     break;
                         }
                     }
                 } 
+                var categorise = {};
+                console.log(recommendation)
+                for (re of recommendation) {
+                    console.log(re)
+                    if (typeof re.when == "object") {
+                        for (i = 0 ; i< re.when.length; i++) {
+                            if (typeof re.when[i] == "object") {
+                                for (j=0; j< re.when[i].length;j++) {
+                                    var compare = re.what[i][j]
+                                    if (re.is[i][j] == "!=") {
+                                        compare =  "!=" + compare
+                                    }
+                                    if (categorise.hasOwnProperty(re.when[i][j])) {
+                                        if(!categorise[re.when[i][j]].includes(compare)){
+                                            categorise[re.when[i][j]].push(compare)
+                                        }
+                                    } else {
+                                        categorise[re.when[i][j]] = [compare]
+                                    }
+                                }
+                            } else {
+                                var compare = re.what[i]
+                                if (re.is[i] == "!=") {
+                                    compare =  "!=" + compare
+                                }
+                                if (categorise.hasOwnProperty(re.when[i])) {
+                                    if(!categorise[re.when[i]].includes(compare)) {
+                                        categorise[re.when[i]].push(compare)
+                                    }
+                                } else {
+                                    categorise[re.when[i]] = [compare]
+                                }
+                            }
+                        }
+                    } else {
+                        var compare = re.what
+                        if (re.is == "!=") {
+                            compare =  "!=" + compare
+                        }
+                        if (categorise.hasOwnProperty(re.when)) {
+                            if(!categorise[re.when].includes(compare)) categorise[re.when].push(compare)
+                            // categorise[re.when].push(compare)
+                        } else {
+                            categorise[re.when] = [compare]
+                        }
+                    }
+                }
+                console.log(categorise)
+                why += '<p style=\"margin-bottom:0\">The selected gift fulfilled</p>';
+                console.log(categorise)
+                var length = 0;
+                for (x in categorise) {
+                    length++;
+                }
+                var counter = 0;
+                why += '<ul class=\"categorise\">';
+                for (attr in categorise) { 
+                    why += `<li>${getSpan(attr)} of `;
+                    for (k = 0; k < categorise[attr].length; k++) {
+                        why += `${getSpan(attr, categorise[attr][k])}`;
+                        if (k != categorise[attr].length - 1) {
+                            why += ", ";
+                        }
+                    }
+                    why += "</li>"
+                }
+                why += "</ul>";
+
+
+
                 break;
             case "facts":
                 for(attr in items) {
@@ -915,9 +986,53 @@ $(document).ready(function(){
             default:
                 why = "Unknown error occured";
                 break;
+            
+            
         }
 
-        console.log(recommendation);
+        // var categorise = {};
+        // console.log(recommendation)
+        // for (re of recommendation) {
+        //     console.log(re)
+        //     if (typeof re.when == "object") {
+        //         for (i = 0 ; i< re.when.length; i++) {
+        //             if (typeof re.when[i] == "object") {
+        //                 for (j=0; j< re.when[i].length;j++) {
+        //                     var compare = re.what[i][j]
+        //                     if (re.is[i][j] == "!=") {
+        //                         compare =  "!=" + compare
+        //                     }
+        //                     if (categorise.hasOwnProperty(re.when[i][j])) {
+        //                         categorise[re.when[i][j]].push(compare)
+        //                     } else {
+        //                         categorise[re.when[i][j]] = [compare]
+        //                     }
+        //                 }
+        //             } else {
+        //                 var compare = re.what[i]
+        //                 if (re.is[i] == "!=") {
+        //                     compare =  "!=" + compare
+        //                 }
+        //                 if (categorise.hasOwnProperty(re.when[i])) {
+        //                     categorise[re.when[i]].push(compare)
+        //                 } else {
+        //                     categorise[re.when[i]] = [compare]
+        //                 }
+        //             }
+        //         }
+        //     } else {
+        //         var compare = re.what
+        //         if (re.is == "!=") {
+        //             compare =  "!=" + compare
+        //         }
+        //         if (categorise.hasOwnProperty(re.when)) {
+        //             categorise[re.when].push(compare)
+        //         } else {
+        //             categorise[re.when] = [compare]
+        //         }
+        //     }
+        // }
+        // console.log(categorise)
 
         $(this).html(why);
     }
