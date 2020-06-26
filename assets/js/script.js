@@ -22,7 +22,6 @@ $(function(){
 // Retrieve item
 function getItem(id) {
     var cat = id.replace(/[^a-z]/gi, '');
-    console.log(cat,id);
 
     var matched = items[cat].filter(function (item) {
         return item.id == id;
@@ -132,13 +131,9 @@ $(".next").click(function(){
 
     function getItem(id) {
         var cat = id.replace(/[^a-z]/gi, '');
-        console.log(cat,id);
-
         var matched = items[cat].filter(function (item) {
             return item.id == id;
         })[0];
-
-        console.log(matched)
 
         return matched;
     }
@@ -272,7 +267,6 @@ $(document).ready(function(){
     // Retrieve form data
     $.fn.getForm = function(form){ 
         var data = $(form).serializeArray();
-        console.log(data);
         $.each(data, function(index, value) {
             $.fn.addToWM(value.name,value.value);
         })
@@ -283,7 +277,6 @@ $(document).ready(function(){
         if(!isNaN(value) && typeof value !== 'boolean') {
             value = parseInt(value);
         }
-        console.log("wm[name] ",wm[name]);
         if(typeof wm[name] !== 'undefined') {
             if(typeof wm[name] !== 'boolean') {
                 if(typeof wm[name] !== 'object') {
@@ -316,10 +309,8 @@ $(document).ready(function(){
         // for (i=0; i<currentRule.length;i++) {
         while (i < currentRule.length) {
             var condition = "";
-            // console.log(currentRule[0]);
             if (typeof currentRule[i].when == 'object') {
                 for (j=0;j<currentRule[i].when.length;j++) {
-                    // console.log(typeof currentRule[i].when[j]);
                     if (typeof currentRule[i].when[j] == 'object') { // AND
                         for(p = 0 ; p < currentRule[i].when[j].length ; p++) {
                             if ((wm.hasOwnProperty(currentRule[i].when[j][p])) && (typeof wm[currentRule[i].when[j][p]] == "object")) {
@@ -369,21 +360,15 @@ $(document).ready(function(){
                 }
             }
 
-            // console.log(`[${i}] ${condition}`,eval(condition));
-
             if (eval(condition)) {
                 $.fn.addToWM(currentRule[i].put,currentRule[i].as);
                 var removed = currentRule.splice(i,1);
-                // console.log(currentRule);
-                // console.log("removed", removed);
                 firedRules.push(...removed);
                 i = -1;
             }
             i++;
         }
-        // console.log(wm);
         $(".why-explanation").explaination(firedRules,"rules");
-        // console.log(currentRule);
     }
 
     // Backward chaining inference engine
@@ -542,12 +527,7 @@ $(document).ready(function(){
                 }
             }
 
-            // console.log(`[condition] [${i}] ${condition}`);
-            // console.log(eval(condition));
-
             if (eval(condition)) {
-                // console.log("condition is true");
-                // console.log(wm);
                 var logic = "";
                 if (typeof currentRule[i].when == "object") {
                     for(k=0;k<currentRule[i].when.length;k++) {
@@ -565,14 +545,11 @@ $(document).ready(function(){
                     if (currentRule[i].is == "!=") logic = "!=";
                     $.fn.addToWM(currentRule[i].when,logic+currentRule[i].what);
                 }
-                // console.log(wm);
                 var removed = currentRule.splice(i,1);
-                // console.log("removed",removed);
                 firedRules.push(...removed);
                 i = -1;
             }
         }
-        // console.log(wm);
     }
 
     // Explanation Module
@@ -843,9 +820,7 @@ $(document).ready(function(){
                     }
                 } 
                 var categorise = {};
-                console.log(recommendation)
                 for (re of recommendation) {
-                    console.log(re)
                     if (typeof re.when == "object") {
                         for (i = 0 ; i< re.when.length; i++) {
                             if (typeof re.when[i] == "object") {
@@ -889,14 +864,7 @@ $(document).ready(function(){
                         }
                     }
                 }
-                console.log(categorise)
                 why += '<p style=\"margin-bottom:0\">The selected gift fulfilled</p>';
-                console.log(categorise)
-                var length = 0;
-                for (x in categorise) {
-                    length++;
-                }
-                var counter = 0;
                 why += '<ul class=\"categorise\">';
                 for (attr in categorise) { 
                     why += `<li>${getSpan(attr)} of `;
@@ -909,9 +877,6 @@ $(document).ready(function(){
                     why += "</li>"
                 }
                 why += "</ul>";
-
-
-
                 break;
             case "facts":
                 for(attr in items) {
