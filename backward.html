@@ -17,9 +17,11 @@
     <!-- /.CDN -->
     <script defer src="assets/js/script.js"></script>
     <script>
-//         $(window).on('load',function () {
-//             $('#items').children('.carousel-inner').getCategory("all");
-// });
+    $(window).on('load',function () {
+        setTimeout(function(){ 
+            $('#items').children('.carousel-inner').getCategory("all");
+        }, 500);
+    });
     </script>
 </head>
 <body>
@@ -87,6 +89,5 @@
 <!-- <button id="magic">Show me magic</button> -->
 <footer></footer>
 </div>
-
 </body>
 </html>

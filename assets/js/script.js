@@ -20,11 +20,21 @@ $(function(){
 });
 
 
-$(window).on('load',function () {
-    if (window.location.pathname == "/backward.html") {
-        $('#items').children('.carousel-inner').getCategory("all");
-    }
-});
+// $(window).on('load',function () {
+//     if (window.location.pathname == "/backward.html") {
+//         $('#items').children('.carousel-inner').getCategory("all");
+//     }
+// });
+
+// function getAllCategory() {
+//     $('#items').children('.carousel-inner').getCategory("all");
+// }
+
+// window.addEventListener('DOMContentLoaded', (event) => {
+//     if (window.location.pathname == "/backward.html") {
+//         getAllCategory()
+//     }
+// });
 
 // Retrieve item
 function getItem(id) {
