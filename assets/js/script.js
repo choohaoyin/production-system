@@ -168,8 +168,7 @@ $("#recommendation .carousel-inner").on("click",".carousel-item .item-container"
     $(".popup-content").children(".item-img").attr("src","assets/"+matched.img);
     $(".popup-content").children(".item-name").html(matched.name);
     $(".popup-content").children(".item-price").html(matched.price);
-    $(".popup-content").children(".buy-button").attr("onclick",'location.href=\"'+matched.link+'\"');
-    
+    $(".popup-content").children(".buy-button").attr("onclick",'window.open(\"'+matched.link+'\")');
 });
 
 // Pop up modal window for "why these items"
