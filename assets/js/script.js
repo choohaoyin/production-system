@@ -19,6 +19,13 @@ $(function(){
     $("footer").load("assets/html/footer.html");
 });
 
+
+$(window).on('load',function () {
+    if (window.location.pathname == "/backward.html") {
+        $('#items').children('.carousel-inner').getCategory("all");
+    }
+});
+
 // Retrieve item
 function getItem(id) {
     var cat = id.replace(/[^a-z]/gi, '');
