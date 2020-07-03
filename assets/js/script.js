@@ -663,7 +663,7 @@ $(document).ready(function(){
                                         if (i != rule.when.length - 1) why += " or "
                                     }
                                 }
-                                why += `, so the ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                why += `, so the receipient ${getSpan(rule.put)} is labelled under ${getSpan(rule.put,rule.as)} group</p>`;
                                 break;
                             case "range":
                                 if (typeof rule.when[0] != "object") {
@@ -718,41 +718,10 @@ $(document).ready(function(){
                                         if (i != rule.when.length - 1) why += " or "
                                     }
                                 }
-                                why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                why += `, so the gift is set to ${getSpan(rule.put,rule.as)} ${getSpan(rule.put)} </p>`;
                                 break;
                             case "recommendation":
                                 recommendation.push(rule);
-                            //     why += `<p>The `;
-                            //     for(i=0;i<rule.when.length;i++) {
-                            //         for(j=0;j<rule.when[i].length;j++) {
-                            //             var is;
-                            //             switch(rule.is[i][j]) {
-                            //                 case "==":
-                            //                     is = "is";
-                            //                     break;
-                            //                 case "!=":
-                            //                     is = "is not";
-                            //                     break;
-                            //                 case ">=":
-                            //                 case ">":
-                            //                     is = "is more than";
-                            //                     break;
-                            //                 case "<=":
-                            //                 case "<":
-                            //                     is = "is less than";
-                            //                     break;
-                            //             }
-                            //             why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
-                            //             if (j != rule.when[i].length - 1 ) {
-                            //                 if (rule.when[i].length != 2) {
-                            //                     why += ", ";
-                            //                 } else {
-                            //                     why += " and"
-                            //                 }
-                            //             }
-                            //         }
-                            //     }
-                            //     break;
                         }
                         
                     } else {
@@ -777,7 +746,7 @@ $(document).ready(function(){
                                         break;
                                 }
                                 why += `${is} ${getSpan(rule.when,rule.what)}`;
-                                why += `, so the ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                why += `, so the receipient ${getSpan(rule.put)} is labelled under${getSpan(rule.put,rule.as)} group</p>`;
                                 break;
                             case "range":
                                 why += `<p>The receipient ${getSpan(rule.when)} `;
@@ -799,41 +768,10 @@ $(document).ready(function(){
                                         break;
                                 }
                                 why += `${is} ${getSpan(rule.when,rule.what)}`;
-                                why += `, so the gift ${getSpan(rule.put)} is ${getSpan(rule.put,rule.as)}</p>`;
+                                why += `, so the gift is set to ${getSpan(rule.put,rule.as)} ${getSpan(rule.put)} </p>`;
                                 break;
                             case "recommendation":
                                 recommendation.push(rule);
-                            //     why += `<p>The`;
-                            //     for(i=0;i<rule.when.length;i++) {
-                            //         for(j=0;j<rule.when[i].length;j++) {
-                            //             var is;
-                            //             switch(rule.is[i][j]) {
-                            //                 case "==":
-                            //                     is = "is";
-                            //                     break;
-                            //                 case "!=":
-                            //                     is = "is not";
-                            //                     break;
-                            //                 case ">=":
-                            //                 case ">":
-                            //                     is = "is more than";
-                            //                     break;
-                            //                 case "<=":
-                            //                 case "<":
-                            //                     is = "is less than";
-                            //                     break;
-                            //             }
-                            //             why += `${getSpan(rule.when[i][j])} ${is} ${getSpan(rule.when[i][j],rule.what[i][j])}`;
-                            //             if (j != rule.when[i].length - 1 ) {
-                            //                 if (rule.when[i].length != 2) {
-                            //                     why += ", ";
-                            //                 } else {
-                            //                     why += " and"
-                            //                 }
-                            //             }
-                            //         }
-                            //     }
-                            //     break;
                         }
                     }
                 } 
@@ -876,7 +814,6 @@ $(document).ready(function(){
                         }
                         if (categorise.hasOwnProperty(re.when)) {
                             if(!categorise[re.when].includes(compare)) categorise[re.when].push(compare)
-                            // categorise[re.when].push(compare)
                         } else {
                             categorise[re.when] = [compare]
                         }
@@ -887,7 +824,14 @@ $(document).ready(function(){
                 for (attr in categorise) { 
                     why += `<li>${getSpan(attr)} of `;
                     for (k = 0; k < categorise[attr].length; k++) {
-                        why += `${getSpan(attr, categorise[attr][k])}`;
+                        var notEqual = false
+                        var fact= categorise[attr][k];
+                        if (fact.replace(/[^!=]/gi, '') == "!=") {
+                            notEqual = true
+                            fact = fact.replace(/[^a-z]/gi, '')
+                        }
+                        if ( notEqual ) why += "not "
+                        why += `${getSpan(attr, fact)}`;
                         if (k != categorise[attr].length - 1) {
                             why += ", ";
                         }
@@ -972,50 +916,6 @@ $(document).ready(function(){
             
             
         }
-
-        // var categorise = {};
-        // console.log(recommendation)
-        // for (re of recommendation) {
-        //     console.log(re)
-        //     if (typeof re.when == "object") {
-        //         for (i = 0 ; i< re.when.length; i++) {
-        //             if (typeof re.when[i] == "object") {
-        //                 for (j=0; j< re.when[i].length;j++) {
-        //                     var compare = re.what[i][j]
-        //                     if (re.is[i][j] == "!=") {
-        //                         compare =  "!=" + compare
-        //                     }
-        //                     if (categorise.hasOwnProperty(re.when[i][j])) {
-        //                         categorise[re.when[i][j]].push(compare)
-        //                     } else {
-        //                         categorise[re.when[i][j]] = [compare]
-        //                     }
-        //                 }
-        //             } else {
-        //                 var compare = re.what[i]
-        //                 if (re.is[i] == "!=") {
-        //                     compare =  "!=" + compare
-        //                 }
-        //                 if (categorise.hasOwnProperty(re.when[i])) {
-        //                     categorise[re.when[i]].push(compare)
-        //                 } else {
-        //                     categorise[re.when[i]] = [compare]
-        //                 }
-        //             }
-        //         }
-        //     } else {
-        //         var compare = re.what
-        //         if (re.is == "!=") {
-        //             compare =  "!=" + compare
-        //         }
-        //         if (categorise.hasOwnProperty(re.when)) {
-        //             categorise[re.when].push(compare)
-        //         } else {
-        //             categorise[re.when] = [compare]
-        //         }
-        //     }
-        // }
-        // console.log(categorise)
 
         $(this).html(why);
     }
