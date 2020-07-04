@@ -1094,21 +1094,21 @@
         "id": "T0025",
         "name": "Logitech X50 Mobile Wireless Speaker",
         "price": "RM98.00",
-        "img": "images/recommendations/T0025.png", 
+        "img": "images/recommendations/T0025.jpg", 
         "link": "https://www.logitech.com/en-my/product/x50-wireless-speaker?crid=1548"
     },
     { 
         "id": "T0026",
         "name": "Logitech M331 Silent Plus",
         "price": "RM76.00",
-        "img": "images/recommendations/T0026.png", 
+        "img": "images/recommendations/T0026.jpg", 
         "link": "https://www.logitech.com/en-my/product/m331-silent-plus?crid=7"
     },
     { 
         "id": "T0027",
         "name": "Logitech Wireless Keyboard K270",
         "price": "RM84.90",
-        "img": "images/recommendations/T0027.png", 
+        "img": "images/recommendations/T0027.jpg", 
         "link": "https://www.logitech.com/en-my/product/wireless-keyboard-k270?crid=27"
     }
 ],

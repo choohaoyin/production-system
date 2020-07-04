@@ -818,13 +818,13 @@ $(document).ready(function(){
                                 if(budget == 100) {
                                     compare = "around"
                                 }
-                                why += `<p>For the ${getSpan(attr)} ${compare} ${getSpan(attr,`RM ${budget}`)}</p>`;
+                                why += `<p>${getSpan(attr)} ${compare} ${getSpan(attr,`RM ${budget}`)}</p>`;
                                 break;
                             case "occasion":
-                                why += `<p>You can give this gift during ${getSpan(attr)} like ${getSpan(attr,items[attr])}</p>`;
+                                why += `<p>${getSpan(attr)} like ${getSpan(attr,items[attr])}</p>`;
                                 break;
                             case "interest":
-                                why += `<p>This gift is suitable for someone who have ${getSpan(attr)} with ${getSpan(attr,items[attr])}</p>`;
+                                why += `<p>someone who has ${getSpan(attr)} with ${getSpan(attr,items[attr])}</p>`;
                                 break;
                             case "age":
                                 var age_group = "";
@@ -850,15 +850,15 @@ $(document).ready(function(){
 
                                     if (age_group != "") {
                                         if (typeof items[attr] == "object"){
-                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                                why += `<p>${getSpan("age group",age_group)} who ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
                                             } else {
-                                                why += `<p>For ${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+                                                why += `<p>${getSpan("age group",age_group)} who ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
                                             }
                                     } else {
                                         if (typeof items[attr] == "object"){
-                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
+                                            why += `<p>for those with ${getSpan(attr)} range from ${getSpan(attr,items[attr][0])} to ${getSpan(attr,items[attr][items[attr].length - 1])}</p>`;
                                         } else {
-                                            why += `<p>The gift is suitable for those with ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
+                                            why += `<p>for those with ${getSpan(attr)} at around ${getSpan(attr,items[attr])}</p>`;
 
                                         }
                                     }
@@ -868,7 +868,7 @@ $(document).ready(function(){
 
                                 break;
                             case "gender":
-                                why += `<p>The gift is for a ${getSpan(attr,items[attr])} receipient</p>`;
+                                why += `<p>a ${getSpan(attr,items[attr])} receipient</p>`;
                                 break;
                             
                         }
