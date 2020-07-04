@@ -19,23 +19,6 @@ $(function(){
     $("footer").load("assets/html/footer.html");
 });
 
-
-// $(window).on('load',function () {
-//     if (window.location.pathname == "/backward.html") {
-//         $('#items').children('.carousel-inner').getCategory("all");
-//     }
-// });
-
-// function getAllCategory() {
-//     $('#items').children('.carousel-inner').getCategory("all");
-// }
-
-// window.addEventListener('DOMContentLoaded', (event) => {
-//     if (window.location.pathname == "/backward.html") {
-//         getAllCategory()
-//     }
-// });
-
 // Retrieve item
 function getItem(id) {
     var cat = id.replace(/[^a-z]/gi, '');
@@ -236,24 +219,6 @@ $(".previous").click(function(){
     });
     $(".form-container").height(previous_fs.height());
 });
-
-
-// $("#magic").click(function() {
-//     console.log("magic");
-//     itemList = []
-//     for(categories of items) {
-//         for(item of categories) {
-//             console.log(item.id);
-//             if (Math.random > 0.5) {
-//                 continue; // testing purpose, avoid too many item to be preview
-//             }
-            
-//             itemList.push(item);
-//         }
-//     }
-
-//     $('#items').children('.carousel-inner').displayItem(itemList);
-// });
 
 // Gift catalog category changing
 $("#category").change(function () {
