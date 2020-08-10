@@ -1,0 +1,56 @@
+<style>
+    .incompatible {
+        background-color: rgb(0, 0, 0, 0.6);
+        color: white;
+        margin: 0;
+        width: 70%;
+        padding: 10px 30px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .dino {
+        height: 80%;
+        max-height: 350px;
+        position: relative;
+        margin: 10px 0;
+    }
+
+    .logo {
+        top: 50px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        position: absolute;
+        width: 300px;
+        height: 50px;
+        object-fit: cover;
+        padding: 0;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 800px) {
+        .incompatible-text {
+            text-align: left;
+        }
+    }
+
+    footer {
+        width: 100%;
+        position: fixed;
+        bottom: 50px;
+        text-align: center;
+    }
+</style>
+<img src="assets/images/giftingMadeEasyLogo.svg" class="logo">
+<div class="incompatible">
+    <img class="dino" src="assets/images/dinosaur_faint.svg">
+    <div class="incompatible-text">
+        <h2>whoops, our Agent Dino is lost.</h2>
+        <p>He only knows how to hunt with Google Chrome (Desktop).</p>
+        <p style="font-size: 12px;"><i>PS... I promise I will train him better to hunt with more Browser.</i></p>
+    </div>
+</div>
+<footer></footer>

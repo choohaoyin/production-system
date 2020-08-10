@@ -7,11 +7,17 @@
     padding: 0;
 }
 
-html, body {margin: 0; height: 100%; overflow-x: hidden}
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden
+}
 
 html {
     height: 100%;
-    background: #eee6e6; /* fallback for old browsers */
+    background: #eee6e6;
+    /* fallback for old browsers */
 
 }
 
@@ -21,23 +27,25 @@ body {
 }
 
 /*form styles*/
-#msform, .catalog {
+#msform,
+.catalog {
     text-align: center;
     position: relative;
 }
 
-#selection-button{
+#selection-button {
     border-radius: 9px;
     color: black;
     background-color: white;
     min-width: 280px;
 }
 
-#selection-button:hover{
+#selection-button:hover {
     background-color: #eee6e6 !important;
 }
 
-#msform fieldset, .catalog {
+#msform fieldset,
+.catalog {
     min-height: 420px;
     background: white;
     border: 0 none;
@@ -55,7 +63,8 @@ body {
 }
 
 /*inputs*/
-#msform input[type="text"], #msform textarea {
+#msform input[type="text"],
+#msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -67,7 +76,8 @@ body {
     font-size: 13px;
 }
 
-#msform input[type="text"]:focus, #msform textarea:focus {
+#msform input[type="text"]:focus,
+#msform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -80,12 +90,15 @@ body {
 }
 
 
-#msform input[type=button]:focus, #homepagebutton:focus,  .buy-button:focus{
-    outline:0;
+#msform input[type=button]:focus,
+#homepagebutton:focus,
+.buy-button:focus {
+    outline: 0;
 }
 
 /*buttons*/
-#msform .action-button, .popup-content .action-button {
+#msform .action-button,
+.popup-content .action-button {
     width: 100px;
     background: #ee0979;
     font-weight: bold;
@@ -133,7 +146,9 @@ body {
     box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(245, 230, 95) !important;
 }
 
-#msform .action-button:hover:enabled, #msform .action-button:focus:enabled, .buy-button:hover {
+#msform .action-button:hover:enabled,
+#msform .action-button:focus:enabled,
+.buy-button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
 }
 
@@ -150,7 +165,8 @@ body {
     transition: 0.2s ease;
 }
 
-#msform .action-button-previous:hover:enabled, #msform .action-button-previous:focus:enabled {
+#msform .action-button-previous:hover:enabled,
+#msform .action-button-previous:focus:enabled {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #234099;
 }
 
@@ -182,7 +198,8 @@ body {
     font-size: 72px !important;
 }
 
-#msform input[type="checkbox"], #msform input[type="radio"] {
+#msform input[type="checkbox"],
+#msform input[type="radio"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -190,14 +207,23 @@ body {
     width: 0;
 }
 
-.btn-secondary{
+.btn-secondary {
     background-color: white !important;
 }
 
-.btn-secondary.active, .btn-secondary:active{
+.btn-secondary.active,
+.btn-secondary:active {
     background-color: #eee6e6 !important;
 }
 
+.love {
+    transition: 0.25s ease;
+}
+
+.love:hover {
+    cursor: default;
+    font-size: 50px;
+}
 
 footer {
     text-align: center;
@@ -205,19 +231,19 @@ footer {
     font-size: 10px;
 }
 
-footer img{
+footer img {
     height: 1.5em;
-    width: auto; 
-    vertical-align:-0.27em;
+    width: auto;
+    vertical-align: -0.27em;
     transition: 0.1s ease-out;
 }
 
-footer img:hover{
+footer img:hover {
     height: 7em;
-    width: auto; 
+    width: auto;
 }
 
-#homepagebutton{
+#homepagebutton {
     padding: 10px;
     border: solid 1px #9a9a9a;
     border-radius: 9px;
@@ -228,21 +254,23 @@ footer img:hover{
     width: 500px;
 }
 
-#homepagebutton:hover{
+#homepagebutton:hover {
     background-color: #f1dfdf;
 }
 
-#gallery img, #interest img {
-    width: 300px ;
-} 
+#gallery img,
+#interest img {
+    width: 300px;
+}
 
-#recommendation img, #items img {
+#recommendation img,
+#items img {
     width: 200px;
     height: 200px;
     object-fit: cover;
 }
 
-#gallery label:hover{
+#gallery label:hover {
     background-color: #eee6e6 !important;
 }
 
@@ -258,7 +286,8 @@ footer img:hover{
     width: 25px !important;
 }
 
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
     width: 25px !important;
     height: 25px !important;
     top: 25%;
@@ -298,23 +327,23 @@ footer img:hover{
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-  }
-  
-.popup-overlay.active {
-visibility: visible;
-text-align: center;
+    transform: translate(-50%, -50%);
 }
-  
+
+.popup-overlay.active {
+    visibility: visible;
+    text-align: center;
+}
+
 .popup-content {
-/*Hides pop-up content when there is no "active" class */
+    /*Hides pop-up content when there is no "active" class */
     background-color: white;
     width: 75%;
     height: auto;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     visibility: hidden;
     padding: 10px;
     text-align: center;
@@ -325,32 +354,40 @@ text-align: center;
     left: 50%;
     transform: translate(-50%);
 }
-  
+
 .popup-content.active {
-/*Shows pop-up content when "active" class is present */
+    /*Shows pop-up content when "active" class is present */
     background-color: white;
-    z-index:99;
+    z-index: 99;
     opacity: 1;
     visibility: visible;
 }
 
 .popup-content .buy-button {
-    position: relative; 
-    left: 50%; 
+    position: relative;
+    left: 50%;
     transform: translate(-50%);
     margin: 5px 0 0 0;
     width: 150px;
 }
 
 
-.popup-content .buy-button, .popup-content .why-title, .popup-content .why-explanation, 
-.popup-content .item-img, .popup-content .item-name, .popup-content .item-price{
-display: none;
+.popup-content .buy-button,
+.popup-content .why-title,
+.popup-content .why-explanation,
+.popup-content .item-img,
+.popup-content .item-name,
+.popup-content .item-price {
+    display: none;
 }
 
-.popup-content .buy-button.active, .popup-content .why-title.active, .popup-content .why-explanation.active, 
-.popup-content .item-img.active, .popup-content .item-name.active, .popup-content .item-price.active{
-display: block;
+.popup-content .buy-button.active,
+.popup-content .why-title.active,
+.popup-content .why-explanation.active,
+.popup-content .item-img.active,
+.popup-content .item-name.active,
+.popup-content .item-price.active {
+    display: block;
 }
 
 .item-img {
@@ -377,7 +414,7 @@ display: block;
     line-height: 2em;
 }
 
-.recommendation p{
+.recommendation p {
     font-size: 14px !important;
 }
 
@@ -388,7 +425,7 @@ display: block;
     padding: 20px;
 }
 
-#ohno img{
+#ohno img {
     width: 400px;
 }
 
@@ -414,9 +451,9 @@ display: block;
 .categorise {
     list-style-type: none;
     padding: 0;
-    margin:0 20px;
+    margin: 0 20px;
 }
 
-.categorise > li {
+.categorise>li {
     padding-bottom: 5px;
 }
