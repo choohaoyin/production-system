@@ -1,14 +1,5 @@
 # Gifting Made Easy
 
-## Instruction
-### Visual Studio Code (advisable)
-1. Clone this repo to your machine
-2. Install `Live Server` from `Extension` on VSCode
-3. Right click on `index.html` and choose `Open with Live Server`
-
-### Any other editor
-1. Clone this repo to the `localhost` directory of your local server
-
 ## Label for images
 Please label the image for each recommendation item according to prefix and ID in `items.json`. The ID just follow the number of item currently have for each category.
 
