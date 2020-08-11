@@ -195,6 +195,14 @@ $(".close").on("click", function () {
     })
 });
 
+
+
+$("#disclaimer-text").on("click", function () {
+    console.log("test")
+    $(this).addClass("active");
+});
+
+
 // Previous button
 $(".previous").click(function () {
     if (animating) return false;
