@@ -10,6 +10,15 @@ let items = new Object(); // to store items list
 let wm = {}; // W
 let firedRules = [];
 
+
+function checkSize() {
+    if ($(window).width() < 995) {
+        $("body").load("assets/html/incompatible.html", () => {
+            $("footer").load("assets/html/footer.html");
+        });
+    }
+}
+
 // Disable all images to be draggable
 $("img").attr("draggable", false);
 
@@ -17,14 +26,13 @@ $("img").attr("draggable", false);
 $(function () {
     $("header").load("assets/html/header.html");
     $("footer").load("assets/html/footer.html");
+    checkSize();
+});
 
-    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-
-    if (!isChrome) {
-        $("body").load("assets/html/incompatible.html", () => {
-            $("footer").load("assets/html/footer.html");
-        });
-    }
+// Adjust footer position dynamically
+$(window).resize(function () {
+    $(".form-container").height($('#msform > fieldset').eq(current_fs_index - 1).height());
+    checkSize();
 });
 
 // Retrieve item
@@ -48,10 +56,6 @@ $.getJSON("assets/json/items.json", function (data) {
     items = data;
 });
 
-// Adjust footer position dynamically
-$(window).resize(function () {
-    $(".form-container").height($('#msform > fieldset').eq(current_fs_index - 1).height());
-});
 
 // Disable carousel auto-scroll
 $('.carousel').carousel({
